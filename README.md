@@ -13,18 +13,18 @@ Please refer to https://docs.fires.im/en/latest/Initial-Setup/index.html
 When you set up a manager instance during the initial setup process (Step 1), check out a specific tag, “1.9.0”.
 
 ```git clone https://github.com/firesim/firesim.git```
-cd firesim
-git checkout 1.9.0 # extra command to check out a specific tag
-./build-setup.sh fast
+```cd firesim```
+```git checkout 1.9.0 # extra command to check out a specific tag```
+```./build-setup.sh fast```
 
 3. Replace the existing “generator” directory with the SNAP design.
 
 4. Building Hardware Design for SNAP
 
-In ~/firesim/deploy/config_build.ini,
-Change the bucket name: s3bucketname=firesim-snap
-Add to [builds] (comment out other things)
-firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
+In ~/firesim/deploy/config_build.ini, \
+Change the bucket name: s3bucketname=firesim-snap \
+Add to [builds] (comment out other things) \
+firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap \
 Add to [agfistoshare] (comment out other things)
 firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
 
