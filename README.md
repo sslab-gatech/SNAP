@@ -6,58 +6,58 @@ While all the necessary instructions to run FPGA instances are provided in the F
 
 1. Initial Setup/Installation for FireSim
 
-Please refer to https://docs.fires.im/en/latest/Initial-Setup/index.html
+Please refer to https://docs.fires.im/en/latest/Initial-Setup/index.html.
 
 2. Setting up the FireSim Repo
 
-When you set up a manager instance during the initial setup process (Step 1), check out a specific tag, “1.9.0”.
+When you set up a manager instance during the initial setup process (Step 1), check out a specific tag, ```1.9.0```.
 
-```git clone https://github.com/firesim/firesim.git```
-```cd firesim```
-```git checkout 1.9.0 # extra command to check out a specific tag```
+```git clone https://github.com/firesim/firesim.git``` \
+```cd firesim``` \
+```git checkout 1.9.0 # extra command to check out a specific tag``` \
 ```./build-setup.sh fast```
 
 3. Replace the existing “generator” directory with the SNAP design.
 
 4. Building Hardware Design for SNAP
 
-In ~/firesim/deploy/config_build.ini, \
-Change the bucket name: s3bucketname=firesim-snap \
-Add to [builds] (comment out other things) \
-firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap \
-Add to [agfistoshare] (comment out other things)
-firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
+In ```~/firesim/deploy/config_build.ini```, \
+Change the bucket name: ```s3bucketname=firesim-snap``` \
+Add to ```[builds]``` (comment out other things) \
+```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap``` \
+Add to ```[agfistoshare]``` (comment out other things)
+```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
 
-In ~/firesim/deploy/config_build_recipes.ini,
-Add
-[firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
-DESIGN=FireSim
-TARGET_CONFIG=DDR3FRFCFSLLC4MB_FireSimLargeBoomConfig
-PLATFORM_CONFIG=F75MHz_BaseF1Config
-instancetype=f1.2xlarge
+In ```~/firesim/deploy/config_build_recipes.ini```, \
+Add \
+[firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap] \
+DESIGN=FireSim \
+TARGET_CONFIG=DDR3FRFCFSLLC4MB_FireSimLargeBoomConfig \
+PLATFORM_CONFIG=F75MHz_BaseF1Config \
+instancetype=f1.2xlarge \
 deploytriplet=None
 
-Run “firesim buildafi” (This will take a long time, ~10 hours).
+Run ```firesim buildafi``` (This will take a long time, ~10 hours).
 
 Refer to https://docs.fires.im/en/latest/Building-a-FireSim-AFI.html for more details.
 
 5. Running FireSim Simulations with SNAP
 
-In ~/firesim/deploy/config_runtime.ini,
-Change to defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
+In ```~/firesim/deploy/config_runtime.ini```, \
+Change to ```defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
 
-In ~/firesim/deploy/config_hwdb.ini,
-Add
-[firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
-agfi=agfi-062b20613c52a2313 # replace with your agfi after HW build completes
-deploytripletoverride=None
+In ```~/firesim/deploy/config_hwdb.ini```, \
+Add \
+[firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap] \
+agfi=agfi-062b20613c52a2313 # replace with your agfi after HW build completes \
+deploytripletoverride=None \
 customruntimeconfig=None
 
 Launch FPGA instance(s) following https://docs.fires.im/en/latest/Running-Simulations-Tutorial/index.html.
 
-After an FPGA instance is launched, insert modules into the kernel.
-# insmod cmap.ko
-# insmod lbq.ko
+After an FPGA instance is launched, insert modules into the kernel. \
+```# insmod cmap.ko```
+```# insmod lbq.ko```
 
 Run binaries to trace!
 
