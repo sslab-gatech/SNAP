@@ -14,7 +14,7 @@ When you set up a manager instance during the initial setup process (Step 1), ch
 
 ```git clone https://github.com/firesim/firesim.git``` \
 ```cd firesim``` \
-```git checkout 1.9.0 # extra command to check out a specific tag``` \
+```git checkout 1.9.0 # command to check out a specific tag``` \
 ```./build-setup.sh fast```
 
 3. Replace the existing “generator” directory with the SNAP design.
@@ -56,7 +56,7 @@ customruntimeconfig=None
 Launch FPGA instance(s) following https://docs.fires.im/en/latest/Running-Simulations-Tutorial/index.html.
 
 After an FPGA instance is launched, insert modules into the kernel. \
-```# insmod cmap.ko```
+```# insmod cmap.ko``` \
 ```# insmod lbq.ko```
 
 Run binaries to trace!
