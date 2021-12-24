@@ -1,0 +1,53 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/bank-rf.scala:75:83: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    pred_rf.write(waddr, Vec(((wdata & wmask) | (pred_rf(waddr).asUInt & ~wmask)).toBools))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/bank-rf.scala:122:44: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val wmask = sram_warb.io.out.bits.mask.toBools[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/bank-rf.scala:171:32: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      ff_warb.io.out.bits.mask.toBools)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/bank-rf.scala:189:62: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m        (io.op.opl.global(i).bits.pred & s1_gpred.pred)(1,0).toBools)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/bank-rf.scala:199:61: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m        (io.op.opl.local(i).bits.pred & s1_gpred.pred)(1,0).toBools)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-fu.scala:303:72: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val deq_idivs_resp = (0 until nSlices).map {  tagq.io.deq.bits.fusel.toBool && tagq.io.deq.bits.pred(_) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-fu.scala:304:72: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val deq_fdivs_resp = (0 until nSlices).map { !tagq.io.deq.bits.fusel.toBool && tagq.io.deq.bits.pred(_) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-fu.scala:328:43: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  wraw.data := Mux(tagq.io.deq.bits.fusel.toBool,[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-fu.scala:340:62: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  io.idiv.ack.valid := fire_bwq(null, tagq.io.deq.bits.fusel.toBool)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-fu.scala:342:63: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  io.fdiv.ack.valid := fire_bwq(null, !tagq.io.deq.bits.fusel.toBool)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-fu.scala:350:64: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  icntr.io.inc.update := fire_bwq(null, tagq.io.deq.bits.fusel.toBool)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-fu.scala:356:65: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  fcntr.io.inc.update := fire_bwq(null, !tagq.io.deq.bits.fusel.toBool)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-mem.scala:256:29: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val brqs_pred = pred.bits.toBools.grouped(nSlices).map([0m
+[0m[[0m[33mwarn[0m] [0m[0m                            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/dcc-mem.scala:588:39: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val mask = rotate(Bool(), mask_base.toBools)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/rocc-unit.scala:373:50: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val vru_switch_on = io.rocc.cmd.bits.rs1(63).toBool[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                 ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/vfu-rfirst.scala:38:72: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val pred = PriorityEncoderOH((io.req.bits.active & io.req.bits.pred).toBools)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/hwacha/src/main/scala/vfu-rfirst.scala:115:11: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    (m._1.toBools zip io.lane.map(_.bits.first)) map { case (v, f) => dgate(v, f) } reduce(_ | _)[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 3031 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0m18 warnings found[0m

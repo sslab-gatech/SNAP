@@ -1,0 +1,7 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/boom/src/main/resources/csrc,/home/centos/firesim/target-design/chipyard/generators/boom/target/scala-2.12/classes/csrc)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/boom/src/main/resources/vsrc,/home/centos/firesim/target-design/chipyard/generators/boom/target/scala-2.12/classes/vsrc)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/boom/src/main/resources/csrc/dromajo_boom.cc,/home/centos/firesim/target-design/chipyard/generators/boom/target/scala-2.12/classes/csrc/dromajo_boom.cc)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/boom/src/main/resources/csrc/dromajo_wrapper.cc,/home/centos/firesim/target-design/chipyard/generators/boom/target/scala-2.12/classes/csrc/dromajo_wrapper.cc)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/boom/src/main/resources/csrc/dromajo_wrapper.h,/home/centos/firesim/target-design/chipyard/generators/boom/target/scala-2.12/classes/csrc/dromajo_wrapper.h)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/boom/src/main/resources/vsrc/dromajo_boom.v,/home/centos/firesim/target-design/chipyard/generators/boom/target/scala-2.12/classes/vsrc/dromajo_boom.v)[0m

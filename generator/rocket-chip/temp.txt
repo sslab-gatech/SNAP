@@ -1,0 +1,1350 @@
+api-config-chipsalliance/README.md:Parameters objects are the core abstraction of the CDE library.
+api-config-chipsalliance/README.md:You can look up a specific parameter by querying a Parameters object with a key, and if any case in the partial function's cases match the key you provide, the parameters object will return the supplied value. Critically, this supplied value can be dependent on any other parameters defined where the lookup is performed.
+api-config-chipsalliance/README.md:     abstract val p: Parameters
+api-config-chipsalliance/README.md:As the Parameters environment is passed around a Module hierarchy, it can be modified to override a key's value.
+api-config-chipsalliance/README.md:     val p = Parameters.empty.alter((pname, site, here) => pname match {
+api-config-chipsalliance/README.md:Constraints are expressions that set limits on Parameters and Knobs and can be used to specify design requirements and bound design-space exploration.
+api-config-chipsalliance/README.md:Config objects provide a way to represent particular configurations of a design as Scala source code. They contain the top-level Parameters environment that contains any values not bound within the design, bindings for Knob values left free by the Parameters, and any top-level constraints that are to be applied to design space exploration.
+api-config-chipsalliance/design/craft/src/config/Config.scala:      require (out.isDefined, s"Key ${pname} is not defined in Parameters")
+api-config-chipsalliance/design/craft/src/config/Config.scala:  abstract class Parameters extends View {
+api-config-chipsalliance/design/craft/src/config/Config.scala:    final def ++ (x: Parameters): Parameters =
+api-config-chipsalliance/design/craft/src/config/Config.scala:      new ChainParameters(this, x)
+api-config-chipsalliance/design/craft/src/config/Config.scala:    final def alter(f: (View, View, View) => PartialFunction[Any,Any]): Parameters =
+api-config-chipsalliance/design/craft/src/config/Config.scala:      Parameters(f) ++ this
+api-config-chipsalliance/design/craft/src/config/Config.scala:    final def alterPartial(f: PartialFunction[Any,Any]): Parameters =
+api-config-chipsalliance/design/craft/src/config/Config.scala:      Parameters((_,_,_) => f) ++ this
+api-config-chipsalliance/design/craft/src/config/Config.scala:    final def alterMap(m: Map[Any,Any]): Parameters =
+api-config-chipsalliance/design/craft/src/config/Config.scala:      new MapParameters(m) ++ this
+api-config-chipsalliance/design/craft/src/config/Config.scala:  object Parameters {
+api-config-chipsalliance/design/craft/src/config/Config.scala:    def empty: Parameters = new EmptyParameters
+api-config-chipsalliance/design/craft/src/config/Config.scala:    def apply(f: (View, View, View) => PartialFunction[Any,Any]): Parameters = new PartialParameters(f)
+api-config-chipsalliance/design/craft/src/config/Config.scala:  class Config(p: Parameters) extends Parameters {
+api-config-chipsalliance/design/craft/src/config/Config.scala:    def this(f: (View, View, View) => PartialFunction[Any,Any]) = this(Parameters(f))
+api-config-chipsalliance/design/craft/src/config/Config.scala:  private class ChainView(head: Parameters, tail: View) extends View {
+api-config-chipsalliance/design/craft/src/config/Config.scala:  private class ChainParameters(x: Parameters, y: Parameters) extends Parameters {
+api-config-chipsalliance/design/craft/src/config/Config.scala:  private class EmptyParameters extends Parameters {
+api-config-chipsalliance/design/craft/src/config/Config.scala:  private class PartialParameters(f: (View, View, View) => PartialFunction[Any,Any]) extends Parameters {
+api-config-chipsalliance/design/craft/src/config/Config.scala:  private class MapParameters(map: Map[Any, Any]) extends Parameters {
+chisel3/scalastyle-test-config.xml:   <parameter name="maxParameters"><![CDATA[8]]></parameter>
+chisel3/chiselFrontend/src/main/scala/chisel3/BlackBox.scala:  /** Parameters for BlackBoxes */
+chisel3/chiselFrontend/src/main/scala/chisel3/experimental/package.scala:  // Implicit conversions for BlackBox Parameters
+chisel3/scalastyle-config.xml:   <parameter name="maxParameters"><![CDATA[8]]></parameter>
+firrtl/regress/ICache.fir:    node _T_726 = leq(UInt<1>("h00"), UInt<3>("h06")) @[Parameters.scala 63:32]
+firrtl/regress/ICache.fir:    node _T_728 = leq(UInt<3>("h06"), UInt<3>("h06")) @[Parameters.scala 63:42]
+firrtl/regress/ICache.fir:    node _T_729 = and(_T_726, _T_728) @[Parameters.scala 63:37]
+firrtl/regress/ICache.fir:    node _T_730 = or(UInt<1>("h00"), _T_729) @[Parameters.scala 132:31]
+firrtl/regress/ICache.fir:    node _T_732 = xor(_T_722, UInt<1>("h00")) @[Parameters.scala 117:31]
+firrtl/regress/ICache.fir:    node _T_733 = cvt(_T_732) @[Parameters.scala 117:49]
+firrtl/regress/ICache.fir:    node _T_735 = and(_T_733, asSInt(UInt<31>("h020000000"))) @[Parameters.scala 117:52]
+firrtl/regress/ICache.fir:    node _T_736 = asSInt(_T_735) @[Parameters.scala 117:52]
+firrtl/regress/ICache.fir:    node _T_738 = eq(_T_736, asSInt(UInt<1>("h00"))) @[Parameters.scala 117:67]
+firrtl/regress/ICache.fir:    node _T_739 = and(_T_730, _T_738) @[Parameters.scala 132:56]
+firrtl/regress/ICache.fir:    node _T_742 = leq(UInt<1>("h00"), UInt<3>("h06")) @[Parameters.scala 63:32]
+firrtl/regress/ICache.fir:    node _T_744 = leq(UInt<3>("h06"), UInt<4>("h08")) @[Parameters.scala 63:42]
+firrtl/regress/ICache.fir:    node _T_745 = and(_T_742, _T_744) @[Parameters.scala 63:37]
+firrtl/regress/ICache.fir:    node _T_746 = or(UInt<1>("h00"), _T_745) @[Parameters.scala 132:31]
+firrtl/regress/ICache.fir:    node _T_748 = xor(_T_722, UInt<30>("h020000000")) @[Parameters.scala 117:31]
+firrtl/regress/ICache.fir:    node _T_749 = cvt(_T_748) @[Parameters.scala 117:49]
+firrtl/regress/ICache.fir:    node _T_751 = and(_T_749, asSInt(UInt<31>("h020000000"))) @[Parameters.scala 117:52]
+firrtl/regress/ICache.fir:    node _T_752 = asSInt(_T_751) @[Parameters.scala 117:52]
+firrtl/regress/ICache.fir:    node _T_754 = eq(_T_752, asSInt(UInt<1>("h00"))) @[Parameters.scala 117:67]
+firrtl/regress/ICache.fir:    node _T_755 = and(_T_746, _T_754) @[Parameters.scala 132:56]
+firrtl/regress/ICache.fir:    node _T_757 = or(UInt<1>("h00"), _T_739) @[Parameters.scala 134:30]
+firrtl/regress/ICache.fir:    node _T_758 = or(_T_757, _T_755) @[Parameters.scala 134:30]
+firrtl/scalastyle-test-config.xml:   <parameter name="maxParameters"><![CDATA[8]]></parameter>
+firrtl/spec/spec.tex:  & \multicolumn{1}{c|}{\nf{Parameters}}
+firrtl/TODO:* 1) Emit module. No Parameters. Include clk and reset signals
+firrtl/src/test/resources/regress/ICache.fir:    node _T_726 = leq(UInt<1>("h00"), UInt<3>("h06")) @[Parameters.scala 63:32]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_728 = leq(UInt<3>("h06"), UInt<3>("h06")) @[Parameters.scala 63:42]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_729 = and(_T_726, _T_728) @[Parameters.scala 63:37]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_730 = or(UInt<1>("h00"), _T_729) @[Parameters.scala 132:31]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_732 = xor(_T_722, UInt<1>("h00")) @[Parameters.scala 117:31]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_733 = cvt(_T_732) @[Parameters.scala 117:49]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_735 = and(_T_733, asSInt(UInt<31>("h020000000"))) @[Parameters.scala 117:52]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_736 = asSInt(_T_735) @[Parameters.scala 117:52]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_738 = eq(_T_736, asSInt(UInt<1>("h00"))) @[Parameters.scala 117:67]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_739 = and(_T_730, _T_738) @[Parameters.scala 132:56]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_742 = leq(UInt<1>("h00"), UInt<3>("h06")) @[Parameters.scala 63:32]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_744 = leq(UInt<3>("h06"), UInt<4>("h08")) @[Parameters.scala 63:42]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_745 = and(_T_742, _T_744) @[Parameters.scala 63:37]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_746 = or(UInt<1>("h00"), _T_745) @[Parameters.scala 132:31]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_748 = xor(_T_722, UInt<30>("h020000000")) @[Parameters.scala 117:31]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_749 = cvt(_T_748) @[Parameters.scala 117:49]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_751 = and(_T_749, asSInt(UInt<31>("h020000000"))) @[Parameters.scala 117:52]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_752 = asSInt(_T_751) @[Parameters.scala 117:52]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_754 = eq(_T_752, asSInt(UInt<1>("h00"))) @[Parameters.scala 117:67]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_755 = and(_T_746, _T_754) @[Parameters.scala 132:56]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_757 = or(UInt<1>("h00"), _T_739) @[Parameters.scala 134:30]
+firrtl/src/test/resources/regress/ICache.fir:    node _T_758 = or(_T_757, _T_755) @[Parameters.scala 134:30]
+firrtl/src/main/scala/firrtl/ir/IR.scala:/** Parameters for external modules */
+firrtl/scalastyle-config.xml:   <parameter name="maxParameters"><![CDATA[8]]></parameter>
+scripts/vlsi_rom_gen:ROMParameters = namedtuple('ROMParameters', ['name', 'depth', 'width'])
+scripts/vlsi_rom_gen:default_rom_parameters = ROMParameters(name='', depth=0, width=0)
+scripts/tracegen+check.sh:# Parameters
+src/main/scala/diplomacy/BundleBridge.scala:import freechips.rocketchip.config.{Parameters,Field}
+src/main/scala/diplomacy/BundleBridge.scala:  def edge(pd: BundleBridgeParams[T], pu: BundleBridgeNull, p: Parameters, sourceInfo: SourceInfo) = pd
+src/main/scala/diplomacy/BundleBridge.scala:  def makeSink()(implicit p: Parameters) = {
+src/main/scala/diplomacy/BundleBridge.scala:class BundleBroadcast[T <: Data]()(implicit p: Parameters) extends LazyModule
+src/main/scala/diplomacy/BundleBridge.scala:  def apply[T <: Data](name: Option[String] = None)(implicit p: Parameters): BundleBridgeNexus[T] = {
+src/main/scala/diplomacy/SRAM.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/diplomacy/SRAM.scala:    dtsCompat: Option[Seq[String]] = None)(implicit p: Parameters) extends LazyModule
+src/main/scala/diplomacy/package.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/diplomacy/package.scala:  def EnableMonitors[T](body: Parameters => T)(implicit p: Parameters) = body(p.alterPartial {
+src/main/scala/diplomacy/package.scala:  def DisableMonitors[T](body: Parameters => T)(implicit p: Parameters) = body(p.alterPartial {
+src/main/scala/diplomacy/package.scala:  def FlipRendering[T](body: Parameters => T)(implicit p: Parameters) = body(p.alterPartial {
+src/main/scala/diplomacy/Nodes.scala:import freechips.rocketchip.config.{Parameters,Field}
+src/main/scala/diplomacy/Nodes.scala:// DI = Downwards flowing Parameters received on the inner side of the node
+src/main/scala/diplomacy/Nodes.scala:// UI = Upwards   flowing Parameters generated by the inner side of the node
+src/main/scala/diplomacy/Nodes.scala:// EI = Edge Parameters describing a connection on the inner side of the node
+src/main/scala/diplomacy/Nodes.scala:  def edgeI(pd: DI, pu: UI, p: Parameters, sourceInfo: SourceInfo): EI
+src/main/scala/diplomacy/Nodes.scala:// DO = Downwards flowing Parameters generated by the outer side of the node
+src/main/scala/diplomacy/Nodes.scala:// UO = Upwards   flowing Parameters received on the outer side of the node
+src/main/scala/diplomacy/Nodes.scala:// EO = Edge Parameters describing a connection on the outer side of the node
+src/main/scala/diplomacy/Nodes.scala:  def edgeO(pd: DO, pu: UO, p: Parameters, sourceInfo: SourceInfo): EO
+src/main/scala/diplomacy/Nodes.scala:  def edge(pd: D, pu: U, p: Parameters, sourceInfo: SourceInfo): E
+src/main/scala/diplomacy/Nodes.scala:  def edgeO(pd: D, pu: U, p: Parameters, sourceInfo: SourceInfo) = edge(pd, pu, p, sourceInfo)
+src/main/scala/diplomacy/Nodes.scala:  def edgeI(pd: D, pu: U, p: Parameters, sourceInfo: SourceInfo) = edge(pd, pu, p, sourceInfo)
+src/main/scala/diplomacy/Nodes.scala:  override def :=  [DX, UX, EX, BX <: Data, EY](h: NodeHandle[DX, UX, EX, BX, DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): NodeHandle[DX, UX, EX, BX, DO, UO, EO, BO] = { bind(h, BIND_ONCE);  NodeHandle(h, this) }
+src/main/scala/diplomacy/Nodes.scala:  override def :*= [DX, UX, EX, BX <: Data, EY](h: NodeHandle[DX, UX, EX, BX, DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): NodeHandle[DX, UX, EX, BX, DO, UO, EO, BO] = { bind(h, BIND_STAR);  NodeHandle(h, this) }
+src/main/scala/diplomacy/Nodes.scala:  override def :=* [DX, UX, EX, BX <: Data, EY](h: NodeHandle[DX, UX, EX, BX, DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): NodeHandle[DX, UX, EX, BX, DO, UO, EO, BO] = { bind(h, BIND_QUERY); NodeHandle(h, this) }
+src/main/scala/diplomacy/Nodes.scala:  override def :*=*[DX, UX, EX, BX <: Data, EY](h: NodeHandle[DX, UX, EX, BX, DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): NodeHandle[DX, UX, EX, BX, DO, UO, EO, BO] = { bind(h, BIND_FLEX);  NodeHandle(h, this) }
+src/main/scala/diplomacy/Nodes.scala:  override def :=  [EY](h: OutwardNodeHandle[DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): OutwardNodeHandle[DO, UO, EO, BO] = { bind(h, BIND_ONCE);  this }
+src/main/scala/diplomacy/Nodes.scala:  override def :*= [EY](h: OutwardNodeHandle[DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): OutwardNodeHandle[DO, UO, EO, BO] = { bind(h, BIND_STAR);  this }
+src/main/scala/diplomacy/Nodes.scala:  override def :=* [EY](h: OutwardNodeHandle[DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): OutwardNodeHandle[DO, UO, EO, BO] = { bind(h, BIND_QUERY); this }
+src/main/scala/diplomacy/Nodes.scala:  override def :*=*[EY](h: OutwardNodeHandle[DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): OutwardNodeHandle[DO, UO, EO, BO] = { bind(h, BIND_FLEX);  this }
+src/main/scala/diplomacy/Nodes.scala:  protected def bind[EY](h: OutwardNodeHandle[DI, UI, EY, BI], binding: NodeBinding)(implicit p: Parameters, sourceInfo: SourceInfo): Unit = inward.bind(h.outward, binding)
+src/main/scala/diplomacy/Nodes.scala:  def :=  [DX, UX, EX, BX <: Data, EY](h: NodeHandle[DX, UX, EX, BX, DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): InwardNodeHandle[DX, UX, EX, BX] = { bind(h, BIND_ONCE);  h }
+src/main/scala/diplomacy/Nodes.scala:  def :*= [DX, UX, EX, BX <: Data, EY](h: NodeHandle[DX, UX, EX, BX, DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): InwardNodeHandle[DX, UX, EX, BX] = { bind(h, BIND_STAR);  h }
+src/main/scala/diplomacy/Nodes.scala:  def :=* [DX, UX, EX, BX <: Data, EY](h: NodeHandle[DX, UX, EX, BX, DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): InwardNodeHandle[DX, UX, EX, BX] = { bind(h, BIND_QUERY); h }
+src/main/scala/diplomacy/Nodes.scala:  def :*=*[DX, UX, EX, BX <: Data, EY](h: NodeHandle[DX, UX, EX, BX, DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): InwardNodeHandle[DX, UX, EX, BX] = { bind(h, BIND_FLEX);  h }
+src/main/scala/diplomacy/Nodes.scala:  def :=  [EY](h: OutwardNodeHandle[DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): NoHandle = { bind(h, BIND_ONCE);  NoHandleObject }
+src/main/scala/diplomacy/Nodes.scala:  def :*= [EY](h: OutwardNodeHandle[DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): NoHandle = { bind(h, BIND_STAR);  NoHandleObject }
+src/main/scala/diplomacy/Nodes.scala:  def :=* [EY](h: OutwardNodeHandle[DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): NoHandle = { bind(h, BIND_QUERY); NoHandleObject }
+src/main/scala/diplomacy/Nodes.scala:  def :*=*[EY](h: OutwardNodeHandle[DI, UI, EY, BI])(implicit p: Parameters, sourceInfo: SourceInfo): NoHandle = { bind(h, BIND_FLEX);  NoHandleObject }
+src/main/scala/diplomacy/Nodes.scala:  private val accPI = ListBuffer[(Int, OutwardNode[DI, UI, BI], NodeBinding, Parameters, SourceInfo)]()
+src/main/scala/diplomacy/Nodes.scala:  protected[diplomacy] def iPush(index: Int, node: OutwardNode[DI, UI, BI], binding: NodeBinding)(implicit p: Parameters, sourceInfo: SourceInfo) {
+src/main/scala/diplomacy/Nodes.scala:  protected[diplomacy] def bind(h: OutwardNode[DI, UI, BI], binding: NodeBinding)(implicit p: Parameters, sourceInfo: SourceInfo): Unit
+src/main/scala/diplomacy/Nodes.scala:  private val accPO = ListBuffer[(Int, InwardNode [DO, UO, BO], NodeBinding, Parameters, SourceInfo)]()
+src/main/scala/diplomacy/Nodes.scala:  protected[diplomacy] def oPush(index: Int, node: InwardNode [DO, UO, BO], binding: NodeBinding)(implicit p: Parameters, sourceInfo: SourceInfo) {
+src/main/scala/diplomacy/Nodes.scala:  private def oTrace(tuple: (Int, InwardNode[DO, UO, BO], Parameters, SourceInfo)): (Int, InwardNode[DO, UO, BO], Parameters, SourceInfo) =
+src/main/scala/diplomacy/Nodes.scala:  private def iTrace(tuple: (Int, OutwardNode[DI, UI, BI], Parameters, SourceInfo)): (Int, OutwardNode[DI, UI, BI], Parameters, SourceInfo) =
+src/main/scala/diplomacy/Nodes.scala:  protected[diplomacy] def bind(h: OutwardNode[DI, UI, BI], binding: NodeBinding)(implicit p: Parameters, sourceInfo: SourceInfo) {
+src/main/scala/diplomacy/LazyModule.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/diplomacy/LazyModule.scala:abstract class LazyModule()(implicit val p: Parameters)
+src/main/scala/diplomacy/LazyModule.scala:class SimpleLazyModule(implicit p: Parameters) extends LazyModule
+src/main/scala/diplomacy/LazyModule.scala:  def apply[T](body: => T)(implicit valName: ValName, p: Parameters): T = {
+src/main/scala/diplomacy/LazyModule.scala:  def apply[T](name: String)(body: => T)(implicit p: Parameters): T = {
+src/main/scala/tile/FPU.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tile/FPU.scala:class FPUDecoder(implicit p: Parameters) extends FPUModule()(p) {
+src/main/scala/tile/FPU.scala:class FPUCoreIO(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/tile/FPU.scala:class FPUIO(implicit p: Parameters) extends FPUCoreIO ()(p) {
+src/main/scala/tile/FPU.scala:class FPResult(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/tile/FPU.scala:class IntToFPInput(implicit p: Parameters) extends CoreBundle()(p) with HasFPUCtrlSigs {
+src/main/scala/tile/FPU.scala:class FPInput(implicit p: Parameters) extends CoreBundle()(p) with HasFPUCtrlSigs {
+src/main/scala/tile/FPU.scala:trait HasFPUParameters {
+src/main/scala/tile/FPU.scala:abstract class FPUModule(implicit p: Parameters) extends CoreModule()(p) with HasFPUParameters
+src/main/scala/tile/FPU.scala:class FPToInt(implicit p: Parameters) extends FPUModule()(p) with ShouldBeRetimed {
+src/main/scala/tile/FPU.scala:class IntToFP(val latency: Int)(implicit p: Parameters) extends FPUModule()(p) with ShouldBeRetimed {
+src/main/scala/tile/FPU.scala:class FPToFP(val latency: Int)(implicit p: Parameters) extends FPUModule()(p) with ShouldBeRetimed {
+src/main/scala/tile/FPU.scala:                (implicit p: Parameters) extends FPUModule()(p) with ShouldBeRetimed {
+src/main/scala/tile/FPU.scala:class FPU(cfg: FPUParams)(implicit p: Parameters) extends FPUModule()(p) {
+src/main/scala/tile/RocketTile.scala:      q: Parameters,
+src/main/scala/tile/RocketTile.scala:  def this(params: RocketTileParams, crossing: RocketCrossingParams, lookup: LookupByHartIdImpl, logicalTreeNode: LogicalTreeNode)(implicit p: Parameters) =
+src/main/scala/tile/RocketTile.scala:      class C(implicit val p: Parameters) extends HasCoreParameters
+src/main/scala/tile/RocketTile.scala:  override def makeMasterBoundaryBuffers(implicit p: Parameters) = {
+src/main/scala/tile/RocketTile.scala:  override def makeSlaveBoundaryBuffers(implicit p: Parameters) = {
+src/main/scala/tile/BusErrorUnit.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tile/BusErrorUnit.scala:class L1BusErrors(implicit p: Parameters) extends CoreBundle()(p) with BusErrors {
+src/main/scala/tile/BusErrorUnit.scala:class BusErrorUnit[T <: BusErrors](t: => T, params: BusErrorUnitParams, logicalTreeNode: LogicalTreeNode)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tile/BaseTile.scala:trait HasNonDiplomaticTileParameters {
+src/main/scala/tile/BaseTile.scala:  implicit val p: Parameters
+src/main/scala/tile/BaseTile.scala:trait HasTileParameters extends HasNonDiplomaticTileParameters {
+src/main/scala/tile/BaseTile.scala:abstract class BaseTile private (val crossing: ClockCrossingType, q: Parameters)
+src/main/scala/tile/BaseTile.scala:    with HasNonDiplomaticTileParameters
+src/main/scala/tile/BaseTile.scala:  // Public constructor alters Parameters to supply some legacy compatibility keys
+src/main/scala/tile/BaseTile.scala:  def this(tileParams: TileParams, crossing: ClockCrossingType, lookup: LookupByHartIdImpl, p: Parameters) = {
+src/main/scala/tile/BaseTile.scala:  def unifyManagers: List[TLManagerParameters] = ManagerUnification(visibleManagers)
+src/main/scala/tile/BaseTile.scala:  protected def makeMasterBoundaryBuffers(implicit p: Parameters) = TLBuffer(BufferParams.none)
+src/main/scala/tile/BaseTile.scala:  protected def makeSlaveBoundaryBuffers(implicit p: Parameters) = TLBuffer(BufferParams.none)
+src/main/scala/tile/BaseTile.scala:abstract class BaseTileModuleImp[+L <: BaseTile](val outer: L) extends LazyModuleImp(outer) with HasTileParameters {
+src/main/scala/tile/BaseTile.scala:trait HasExternallyDrivenTileConstants extends Bundle with HasTileParameters {
+src/main/scala/tile/BaseTile.scala:class TileInputConstants(implicit val p: Parameters) extends Bundle with HasExternallyDrivenTileConstants
+src/main/scala/tile/CustomCSRs.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tile/CustomCSRs.scala:class CustomCSRIO(implicit p: Parameters) extends CoreBundle {
+src/main/scala/tile/CustomCSRs.scala:class CustomCSRs(implicit p: Parameters) extends CoreBundle {
+src/main/scala/tile/Core.scala:  def customCSRs(implicit p: Parameters): CustomCSRs = new CustomCSRs
+src/main/scala/tile/Core.scala:trait HasCoreParameters extends HasTileParameters {
+src/main/scala/tile/Core.scala:abstract class CoreModule(implicit val p: Parameters) extends Module
+src/main/scala/tile/Core.scala:  with HasCoreParameters
+src/main/scala/tile/Core.scala:abstract class CoreBundle(implicit val p: Parameters) extends ParameterizedBundle()(p)
+src/main/scala/tile/Core.scala:  with HasCoreParameters
+src/main/scala/tile/Core.scala:class CoreInterrupts(implicit p: Parameters) extends TileInterrupts()(p) {
+src/main/scala/tile/Core.scala:trait HasCoreIO extends HasTileParameters {
+src/main/scala/tile/Core.scala:  implicit val p: Parameters
+src/main/scala/tile/Interrupts.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tile/Interrupts.scala:class TileInterrupts(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/tile/L1Cache.scala:import freechips.rocketchip.config.{Parameters, Field}
+src/main/scala/tile/L1Cache.scala:trait HasL1CacheParameters extends HasTileParameters {
+src/main/scala/tile/L1Cache.scala:abstract class L1CacheModule(implicit val p: Parameters) extends Module
+src/main/scala/tile/L1Cache.scala:  with HasL1CacheParameters
+src/main/scala/tile/L1Cache.scala:abstract class L1CacheBundle(implicit val p: Parameters) extends Bundle
+src/main/scala/tile/L1Cache.scala:  with HasL1CacheParameters
+src/main/scala/tile/LazyRoCC.scala:case object BuildRoCC extends Field[Seq[Parameters => LazyRoCC]](Nil)
+src/main/scala/tile/LazyRoCC.scala:class RoCCCommand(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/tile/LazyRoCC.scala:class RoCCResponse(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/tile/LazyRoCC.scala:class RoCCCoreIO(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/tile/LazyRoCC.scala:class RoCCIO(val nPTWPorts: Int)(implicit p: Parameters) extends RoCCCoreIO()(p) {
+src/main/scala/tile/LazyRoCC.scala:    )(implicit p: Parameters) extends LazyModule {
+src/main/scala/tile/LazyRoCC.scala:    with HasCoreParameters { this: RocketTileModuleImp with HasFpuOpt =>
+src/main/scala/tile/LazyRoCC.scala:class AccumulatorExample(opcodes: OpcodeSet, val n: Int = 4)(implicit p: Parameters) extends LazyRoCC(opcodes) {
+src/main/scala/tile/LazyRoCC.scala:class AccumulatorExampleModuleImp(outer: AccumulatorExample)(implicit p: Parameters) extends LazyRoCCModuleImp(outer)
+src/main/scala/tile/LazyRoCC.scala:    with HasCoreParameters {
+src/main/scala/tile/LazyRoCC.scala:class  TranslatorExample(opcodes: OpcodeSet)(implicit p: Parameters) extends LazyRoCC(opcodes, nPTWPorts = 1) {
+src/main/scala/tile/LazyRoCC.scala:class TranslatorExampleModuleImp(outer: TranslatorExample)(implicit p: Parameters) extends LazyRoCCModuleImp(outer)
+src/main/scala/tile/LazyRoCC.scala:    with HasCoreParameters {
+src/main/scala/tile/LazyRoCC.scala:class  CharacterCountExample(opcodes: OpcodeSet)(implicit p: Parameters) extends LazyRoCC(opcodes) {
+src/main/scala/tile/LazyRoCC.scala:  override val atlNode = TLClientNode(Seq(TLClientPortParameters(Seq(TLClientParameters("CharacterCountRoCC")))))
+src/main/scala/tile/LazyRoCC.scala:class CharacterCountExampleModuleImp(outer: CharacterCountExample)(implicit p: Parameters) extends LazyRoCCModuleImp(outer)
+src/main/scala/tile/LazyRoCC.scala:  with HasCoreParameters
+src/main/scala/tile/LazyRoCC.scala:  with HasL1CacheParameters {
+src/main/scala/tile/LazyRoCC.scala:class BlackBoxExample(opcodes: OpcodeSet, blackBoxFile: String)(implicit p: Parameters)
+src/main/scala/tile/LazyRoCC.scala:class BlackBoxExampleModuleImp(outer: BlackBoxExample, blackBoxFile: String)(implicit p: Parameters)
+src/main/scala/tile/LazyRoCC.scala:    with HasCoreParameters {
+src/main/scala/tile/LazyRoCC.scala:class RoccCommandRouter(opcodes: Seq[OpcodeSet])(implicit p: Parameters)
+src/main/scala/subsystem/Configs.scala:  // Additional device Parameters
+src/main/scala/subsystem/Configs.scala:    (p: Parameters) => {
+src/main/scala/subsystem/Configs.scala:    (p: Parameters) => {
+src/main/scala/subsystem/Configs.scala:    (p: Parameters) => {
+src/main/scala/subsystem/Configs.scala:    (p: Parameters) => {
+src/main/scala/subsystem/PeripheryBus.scala:import freechips.rocketchip.config.{Parameters}
+src/main/scala/subsystem/PeripheryBus.scala:class PeripheryBus(params: PeripheryBusParams)(implicit p: Parameters)
+src/main/scala/subsystem/Ports.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/subsystem/Ports.scala:      AXI4SlavePortParameters(
+src/main/scala/subsystem/Ports.scala:        slaves = Seq(AXI4SlaveParameters(
+src/main/scala/subsystem/Ports.scala:      AXI4SlavePortParameters(
+src/main/scala/subsystem/Ports.scala:        slaves = Seq(AXI4SlaveParameters(
+src/main/scala/subsystem/Ports.scala:      AXI4MasterPortParameters(
+src/main/scala/subsystem/Ports.scala:        masters = Seq(AXI4MasterParameters(
+src/main/scala/subsystem/Ports.scala:      TLManagerPortParameters(
+src/main/scala/subsystem/Ports.scala:        managers = Seq(TLManagerParameters(
+src/main/scala/subsystem/Ports.scala:      TLClientPortParameters(
+src/main/scala/subsystem/Ports.scala:        clients = Seq(TLClientParameters(
+src/main/scala/subsystem/Ports.scala:class SimAXIMem(edge: AXI4EdgeParameters, size: BigInt)(implicit p: Parameters) extends LazyModule {
+src/main/scala/subsystem/FrontBus.scala:import freechips.rocketchip.config.{Parameters}
+src/main/scala/subsystem/FrontBus.scala:class FrontBus(params: FrontBusParams)(implicit p: Parameters)
+src/main/scala/subsystem/InterruptBus.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/subsystem/InterruptBus.scala:class InterruptBusWrapper(implicit p: Parameters) {
+src/main/scala/subsystem/HasTiles.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/subsystem/HasTiles.scala:  implicit val p: Parameters
+src/main/scala/subsystem/HasTiles.scala:      sourceFn = { _ => IntSourcePortParameters(Seq(IntSourceParameters(1))) },
+src/main/scala/subsystem/HasTiles.scala:      sinkFn   = { _ => IntSinkPortParameters(Seq(IntSinkParameters())) },
+src/main/scala/subsystem/SystemBus.scala:import freechips.rocketchip.config.{Parameters}
+src/main/scala/subsystem/SystemBus.scala:class SystemBus(params: SystemBusParams)(implicit p: Parameters)
+src/main/scala/subsystem/RocketSubsystem.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/subsystem/RocketSubsystem.scala:class RocketSubsystem(implicit p: Parameters) extends BaseSubsystem
+src/main/scala/subsystem/CrossingWrapper.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/subsystem/CrossingWrapper.scala:  def crossTLIn(n: TLInwardNode)(implicit p: Parameters): TLInwardNode = {
+src/main/scala/subsystem/CrossingWrapper.scala:  def crossTLOut(n: TLOutwardNode)(implicit p: Parameters): TLOutwardNode = {
+src/main/scala/subsystem/CrossingWrapper.scala:  def crossAXI4In(n: AXI4InwardNode)(implicit p: Parameters): AXI4InwardNode = {
+src/main/scala/subsystem/CrossingWrapper.scala:  def crossAXI4Out(n: AXI4OutwardNode)(implicit p: Parameters): AXI4OutwardNode = {
+src/main/scala/subsystem/CrossingWrapper.scala:  def crossIntIn(n: IntInwardNode)(implicit p: Parameters): IntInwardNode = {
+src/main/scala/subsystem/CrossingWrapper.scala:  def crossIntOut(n: IntOutwardNode)(implicit p: Parameters): IntOutwardNode = {
+src/main/scala/subsystem/CrossingWrapper.scala:class CrossingWrapper(val crossing: ClockCrossingType)(implicit p: Parameters) extends SimpleLazyModule with CrossesToOnlyOneClockDomain
+src/main/scala/subsystem/BaseSubsystem.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/subsystem/BaseSubsystem.scala:case object BuildSystemBus extends Field[Parameters => SystemBus](p => new SystemBus(p(SystemBusKey))(p))
+src/main/scala/subsystem/BaseSubsystem.scala:abstract class BareSubsystem(implicit p: Parameters) extends LazyModule with BindingScope {
+src/main/scala/subsystem/BaseSubsystem.scala:abstract class BaseSubsystem(implicit p: Parameters) extends BareSubsystem with HasLogicalTreeNode {
+src/main/scala/subsystem/MemoryBus.scala:class MemoryBus(params: MemoryBusParams)(implicit p: Parameters)
+src/main/scala/subsystem/MemoryBus.scala:      (gen: => NodeHandle[ TLClientPortParameters,TLManagerPortParameters,TLEdgeIn,TLBundle, D,U,E,B] =
+src/main/scala/amba/ahb/RegisterRouter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/ahb/RegisterRouter.scala:  extends SinkNode(AHBImpSlave)(Seq(AHBSlavePortParameters(
+src/main/scala/amba/ahb/RegisterRouter.scala:    Seq(AHBSlaveParameters(
+src/main/scala/amba/ahb/RegisterRouter.scala:      supportsWrite = TransferSizes(1, min(address.alignment.toInt, beatBytes * AHBParameters.maxTransfer)),
+src/main/scala/amba/ahb/RegisterRouter.scala:      supportsRead  = TransferSizes(1, min(address.alignment.toInt, beatBytes * AHBParameters.maxTransfer)))),
+src/main/scala/amba/ahb/RegisterRouter.scala:    ahb.hresp     := AHBParameters.RESP_OKAY
+src/main/scala/amba/ahb/RegisterRouter.scala:    val request = ahb.htrans === AHBParameters.TRANS_NONSEQ || ahb.htrans === AHBParameters.TRANS_SEQ
+src/main/scala/amba/ahb/RegisterRouter.scala:abstract class AHBRegisterRouterBase(address: AddressSet, interrupts: Int, concurrency: Int, beatBytes: Int, undefZero: Boolean, executable: Boolean)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/ahb/RegisterRouter.scala:case class AHBRegBundleArg()(implicit val p: Parameters)
+src/main/scala/amba/ahb/RegisterRouter.scala:   (moduleBuilder: (=> B, AHBRegisterRouterBase) => M)(implicit p: Parameters)
+src/main/scala/amba/ahb/AHBLite.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/ahb/AHBLite.scala:class AHBLite()(implicit p: Parameters) extends LazyModule {
+src/main/scala/amba/ahb/AHBLite.scala:  def apply()(implicit p: Parameters) = {
+src/main/scala/amba/ahb/ToTL.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/ahb/ToTL.scala:  dFn = { case AHBMasterPortParameters(masters) =>
+src/main/scala/amba/ahb/ToTL.scala:    TLClientPortParameters(clients = masters.map { m =>
+src/main/scala/amba/ahb/ToTL.scala:      TLClientParameters(name = m.name, nodePath = m.nodePath)
+src/main/scala/amba/ahb/ToTL.scala:  uFn = { mp => AHBSlavePortParameters(
+src/main/scala/amba/ahb/ToTL.scala:          TransferSizes(x.min, m.minAlignment.min(mp.beatBytes * AHBParameters.maxTransfer).toInt)
+src/main/scala/amba/ahb/ToTL.scala:      AHBSlaveParameters(
+src/main/scala/amba/ahb/ToTL.scala:class AHBToTL()(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/ahb/ToTL.scala:        in.htrans === AHBParameters.TRANS_NONSEQ && // only start burst on first AHB beat
+src/main/scala/amba/ahb/ToTL.scala:        in.hburst =/= AHBParameters.BURST_INCR   && // we know the burst length a priori
+src/main/scala/amba/ahb/ToTL.scala:      val a_access = in.htrans === AHBParameters.TRANS_NONSEQ || in.htrans === AHBParameters.TRANS_SEQ
+src/main/scala/amba/ahb/ToTL.scala:  def apply()(implicit p: Parameters) =
+src/main/scala/amba/ahb/Parameters.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/ahb/Parameters.scala:case class AHBSlaveParameters(
+src/main/scala/amba/ahb/Parameters.scala:case class AHBSlavePortParameters(
+src/main/scala/amba/ahb/Parameters.scala:  slaves:    Seq[AHBSlaveParameters],
+src/main/scala/amba/ahb/Parameters.scala:  require (maxTransfer <= beatBytes * AHBParameters.maxTransfer)
+src/main/scala/amba/ahb/Parameters.scala:case class AHBMasterParameters(
+src/main/scala/amba/ahb/Parameters.scala:case class AHBMasterPortParameters(
+src/main/scala/amba/ahb/Parameters.scala:  masters: Seq[AHBMasterParameters]){
+src/main/scala/amba/ahb/Parameters.scala:case class AHBBundleParameters(
+src/main/scala/amba/ahb/Parameters.scala:  val transBits = AHBParameters.transBits
+src/main/scala/amba/ahb/Parameters.scala:  val burstBits = AHBParameters.burstBits
+src/main/scala/amba/ahb/Parameters.scala:  val protBits  = AHBParameters.protBits
+src/main/scala/amba/ahb/Parameters.scala:  val sizeBits  = AHBParameters.sizeBits
+src/main/scala/amba/ahb/Parameters.scala:  val hrespBits = if (lite) 1 else AHBParameters.hrespBits
+src/main/scala/amba/ahb/Parameters.scala:  def union(x: AHBBundleParameters) = {
+src/main/scala/amba/ahb/Parameters.scala:    AHBBundleParameters(
+src/main/scala/amba/ahb/Parameters.scala:object AHBBundleParameters
+src/main/scala/amba/ahb/Parameters.scala:  val emptyBundleParams = AHBBundleParameters(addrBits = 1, dataBits = 8, userBits = 0, lite = true)
+src/main/scala/amba/ahb/Parameters.scala:  def union(x: Seq[AHBBundleParameters]) =
+src/main/scala/amba/ahb/Parameters.scala:  def apply(master: AHBMasterPortParameters, slave: AHBSlavePortParameters) =
+src/main/scala/amba/ahb/Parameters.scala:    new AHBBundleParameters(
+src/main/scala/amba/ahb/Parameters.scala:case class AHBEdgeParameters(
+src/main/scala/amba/ahb/Parameters.scala:  master: AHBMasterPortParameters,
+src/main/scala/amba/ahb/Parameters.scala:  slave:  AHBSlavePortParameters,
+src/main/scala/amba/ahb/Parameters.scala:  params: Parameters,
+src/main/scala/amba/ahb/Parameters.scala:  val bundle = AHBBundleParameters(master, slave)
+src/main/scala/amba/ahb/SRAM.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/ahb/SRAM.scala:  (implicit p: Parameters) extends DiplomaticSRAM(address, beatBytes, devName)
+src/main/scala/amba/ahb/SRAM.scala:  val node = AHBSlaveSinkNode(Seq(AHBSlavePortParameters(
+src/main/scala/amba/ahb/SRAM.scala:    Seq(AHBSlaveParameters(
+src/main/scala/amba/ahb/SRAM.scala:      supportsRead  = TransferSizes(1, beatBytes * AHBParameters.maxTransfer),
+src/main/scala/amba/ahb/SRAM.scala:      supportsWrite = TransferSizes(1, beatBytes * AHBParameters.maxTransfer))),
+src/main/scala/amba/ahb/SRAM.scala:    val a_access    = in.htrans === AHBParameters.TRANS_NONSEQ || in.htrans === AHBParameters.TRANS_SEQ
+src/main/scala/amba/ahb/SRAM.scala:    in.hresp     := Mux(!d_request || d_legal || !in.hreadyout, AHBParameters.RESP_OKAY, AHBParameters.RESP_ERROR)
+src/main/scala/amba/ahb/Xbar.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/ahb/Xbar.scala:class AHBFanout()(implicit p: Parameters) extends LazyModule {
+src/main/scala/amba/ahb/Xbar.scala:class AHBArbiter()(implicit p: Parameters) extends LazyModule {
+src/main/scala/amba/ahb/package.scala:  type AHBSlaveOutwardNode = OutwardNodeHandle[AHBMasterPortParameters, AHBSlavePortParameters, AHBEdgeParameters, AHBSlaveBundle]
+src/main/scala/amba/ahb/package.scala:  type AHBSlaveInwardNode = InwardNodeHandle[AHBMasterPortParameters, AHBSlavePortParameters, AHBEdgeParameters, AHBSlaveBundle]
+src/main/scala/amba/ahb/package.scala:  type AHBSlaveNode = SimpleNodeHandle[AHBMasterPortParameters, AHBSlavePortParameters, AHBEdgeParameters, AHBSlaveBundle]
+src/main/scala/amba/ahb/package.scala:  type AHBMasterOutwardNode = OutwardNodeHandle[AHBMasterPortParameters, AHBSlavePortParameters, AHBEdgeParameters, AHBMasterBundle]
+src/main/scala/amba/ahb/package.scala:  type AHBMasterInwardNode = InwardNodeHandle[AHBMasterPortParameters, AHBSlavePortParameters, AHBEdgeParameters, AHBMasterBundle]
+src/main/scala/amba/ahb/package.scala:  type AHBMasterNode = SimpleNodeHandle[AHBMasterPortParameters, AHBSlavePortParameters, AHBEdgeParameters, AHBMasterBundle]
+src/main/scala/amba/ahb/Nodes.scala:import freechips.rocketchip.config.{Parameters, Field}
+src/main/scala/amba/ahb/Nodes.scala:object AHBImpSlave extends SimpleNodeImp[AHBMasterPortParameters, AHBSlavePortParameters, AHBEdgeParameters, AHBSlaveBundle]
+src/main/scala/amba/ahb/Nodes.scala:  def edge(pd: AHBMasterPortParameters, pu: AHBSlavePortParameters, p: Parameters, sourceInfo: SourceInfo) = AHBEdgeParameters(pd, pu, p, sourceInfo)
+src/main/scala/amba/ahb/Nodes.scala:  def bundle(e: AHBEdgeParameters) = AHBSlaveBundle(e.bundle)
+src/main/scala/amba/ahb/Nodes.scala:  def render(e: AHBEdgeParameters) = RenderedEdge(colour = "#00ccff" /* bluish */, label = (e.slave.beatBytes * 8).toString)
+src/main/scala/amba/ahb/Nodes.scala:  override def monitor(bundle: AHBSlaveBundle, edge: AHBEdgeParameters) {
+src/main/scala/amba/ahb/Nodes.scala:  override def mixO(pd: AHBMasterPortParameters, node: OutwardNode[AHBMasterPortParameters, AHBSlavePortParameters, AHBSlaveBundle]): AHBMasterPortParameters  =
+src/main/scala/amba/ahb/Nodes.scala:  override def mixI(pu: AHBSlavePortParameters, node: InwardNode[AHBMasterPortParameters, AHBSlavePortParameters, AHBSlaveBundle]): AHBSlavePortParameters =
+src/main/scala/amba/ahb/Nodes.scala:object AHBImpMaster extends SimpleNodeImp[AHBMasterPortParameters, AHBSlavePortParameters, AHBEdgeParameters, AHBMasterBundle]
+src/main/scala/amba/ahb/Nodes.scala:  def edge(pd: AHBMasterPortParameters, pu: AHBSlavePortParameters, p: Parameters, sourceInfo: SourceInfo) = AHBEdgeParameters(pd, pu, p, sourceInfo)
+src/main/scala/amba/ahb/Nodes.scala:  def bundle(e: AHBEdgeParameters) = AHBMasterBundle(e.bundle)
+src/main/scala/amba/ahb/Nodes.scala:  def render(e: AHBEdgeParameters) = RenderedEdge(colour = "#00ccff" /* bluish */, label = (e.slave.beatBytes * 8).toString)
+src/main/scala/amba/ahb/Nodes.scala:  override def monitor(bundle: AHBMasterBundle, edge: AHBEdgeParameters) {
+src/main/scala/amba/ahb/Nodes.scala:  override def mixO(pd: AHBMasterPortParameters, node: OutwardNode[AHBMasterPortParameters, AHBSlavePortParameters, AHBMasterBundle]): AHBMasterPortParameters  =
+src/main/scala/amba/ahb/Nodes.scala:  override def mixI(pu: AHBSlavePortParameters, node: InwardNode[AHBMasterPortParameters, AHBSlavePortParameters, AHBMasterBundle]): AHBSlavePortParameters =
+src/main/scala/amba/ahb/Nodes.scala:case class AHBMasterSourceNode(portParams: Seq[AHBMasterPortParameters])(implicit valName: ValName) extends SourceNode(AHBImpMaster)(portParams)
+src/main/scala/amba/ahb/Nodes.scala:case class AHBSlaveSourceNode(portParams: Seq[AHBMasterPortParameters])(implicit valName: ValName) extends SourceNode(AHBImpSlave)(portParams)
+src/main/scala/amba/ahb/Nodes.scala:case class AHBMasterSinkNode(portParams: Seq[AHBSlavePortParameters])(implicit valName: ValName) extends SinkNode(AHBImpMaster)(portParams)
+src/main/scala/amba/ahb/Nodes.scala:case class AHBSlaveSinkNode(portParams: Seq[AHBSlavePortParameters])(implicit valName: ValName) extends SinkNode(AHBImpSlave)(portParams)
+src/main/scala/amba/ahb/Nodes.scala:  masterFn:       AHBMasterPortParameters => AHBMasterPortParameters,
+src/main/scala/amba/ahb/Nodes.scala:  slaveFn:        AHBSlavePortParameters  => AHBSlavePortParameters)(
+src/main/scala/amba/ahb/Nodes.scala:  masterFn:       AHBMasterPortParameters => AHBMasterPortParameters,
+src/main/scala/amba/ahb/Nodes.scala:  slaveFn:        AHBSlavePortParameters  => AHBSlavePortParameters)(
+src/main/scala/amba/ahb/Nodes.scala:  masterFn:       Seq[AHBMasterPortParameters] => AHBMasterPortParameters,
+src/main/scala/amba/ahb/Nodes.scala:  slaveFn:        Seq[AHBSlavePortParameters]  => AHBSlavePortParameters)(
+src/main/scala/amba/ahb/Nodes.scala:  masterFn:       Seq[AHBMasterPortParameters] => AHBMasterPortParameters,
+src/main/scala/amba/ahb/Nodes.scala:  slaveFn:        Seq[AHBSlavePortParameters]  => AHBSlavePortParameters)(
+src/main/scala/amba/ahb/Protocol.scala:object AHBParameters
+src/main/scala/amba/ahb/Monitor.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/ahb/Monitor.scala:case class AHBSlaveMonitorArgs(edge: AHBEdgeParameters)
+src/main/scala/amba/ahb/Monitor.scala:  def legalize(bundle: AHBSlaveBundle, edge: AHBEdgeParameters, reset: Reset): Unit
+src/main/scala/amba/ahb/Monitor.scala:case class AHBMasterMonitorArgs(edge: AHBEdgeParameters)
+src/main/scala/amba/ahb/Monitor.scala:  def legalize(bundle: AHBMasterBundle, edge: AHBEdgeParameters, reset: Reset): Unit
+src/main/scala/amba/ahb/Bundles.scala:abstract class AHBBundleBase(params: AHBBundleParameters) extends GenericParameterizedBundle(params)
+src/main/scala/amba/ahb/Bundles.scala:class AHBSlaveBundle(params: AHBBundleParameters) extends AHBBundleBase(params)
+src/main/scala/amba/ahb/Bundles.scala:        hresp     := AHBParameters.RESP_OKAY
+src/main/scala/amba/ahb/Bundles.scala:        htrans    := AHBParameters.TRANS_IDLE
+src/main/scala/amba/ahb/Bundles.scala:        hburst    := AHBParameters.BURST_SINGLE
+src/main/scala/amba/ahb/Bundles.scala:        hprot     := AHBParameters.PROT_DEFAULT
+src/main/scala/amba/ahb/Bundles.scala:class AHBMasterBundle(params: AHBBundleParameters) extends AHBBundleBase(params)
+src/main/scala/amba/ahb/Bundles.scala:        hresp     := AHBParameters.RESP_OKAY
+src/main/scala/amba/ahb/Bundles.scala:        htrans    := AHBParameters.TRANS_IDLE
+src/main/scala/amba/ahb/Bundles.scala:        hburst    := AHBParameters.BURST_SINGLE
+src/main/scala/amba/ahb/Bundles.scala:        hprot     := AHBParameters.PROT_DEFAULT
+src/main/scala/amba/ahb/Bundles.scala:  def apply(params: AHBBundleParameters) = new AHBSlaveBundle(params)
+src/main/scala/amba/ahb/Bundles.scala:  def apply(params: AHBBundleParameters) = new AHBMasterBundle(params)
+src/main/scala/amba/ahb/Test.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/ahb/Test.scala:class RRTest0(address: BigInt)(implicit p: Parameters) extends AHBRegisterRouter(address, 0, 32, 0, 4)(
+src/main/scala/amba/ahb/Test.scala:class RRTest1(address: BigInt)(implicit p: Parameters) extends AHBRegisterRouter(address, 0, 32, 1, 4, false)(
+src/main/scala/amba/ahb/Test.scala:class AHBFuzzNative(aFlow: Boolean, txns: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/ahb/Test.scala:class AHBNativeTest(aFlow: Boolean, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/amba/ahb/Test.scala:class AHBFuzzMaster(aFlow: Boolean, txns: Int)(implicit p: Parameters) extends LazyModule with HasFuzzTarget
+src/main/scala/amba/ahb/Test.scala:class AHBFuzzSlave()(implicit p: Parameters) extends SimpleLazyModule with HasFuzzTarget
+src/main/scala/amba/ahb/Test.scala:class AHBFuzzBridge(aFlow: Boolean, txns: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/ahb/Test.scala:class AHBBridgeTest(aFlow: Boolean, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/amba/apb/RegisterRouter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/apb/RegisterRouter.scala:  extends SinkNode(APBImp)(Seq(APBSlavePortParameters(
+src/main/scala/amba/apb/RegisterRouter.scala:    Seq(APBSlaveParameters(
+src/main/scala/amba/apb/RegisterRouter.scala:abstract class APBRegisterRouterBase(address: AddressSet, interrupts: Int, concurrency: Int, beatBytes: Int, undefZero: Boolean, executable: Boolean)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/apb/RegisterRouter.scala:case class APBRegBundleArg()(implicit val p: Parameters)
+src/main/scala/amba/apb/RegisterRouter.scala:   (moduleBuilder: (=> B, APBRegisterRouterBase) => M)(implicit p: Parameters)
+src/main/scala/amba/apb/ToTL.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/apb/ToTL.scala:  dFn = { case APBMasterPortParameters(masters) =>
+src/main/scala/amba/apb/ToTL.scala:    TLClientPortParameters(clients = masters.map { m =>
+src/main/scala/amba/apb/ToTL.scala:      TLClientParameters(name = m.name, nodePath = m.nodePath)
+src/main/scala/amba/apb/ToTL.scala:  uFn = { mp => APBSlavePortParameters(
+src/main/scala/amba/apb/ToTL.scala:      APBSlaveParameters(
+src/main/scala/amba/apb/ToTL.scala:class APBToTL()(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/apb/ToTL.scala:  def apply()(implicit p: Parameters) =
+src/main/scala/amba/apb/Parameters.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/apb/Parameters.scala:case class APBSlaveParameters(
+src/main/scala/amba/apb/Parameters.scala:case class APBSlavePortParameters(
+src/main/scala/amba/apb/Parameters.scala:  slaves:    Seq[APBSlaveParameters],
+src/main/scala/amba/apb/Parameters.scala:case class APBMasterParameters(
+src/main/scala/amba/apb/Parameters.scala:case class APBMasterPortParameters(
+src/main/scala/amba/apb/Parameters.scala:  masters: Seq[APBMasterParameters]) {
+src/main/scala/amba/apb/Parameters.scala:case class APBBundleParameters(
+src/main/scala/amba/apb/Parameters.scala:  val protBits  = APBParameters.protBits
+src/main/scala/amba/apb/Parameters.scala:  def union(x: APBBundleParameters) =
+src/main/scala/amba/apb/Parameters.scala:    APBBundleParameters(
+src/main/scala/amba/apb/Parameters.scala:object APBBundleParameters
+src/main/scala/amba/apb/Parameters.scala:  val emptyBundleParams = APBBundleParameters(addrBits = 1, dataBits = 8, userBits = 0)
+src/main/scala/amba/apb/Parameters.scala:  def union(x: Seq[APBBundleParameters]) = x.foldLeft(emptyBundleParams)((x,y) => x.union(y))
+src/main/scala/amba/apb/Parameters.scala:  def apply(master: APBMasterPortParameters, slave: APBSlavePortParameters) =
+src/main/scala/amba/apb/Parameters.scala:    new APBBundleParameters(
+src/main/scala/amba/apb/Parameters.scala:case class APBEdgeParameters(
+src/main/scala/amba/apb/Parameters.scala:  master: APBMasterPortParameters,
+src/main/scala/amba/apb/Parameters.scala:  slave:  APBSlavePortParameters,
+src/main/scala/amba/apb/Parameters.scala:  params: Parameters,
+src/main/scala/amba/apb/Parameters.scala:  val bundle = APBBundleParameters(master, slave)
+src/main/scala/amba/apb/SRAM.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/apb/SRAM.scala:  (implicit p: Parameters) extends DiplomaticSRAM(address, beatBytes, devName)
+src/main/scala/amba/apb/SRAM.scala:  val node = APBSlaveNode(Seq(APBSlavePortParameters(
+src/main/scala/amba/apb/SRAM.scala:    Seq(APBSlaveParameters(
+src/main/scala/amba/apb/Xbar.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/apb/Xbar.scala:class APBFanout()(implicit p: Parameters) extends LazyModule {
+src/main/scala/amba/apb/package.scala:  type APBOutwardNode = OutwardNodeHandle[APBMasterPortParameters, APBSlavePortParameters, APBEdgeParameters, APBBundle]
+src/main/scala/amba/apb/package.scala:  type APBInwardNode = InwardNodeHandle[APBMasterPortParameters, APBSlavePortParameters, APBEdgeParameters, APBBundle]
+src/main/scala/amba/apb/package.scala:  type APBNode = SimpleNodeHandle[APBMasterPortParameters, APBSlavePortParameters, APBEdgeParameters, APBBundle]
+src/main/scala/amba/apb/Nodes.scala:import freechips.rocketchip.config.{Parameters, Field}
+src/main/scala/amba/apb/Nodes.scala:object APBImp extends SimpleNodeImp[APBMasterPortParameters, APBSlavePortParameters, APBEdgeParameters, APBBundle]
+src/main/scala/amba/apb/Nodes.scala:  def edge(pd: APBMasterPortParameters, pu: APBSlavePortParameters, p: Parameters, sourceInfo: SourceInfo) = APBEdgeParameters(pd, pu, p, sourceInfo)
+src/main/scala/amba/apb/Nodes.scala:  def bundle(e: APBEdgeParameters) = APBBundle(e.bundle)
+src/main/scala/amba/apb/Nodes.scala:  def render(e: APBEdgeParameters) = RenderedEdge(colour = "#00ccff" /* bluish */, (e.slave.beatBytes * 8).toString)
+src/main/scala/amba/apb/Nodes.scala:  override def monitor(bundle: APBBundle, edge: APBEdgeParameters) {
+src/main/scala/amba/apb/Nodes.scala:  override def mixO(pd: APBMasterPortParameters, node: OutwardNode[APBMasterPortParameters, APBSlavePortParameters, APBBundle]): APBMasterPortParameters  =
+src/main/scala/amba/apb/Nodes.scala:  override def mixI(pu: APBSlavePortParameters, node: InwardNode[APBMasterPortParameters, APBSlavePortParameters, APBBundle]): APBSlavePortParameters =
+src/main/scala/amba/apb/Nodes.scala:case class APBMasterNode(portParams: Seq[APBMasterPortParameters])(implicit valName: ValName) extends SourceNode(APBImp)(portParams)
+src/main/scala/amba/apb/Nodes.scala:case class APBSlaveNode(portParams: Seq[APBSlavePortParameters])(implicit valName: ValName) extends SinkNode(APBImp)(portParams)
+src/main/scala/amba/apb/Nodes.scala:  masterFn:       Seq[APBMasterPortParameters] => APBMasterPortParameters,
+src/main/scala/amba/apb/Nodes.scala:  slaveFn:        Seq[APBSlavePortParameters]  => APBSlavePortParameters)(
+src/main/scala/amba/apb/Protocol.scala:object APBParameters
+src/main/scala/amba/apb/Monitor.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/apb/Monitor.scala:case class APBMonitorArgs(edge: APBEdgeParameters)
+src/main/scala/amba/apb/Monitor.scala:  def legalize(bundle: APBBundle, edge: APBEdgeParameters, reset: Reset): Unit
+src/main/scala/amba/apb/Bundles.scala:abstract class APBBundleBase(params: APBBundleParameters) extends GenericParameterizedBundle(params)
+src/main/scala/amba/apb/Bundles.scala:class APBBundle(params: APBBundleParameters) extends APBBundleBase(params)
+src/main/scala/amba/apb/Bundles.scala:        pprot   := APBParameters.PROT_DEFAULT
+src/main/scala/amba/apb/Bundles.scala:  def apply(params: APBBundleParameters) = new APBBundle(params)
+src/main/scala/amba/apb/Test.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/apb/Test.scala:class RRTest0(address: BigInt)(implicit p: Parameters) extends APBRegisterRouter(address, 0, 32, 0, 4)(
+src/main/scala/amba/apb/Test.scala:class RRTest1(address: BigInt)(implicit p: Parameters) extends APBRegisterRouter(address, 0, 32, 1, 4, false)(
+src/main/scala/amba/apb/Test.scala:class APBFuzzBridge(aFlow: Boolean, txns: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/apb/Test.scala:class APBBridgeTest(aFlow: Boolean, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/amba/axi4/Buffer.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/Buffer.scala:  r:  BufferParams)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Buffer.scala:  def this(aw: BufferParams, br: BufferParams)(implicit p: Parameters) = this(aw, aw, br, aw, br)
+src/main/scala/amba/axi4/Buffer.scala:  def this(x: BufferParams)(implicit p: Parameters) = this(x, x)
+src/main/scala/amba/axi4/Buffer.scala:  def this()(implicit p: Parameters) = this(BufferParams.default)
+src/main/scala/amba/axi4/Buffer.scala:  def apply()                                  (implicit p: Parameters): AXI4Node = apply(BufferParams.default)
+src/main/scala/amba/axi4/Buffer.scala:  def apply(z: BufferParams)                   (implicit p: Parameters): AXI4Node = apply(z, z)
+src/main/scala/amba/axi4/Buffer.scala:  def apply(aw: BufferParams, br: BufferParams)(implicit p: Parameters): AXI4Node = apply(aw, aw, br, aw, br)
+src/main/scala/amba/axi4/Buffer.scala:    r:  BufferParams)(implicit p: Parameters): AXI4Node =
+src/main/scala/amba/axi4/Fragmenter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/Fragmenter.scala:class AXI4Fragmenter()(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Fragmenter.scala:  val maxBeats = 1 << AXI4Parameters.lenBits
+src/main/scala/amba/axi4/Fragmenter.scala:  def mapSlave(s: AXI4SlaveParameters, beatBytes: Int) = s.copy(
+src/main/scala/amba/axi4/Fragmenter.scala:  def mapMaster(m: AXI4MasterParameters) = m.copy(aligned = true, maxFlight = None)
+src/main/scala/amba/axi4/Fragmenter.scala:        val r_len  = Reg(UInt(width = AXI4Parameters.lenBits))
+src/main/scala/amba/axi4/Fragmenter.scala:        val cutoff = AXI4Parameters.lenBits + lgBytes
+src/main/scala/amba/axi4/Fragmenter.scala:        val fixed = a.bits.burst === AXI4Parameters.BURST_FIXED
+src/main/scala/amba/axi4/Fragmenter.scala:        when (a.bits.burst === AXI4Parameters.BURST_WRAP) {
+src/main/scala/amba/axi4/Fragmenter.scala:        when (a.bits.burst === AXI4Parameters.BURST_FIXED) {
+src/main/scala/amba/axi4/Fragmenter.scala:      val w_counter = RegInit(UInt(0, width = AXI4Parameters.lenBits+1))
+src/main/scala/amba/axi4/Fragmenter.scala:      val error = RegInit(Vec.fill(edgeIn.master.endId) { UInt(0, width = AXI4Parameters.respBits)})
+src/main/scala/amba/axi4/Fragmenter.scala:  def apply()(implicit p: Parameters): AXI4Node =
+src/main/scala/amba/axi4/Delayer.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/Delayer.scala:class AXI4Delayer(q: Double)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Delayer.scala:  def apply(q: Double)(implicit p: Parameters): AXI4Node =
+src/main/scala/amba/axi4/RegisterRouter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/RegisterRouter.scala:  extends SinkNode(AXI4Imp)(Seq(AXI4SlavePortParameters(
+src/main/scala/amba/axi4/RegisterRouter.scala:    Seq(AXI4SlaveParameters(
+src/main/scala/amba/axi4/RegisterRouter.scala:    r.bits.resp := AXI4Parameters.RESP_OKAY
+src/main/scala/amba/axi4/RegisterRouter.scala:    b.bits.resp := AXI4Parameters.RESP_OKAY
+src/main/scala/amba/axi4/RegisterRouter.scala:abstract class AXI4RegisterRouterBase(address: AddressSet, interrupts: Int, concurrency: Int, beatBytes: Int, undefZero: Boolean, executable: Boolean)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/RegisterRouter.scala:case class AXI4RegBundleArg()(implicit val p: Parameters)
+src/main/scala/amba/axi4/RegisterRouter.scala:   (moduleBuilder: (=> B, AXI4RegisterRouterBase) => M)(implicit p: Parameters)
+src/main/scala/amba/axi4/ToTL.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/ToTL.scala:  dFn = { case AXI4MasterPortParameters(masters, userBits) =>
+src/main/scala/amba/axi4/ToTL.scala:    TLClientPortParameters(
+src/main/scala/amba/axi4/ToTL.scala:          yield TLClientParameters(
+src/main/scala/amba/axi4/ToTL.scala:  uFn = { mp => AXI4SlavePortParameters(
+src/main/scala/amba/axi4/ToTL.scala:      val maxXfer = TransferSizes(1, mp.beatBytes * (1 << AXI4Parameters.lenBits))
+src/main/scala/amba/axi4/ToTL.scala:      AXI4SlaveParameters(
+src/main/scala/amba/axi4/ToTL.scala:class AXI4ToTL(wcorrupt: Boolean = false)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/ToTL.scala:      val beatCountBits = AXI4Parameters.lenBits + (1 << AXI4Parameters.sizeBits) - 1
+src/main/scala/amba/axi4/ToTL.scala:      val d_resp = Mux(out.d.bits.denied || out.d.bits.corrupt, AXI4Parameters.RESP_SLVERR, AXI4Parameters.RESP_OKAY)
+src/main/scala/amba/axi4/ToTL.scala:class AXI4BundleRError(params: AXI4BundleParameters) extends AXI4BundleBase(params)
+src/main/scala/amba/axi4/ToTL.scala:  def apply(wcorrupt: Boolean = false)(implicit p: Parameters) =
+src/main/scala/amba/axi4/CrossingHelper.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/CrossingHelper.scala:  def apply(xing: ClockCrossingType = NoCrossing)(implicit p: Parameters): AXI4InwardNode = {
+src/main/scala/amba/axi4/CrossingHelper.scala:  def apply(xing: ClockCrossingType = NoCrossing)(implicit p: Parameters): AXI4OutwardNode = {
+src/main/scala/amba/axi4/UserYanker.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/UserYanker.scala:class AXI4UserYanker(capMaxFlight: Option[Int] = None)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/UserYanker.scala:  def apply(capMaxFlight: Option[Int] = None)(implicit p: Parameters): AXI4Node =
+src/main/scala/amba/axi4/Parameters.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4SlaveParameters(
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4SlavePortParameters(
+src/main/scala/amba/axi4/Parameters.scala:  slaves:     Seq[AXI4SlaveParameters],
+src/main/scala/amba/axi4/Parameters.scala:  val limit = beatBytes * (1 << AXI4Parameters.lenBits)
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4MasterParameters(
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4MasterPortParameters(
+src/main/scala/amba/axi4/Parameters.scala:  masters:   Seq[AXI4MasterParameters],
+src/main/scala/amba/axi4/Parameters.scala:    require (!x.overlaps(y), s"AXI4MasterParameters.id $x and $y overlap")
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4BundleParameters(
+src/main/scala/amba/axi4/Parameters.scala:  val lenBits   = AXI4Parameters.lenBits
+src/main/scala/amba/axi4/Parameters.scala:  val sizeBits  = AXI4Parameters.sizeBits
+src/main/scala/amba/axi4/Parameters.scala:  val burstBits = AXI4Parameters.burstBits
+src/main/scala/amba/axi4/Parameters.scala:  val lockBits  = AXI4Parameters.lockBits
+src/main/scala/amba/axi4/Parameters.scala:  val cacheBits = AXI4Parameters.cacheBits
+src/main/scala/amba/axi4/Parameters.scala:  val protBits  = AXI4Parameters.protBits
+src/main/scala/amba/axi4/Parameters.scala:  val qosBits   = AXI4Parameters.qosBits
+src/main/scala/amba/axi4/Parameters.scala:  val respBits  = AXI4Parameters.respBits
+src/main/scala/amba/axi4/Parameters.scala:  def union(x: AXI4BundleParameters) =
+src/main/scala/amba/axi4/Parameters.scala:    AXI4BundleParameters(
+src/main/scala/amba/axi4/Parameters.scala:object AXI4BundleParameters
+src/main/scala/amba/axi4/Parameters.scala:  val emptyBundleParams = AXI4BundleParameters(addrBits=1, dataBits=8, idBits=1, userBits=0, wcorrupt=false)
+src/main/scala/amba/axi4/Parameters.scala:  def union(x: Seq[AXI4BundleParameters]) = x.foldLeft(emptyBundleParams)((x,y) => x.union(y))
+src/main/scala/amba/axi4/Parameters.scala:  def apply(master: AXI4MasterPortParameters, slave: AXI4SlavePortParameters) =
+src/main/scala/amba/axi4/Parameters.scala:    new AXI4BundleParameters(
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4EdgeParameters(
+src/main/scala/amba/axi4/Parameters.scala:  master: AXI4MasterPortParameters,
+src/main/scala/amba/axi4/Parameters.scala:  slave:  AXI4SlavePortParameters,
+src/main/scala/amba/axi4/Parameters.scala:  params: Parameters,
+src/main/scala/amba/axi4/Parameters.scala:  val bundle = AXI4BundleParameters(master, slave)
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4AsyncSlavePortParameters(async: AsyncQueueParams, base: AXI4SlavePortParameters)
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4AsyncMasterPortParameters(base: AXI4MasterPortParameters)
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4AsyncBundleParameters(async: AsyncQueueParams, base: AXI4BundleParameters)
+src/main/scala/amba/axi4/Parameters.scala:case class AXI4AsyncEdgeParameters(master: AXI4AsyncMasterPortParameters, slave: AXI4AsyncSlavePortParameters, params: Parameters, sourceInfo: SourceInfo)
+src/main/scala/amba/axi4/Parameters.scala:  val bundle = AXI4AsyncBundleParameters(slave.async, AXI4BundleParameters(master.base, slave.base))
+src/main/scala/amba/axi4/SRAM.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/SRAM.scala:  (implicit p: Parameters) extends DiplomaticSRAM(address, beatBytes, devName)
+src/main/scala/amba/axi4/SRAM.scala:  val node = AXI4SlaveNode(Seq(AXI4SlavePortParameters(
+src/main/scala/amba/axi4/SRAM.scala:    Seq(AXI4SlaveParameters(
+src/main/scala/amba/axi4/SRAM.scala:    in.b.bits.resp := Mux(w_sel1, AXI4Parameters.RESP_OKAY, AXI4Parameters.RESP_DECERR)
+src/main/scala/amba/axi4/SRAM.scala:    in.r.bits.resp := Mux(r_sel1, Mux(rcorrupt, AXI4Parameters.RESP_SLVERR, AXI4Parameters.RESP_OKAY), AXI4Parameters.RESP_DECERR)
+src/main/scala/amba/axi4/SRAM.scala:  (implicit p: Parameters) =
+src/main/scala/amba/axi4/Xbar.scala:  awQueueDepth:      Int = 2)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Xbar.scala:    val wide_bundle = AXI4BundleParameters.union(io_in.map(_.params) ++ io_out.map(_.params))
+src/main/scala/amba/axi4/Xbar.scala:    awQueueDepth:      Int = 2)(implicit p: Parameters) =
+src/main/scala/amba/axi4/Xbar.scala:  def mapInputIds(ports: Seq[AXI4MasterPortParameters]) = TLXbar.assignRanges(ports.map(_.endId))
+src/main/scala/amba/axi4/Xbar.scala:class AXI4XbarFuzzTest(name: String, txns: Int, nMasters: Int, nSlaves: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Xbar.scala:class AXI4XbarTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/amba/axi4/package.scala:  type AXI4Node = SimpleNodeHandle[AXI4MasterPortParameters, AXI4SlavePortParameters, AXI4EdgeParameters, AXI4Bundle]
+src/main/scala/amba/axi4/package.scala:  type AXI4OutwardNode = OutwardNodeHandle[AXI4MasterPortParameters, AXI4SlavePortParameters, AXI4EdgeParameters, AXI4Bundle]
+src/main/scala/amba/axi4/package.scala:  type AXI4InwardNode = InwardNodeHandle[AXI4MasterPortParameters, AXI4SlavePortParameters, AXI4EdgeParameters, AXI4Bundle]
+src/main/scala/amba/axi4/Deinterleaver.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/Deinterleaver.scala:class AXI4Deinterleaver(maxReadBytes: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Deinterleaver.scala:  def apply(maxReadBytes: Int)(implicit p: Parameters): AXI4Node =
+src/main/scala/amba/axi4/AsyncCrossing.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/AsyncCrossing.scala:class AXI4AsyncCrossingSource(sync: Option[Int])(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/AsyncCrossing.scala:  def this(x: Int)(implicit p: Parameters) = this(Some(x))
+src/main/scala/amba/axi4/AsyncCrossing.scala:  def this()(implicit p: Parameters) = this(None)
+src/main/scala/amba/axi4/AsyncCrossing.scala:class AXI4AsyncCrossingSink(params: AsyncQueueParams = AsyncQueueParams())(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/AsyncCrossing.scala:  def apply()(implicit p: Parameters): AXI4AsyncSourceNode = apply(None)
+src/main/scala/amba/axi4/AsyncCrossing.scala:  def apply(sync: Int)(implicit p: Parameters): AXI4AsyncSourceNode = apply(Some(sync))
+src/main/scala/amba/axi4/AsyncCrossing.scala:  def apply(sync: Option[Int])(implicit p: Parameters): AXI4AsyncSourceNode = {
+src/main/scala/amba/axi4/AsyncCrossing.scala:  def apply(params: AsyncQueueParams = AsyncQueueParams())(implicit p: Parameters) = {
+src/main/scala/amba/axi4/AsyncCrossing.scala:class AXI4AsyncCrossing(params: AsyncQueueParams = AsyncQueueParams())(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/AsyncCrossing.scala:class AXI4RAMAsyncCrossing(txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/amba/axi4/AsyncCrossing.scala:class AXI4RAMAsyncCrossingTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/amba/axi4/IdIndexer.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/IdIndexer.scala:class AXI4IdIndexer(idBits: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/IdIndexer.scala:      val masters = Array.tabulate(1 << idBits) { i => AXI4MasterParameters(
+src/main/scala/amba/axi4/IdIndexer.scala:  def apply(idBits: Int)(implicit p: Parameters): AXI4Node =
+src/main/scala/amba/axi4/Nodes.scala:import freechips.rocketchip.config.{Parameters, Field}
+src/main/scala/amba/axi4/Nodes.scala:object AXI4Imp extends SimpleNodeImp[AXI4MasterPortParameters, AXI4SlavePortParameters, AXI4EdgeParameters, AXI4Bundle]
+src/main/scala/amba/axi4/Nodes.scala:  def edge(pd: AXI4MasterPortParameters, pu: AXI4SlavePortParameters, p: Parameters, sourceInfo: SourceInfo) = AXI4EdgeParameters(pd, pu, p, sourceInfo)
+src/main/scala/amba/axi4/Nodes.scala:  def bundle(e: AXI4EdgeParameters) = AXI4Bundle(e.bundle)
+src/main/scala/amba/axi4/Nodes.scala:  def render(e: AXI4EdgeParameters) = RenderedEdge(colour = "#00ccff" /* bluish */, label  = (e.slave.beatBytes * 8).toString)
+src/main/scala/amba/axi4/Nodes.scala:  override def monitor(bundle: AXI4Bundle, edge: AXI4EdgeParameters) {
+src/main/scala/amba/axi4/Nodes.scala:  override def mixO(pd: AXI4MasterPortParameters, node: OutwardNode[AXI4MasterPortParameters, AXI4SlavePortParameters, AXI4Bundle]): AXI4MasterPortParameters  =
+src/main/scala/amba/axi4/Nodes.scala:  override def mixI(pu: AXI4SlavePortParameters, node: InwardNode[AXI4MasterPortParameters, AXI4SlavePortParameters, AXI4Bundle]): AXI4SlavePortParameters =
+src/main/scala/amba/axi4/Nodes.scala:case class AXI4MasterNode(portParams: Seq[AXI4MasterPortParameters])(implicit valName: ValName) extends SourceNode(AXI4Imp)(portParams)
+src/main/scala/amba/axi4/Nodes.scala:case class AXI4SlaveNode(portParams: Seq[AXI4SlavePortParameters])(implicit valName: ValName) extends SinkNode(AXI4Imp)(portParams)
+src/main/scala/amba/axi4/Nodes.scala:  masterFn:       Seq[AXI4MasterPortParameters] => AXI4MasterPortParameters,
+src/main/scala/amba/axi4/Nodes.scala:  slaveFn:        Seq[AXI4SlavePortParameters]  => AXI4SlavePortParameters)(
+src/main/scala/amba/axi4/Nodes.scala:  masterFn:  AXI4MasterPortParameters => AXI4MasterPortParameters = { m => m },
+src/main/scala/amba/axi4/Nodes.scala:  slaveFn:   AXI4SlavePortParameters  => AXI4SlavePortParameters  = { s => s })(
+src/main/scala/amba/axi4/Nodes.scala:object AXI4AsyncImp extends SimpleNodeImp[AXI4AsyncMasterPortParameters, AXI4AsyncSlavePortParameters, AXI4AsyncEdgeParameters, AXI4AsyncBundle]
+src/main/scala/amba/axi4/Nodes.scala:  def edge(pd: AXI4AsyncMasterPortParameters, pu: AXI4AsyncSlavePortParameters, p: Parameters, sourceInfo: SourceInfo) = AXI4AsyncEdgeParameters(pd, pu, p, sourceInfo)
+src/main/scala/amba/axi4/Nodes.scala:  def bundle(e: AXI4AsyncEdgeParameters) = new AXI4AsyncBundle(e.bundle)
+src/main/scala/amba/axi4/Nodes.scala:  def render(e: AXI4AsyncEdgeParameters) = RenderedEdge(colour = "#ff0000" /* red */, label = e.slave.async.depth.toString)
+src/main/scala/amba/axi4/Nodes.scala:  override def mixO(pd: AXI4AsyncMasterPortParameters, node: OutwardNode[AXI4AsyncMasterPortParameters, AXI4AsyncSlavePortParameters, AXI4AsyncBundle]): AXI4AsyncMasterPortParameters  =
+src/main/scala/amba/axi4/Nodes.scala:  override def mixI(pu: AXI4AsyncSlavePortParameters, node: InwardNode[AXI4AsyncMasterPortParameters, AXI4AsyncSlavePortParameters, AXI4AsyncBundle]): AXI4AsyncSlavePortParameters =
+src/main/scala/amba/axi4/Nodes.scala:    dFn = { p => AXI4AsyncMasterPortParameters(p) },
+src/main/scala/amba/axi4/Nodes.scala:    uFn = { p => AXI4AsyncSlavePortParameters(async, p) })
+src/main/scala/amba/axi4/Filter.scala:  Sfilter: AXI4SlaveParameters  => Option[AXI4SlaveParameters]   = AXI4Filter.Sidentity,
+src/main/scala/amba/axi4/Filter.scala:  Mfilter: AXI4MasterParameters => Option[AXI4MasterParameters]  = AXI4Filter.Midentity
+src/main/scala/amba/axi4/Filter.scala:  )(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Filter.scala:  def Midentity: AXI4MasterParameters => Option[AXI4MasterParameters] = { m => Some(m) }
+src/main/scala/amba/axi4/Filter.scala:  def Sidentity: AXI4SlaveParameters  => Option[AXI4SlaveParameters]  = { s => Some(s) }
+src/main/scala/amba/axi4/Filter.scala:  def Smask(select: AddressSet): AXI4SlaveParameters  => Option[AXI4SlaveParameters] = { s =>
+src/main/scala/amba/axi4/Filter.scala:    Sfilter: AXI4SlaveParameters  => Option[AXI4SlaveParameters]   = AXI4Filter.Sidentity,
+src/main/scala/amba/axi4/Filter.scala:    Mfilter: AXI4MasterParameters => Option[AXI4MasterParameters]  = AXI4Filter.Midentity
+src/main/scala/amba/axi4/Filter.scala:    )(implicit p: Parameters): AXI4Node =
+src/main/scala/amba/axi4/Protocol.scala:object AXI4Parameters
+src/main/scala/amba/axi4/Monitor.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/Monitor.scala:case class AXI4MonitorArgs(edge: AXI4EdgeParameters)
+src/main/scala/amba/axi4/Monitor.scala:  def legalize(bundle: AXI4Bundle, edge: AXI4EdgeParameters, reset: Reset): Unit
+src/main/scala/amba/axi4/Bundles.scala:abstract class AXI4BundleBase(params: AXI4BundleParameters) extends GenericParameterizedBundle(params)
+src/main/scala/amba/axi4/Bundles.scala:abstract class AXI4BundleA(params: AXI4BundleParameters) extends AXI4BundleBase(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4BundleARW(params: AXI4BundleParameters) extends AXI4BundleA(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4BundleAW(params: AXI4BundleParameters) extends AXI4BundleA(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4BundleAR(params: AXI4BundleParameters) extends AXI4BundleA(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4BundleW(params: AXI4BundleParameters) extends AXI4BundleBase(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4BundleR(params: AXI4BundleParameters) extends AXI4BundleBase(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4BundleB(params: AXI4BundleParameters) extends AXI4BundleBase(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4Bundle(params: AXI4BundleParameters) extends AXI4BundleBase(params)
+src/main/scala/amba/axi4/Bundles.scala:  def apply(params: AXI4BundleParameters) = new AXI4Bundle(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4AsyncBundleBase(params: AXI4AsyncBundleParameters) extends GenericParameterizedBundle(params)
+src/main/scala/amba/axi4/Bundles.scala:class AXI4AsyncBundle(params: AXI4AsyncBundleParameters) extends AXI4AsyncBundleBase(params)
+src/main/scala/amba/axi4/Test.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/amba/axi4/Test.scala:class RRTest0(address: BigInt)(implicit p: Parameters) extends AXI4RegisterRouter(address, 0, 32, 0, 4)(
+src/main/scala/amba/axi4/Test.scala:class RRTest1(address: BigInt)(implicit p: Parameters) extends AXI4RegisterRouter(address, 0, 32, 6, 4, false)(
+src/main/scala/amba/axi4/Test.scala:class AXI4LiteFuzzRAM(txns: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Test.scala:class AXI4LiteFuzzRAMTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/amba/axi4/Test.scala:class AXI4FullFuzzRAM(txns: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Test.scala:class AXI4FullFuzzRAMTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/amba/axi4/Test.scala:class AXI4FuzzMaster(txns: Int)(implicit p: Parameters) extends LazyModule with HasFuzzTarget
+src/main/scala/amba/axi4/Test.scala:class AXI4FuzzSlave()(implicit p: Parameters) extends SimpleLazyModule with HasFuzzTarget
+src/main/scala/amba/axi4/Test.scala:class AXI4FuzzBridge(txns: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/amba/axi4/Test.scala:class AXI4BridgeTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/rocket/ALU.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/ALU.scala:class ALU(implicit p: Parameters) extends CoreModule()(p) {
+src/main/scala/rocket/PTW.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/PTW.scala:class PTWReq(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/PTW.scala:class PTWResp(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/PTW.scala:class TLBPTWIO(implicit p: Parameters) extends CoreBundle()(p)
+src/main/scala/rocket/PTW.scala:    with HasCoreParameters {
+src/main/scala/rocket/PTW.scala:class DatapathPTWIO(implicit p: Parameters) extends CoreBundle()(p)
+src/main/scala/rocket/PTW.scala:    with HasCoreParameters {
+src/main/scala/rocket/PTW.scala:class PTE(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/PTW.scala:class PTW(n: Int)(implicit edge: TLEdgeOut, p: Parameters) extends CoreModule()(p) {
+src/main/scala/rocket/PTW.scala:trait CanHavePTW extends HasTileParameters with HasHellaCache { this: BaseTile =>
+src/main/scala/rocket/RocketCore.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/RocketCore.scala:  override def customCSRs(implicit p: Parameters) = new RocketCustomCSRs
+src/main/scala/rocket/RocketCore.scala:trait HasRocketCoreParameters extends HasCoreParameters {
+src/main/scala/rocket/RocketCore.scala:class RocketCustomCSRs(implicit p: Parameters) extends CustomCSRs with HasRocketCoreParameters {
+src/main/scala/rocket/RocketCore.scala:class Rocket(tile: RocketTile)(implicit p: Parameters) extends CoreModule()(p)
+src/main/scala/rocket/RocketCore.scala:    with HasRocketCoreParameters
+src/main/scala/rocket/NBDcache.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/NBDcache.scala:trait HasMissInfo extends HasL1HellaCacheParameters {
+src/main/scala/rocket/NBDcache.scala:class L1DataReadReq(implicit p: Parameters) extends L1HellaCacheBundle()(p) {
+src/main/scala/rocket/NBDcache.scala:class L1DataWriteReq(implicit p: Parameters) extends L1DataReadReq()(p) {
+src/main/scala/rocket/NBDcache.scala:class L1RefillReq(implicit p: Parameters) extends L1DataReadReq()(p)
+src/main/scala/rocket/NBDcache.scala:class Replay(implicit p: Parameters) extends HellaCacheReqInternal()(p) with HasCoreData
+src/main/scala/rocket/NBDcache.scala:class ReplayInternal(implicit p: Parameters) extends HellaCacheReqInternal()(p)
+src/main/scala/rocket/NBDcache.scala:    with HasL1HellaCacheParameters {
+src/main/scala/rocket/NBDcache.scala:class MSHRReq(implicit p: Parameters) extends Replay()(p) with HasMissInfo
+src/main/scala/rocket/NBDcache.scala:class MSHRReqInternal(implicit p: Parameters) extends ReplayInternal()(p) with HasMissInfo
+src/main/scala/rocket/NBDcache.scala:class WritebackReq(params: TLBundleParameters)(implicit p: Parameters) extends L1HellaCacheBundle()(p) {
+src/main/scala/rocket/NBDcache.scala:class IOMSHR(id: Int)(implicit edge: TLEdgeOut, p: Parameters) extends L1HellaCacheModule()(p) {
+src/main/scala/rocket/NBDcache.scala:class MSHR(id: Int)(implicit edge: TLEdgeOut, p: Parameters) extends L1HellaCacheModule()(p) {
+src/main/scala/rocket/NBDcache.scala:class MSHRFile(implicit edge: TLEdgeOut, p: Parameters) extends L1HellaCacheModule()(p) {
+src/main/scala/rocket/NBDcache.scala:class WritebackUnit(implicit edge: TLEdgeOut, p: Parameters) extends L1HellaCacheModule()(p) {
+src/main/scala/rocket/NBDcache.scala:class ProbeUnit(implicit edge: TLEdgeOut, p: Parameters) extends L1HellaCacheModule()(p) {
+src/main/scala/rocket/NBDcache.scala:class DataArray(implicit p: Parameters) extends L1HellaCacheModule()(p) {
+src/main/scala/rocket/NBDcache.scala:class NonBlockingDCache(hartid: Int)(implicit p: Parameters) extends HellaCache(hartid)(p) {
+src/main/scala/rocket/RVC.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/RVC.scala:class RVCExpander(implicit val p: Parameters) extends Module with HasCoreParameters {
+src/main/scala/rocket/HellaCache.scala:import freechips.rocketchip.config.{Parameters, Field}
+src/main/scala/rocket/HellaCache.scala:trait HasL1HellaCacheParameters extends HasL1CacheParameters with HasCoreParameters {
+src/main/scala/rocket/HellaCache.scala:abstract class L1HellaCacheModule(implicit val p: Parameters) extends Module
+src/main/scala/rocket/HellaCache.scala:  with HasL1HellaCacheParameters
+src/main/scala/rocket/HellaCache.scala:abstract class L1HellaCacheBundle(implicit val p: Parameters) extends ParameterizedBundle()(p)
+src/main/scala/rocket/HellaCache.scala:  with HasL1HellaCacheParameters
+src/main/scala/rocket/HellaCache.scala:trait HasCoreMemOp extends HasCoreParameters {
+src/main/scala/rocket/HellaCache.scala:trait HasCoreData extends HasCoreParameters {
+src/main/scala/rocket/HellaCache.scala:class HellaCacheReqInternal(implicit p: Parameters) extends CoreBundle()(p) with HasCoreMemOp {
+src/main/scala/rocket/HellaCache.scala:class HellaCacheReq(implicit p: Parameters) extends HellaCacheReqInternal()(p) with HasCoreData
+src/main/scala/rocket/HellaCache.scala:class HellaCacheResp(implicit p: Parameters) extends CoreBundle()(p)
+src/main/scala/rocket/HellaCache.scala:class HellaCacheWriteData(implicit p: Parameters) extends CoreBundle()(p) with HasCoreData
+src/main/scala/rocket/HellaCache.scala:class HellaCacheIO(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/HellaCache.scala:abstract class HellaCache(hartid: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/rocket/HellaCache.scala:  protected def cacheClientParameters = cfg.scratch.map(x => Seq()).getOrElse(Seq(TLClientParameters(
+src/main/scala/rocket/HellaCache.scala:  protected def mmioClientParameters = Seq(TLClientParameters(
+src/main/scala/rocket/HellaCache.scala:  def firstMMIO = (cacheClientParameters.map(_.sourceId.end) :+ 0).max
+src/main/scala/rocket/HellaCache.scala:  val node = TLClientNode(Seq(TLClientPortParameters(
+src/main/scala/rocket/HellaCache.scala:    cacheClientParameters ++ mmioClientParameters,
+src/main/scala/rocket/HellaCache.scala:class HellaCacheBundle(val outer: HellaCache)(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/HellaCache.scala:    with HasL1HellaCacheParameters {
+src/main/scala/rocket/HellaCache.scala:  implicit val p: Parameters
+src/main/scala/rocket/HellaCache.scala:  val outer: HasHellaCache with HasTileParameters
+src/main/scala/rocket/HellaCache.scala:  implicit val p: Parameters
+src/main/scala/rocket/HellaCache.scala:class L1Metadata(implicit p: Parameters) extends L1HellaCacheBundle()(p) {
+src/main/scala/rocket/HellaCache.scala:  def apply(tag: Bits, coh: ClientMetadata)(implicit p: Parameters) = {
+src/main/scala/rocket/HellaCache.scala:class L1MetaReadReq(implicit p: Parameters) extends L1HellaCacheBundle()(p) {
+src/main/scala/rocket/HellaCache.scala:class L1MetaWriteReq(implicit p: Parameters) extends L1MetaReadReq()(p) {
+src/main/scala/rocket/HellaCache.scala:class L1MetadataArray[T <: L1Metadata](onReset: () => T)(implicit p: Parameters) extends L1HellaCacheModule()(p) {
+src/main/scala/rocket/AMOALU.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/AMOALU.scala:class AMOALU(operandBits: Int)(implicit p: Parameters) extends Module {
+src/main/scala/rocket/ICache.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/ICache.scala:trait HasL1ICacheParameters extends HasL1CacheParameters with HasCoreParameters {
+src/main/scala/rocket/ICache.scala:class ICacheReq(implicit p: Parameters) extends CoreBundle()(p) with HasL1ICacheParameters {
+src/main/scala/rocket/ICache.scala:class ICacheErrors(implicit p: Parameters) extends CoreBundle()(p)
+src/main/scala/rocket/ICache.scala:    with HasL1ICacheParameters
+src/main/scala/rocket/ICache.scala:class ICache(val icacheParams: ICacheParams, val hartId: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/rocket/ICache.scala:  val masterNode = TLClientNode(Seq(TLClientPortParameters(Seq(TLClientParameters(
+src/main/scala/rocket/ICache.scala:    TLManagerNode(icacheParams.itimAddr.toSeq.map { itimAddr => TLManagerPortParameters(
+src/main/scala/rocket/ICache.scala:      Seq(TLManagerParameters(
+src/main/scala/rocket/ICache.scala:    with HasL1ICacheParameters {
+src/main/scala/rocket/ScratchpadSlavePort.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/ScratchpadSlavePort.scala:class ScratchpadSlavePort(address: Seq[AddressSet], coreDataBytes: Int, usingAtomics: Boolean)(implicit p: Parameters) extends LazyModule {
+src/main/scala/rocket/ScratchpadSlavePort.scala:  def this(address: AddressSet, coreDataBytes: Int, usingAtomics: Boolean)(implicit p: Parameters) {
+src/main/scala/rocket/ScratchpadSlavePort.scala:  val node = TLManagerNode(Seq(TLManagerPortParameters(
+src/main/scala/rocket/ScratchpadSlavePort.scala:    Seq(TLManagerParameters(
+src/main/scala/rocket/HellaCacheArbiter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/HellaCacheArbiter.scala:class HellaCacheArbiter(n: Int)(implicit p: Parameters) extends Module
+src/main/scala/rocket/DCache.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/DCache.scala:class DCacheErrors(implicit p: Parameters) extends L1HellaCacheBundle()(p)
+src/main/scala/rocket/DCache.scala:class DCacheDataReq(implicit p: Parameters) extends L1HellaCacheBundle()(p) {
+src/main/scala/rocket/DCache.scala:class DCacheDataArray(implicit p: Parameters) extends L1HellaCacheModule()(p) {
+src/main/scala/rocket/DCache.scala:class DCacheMetadataReq(implicit p: Parameters) extends L1HellaCacheBundle()(p) {
+src/main/scala/rocket/DCache.scala:class DCache(hartid: Int, val crossing: ClockCrossingType)(implicit p: Parameters) extends HellaCache(hartid)(p) {
+src/main/scala/rocket/Breakpoint.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/Breakpoint.scala:class BPControl(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/Breakpoint.scala:class BP(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/Breakpoint.scala:class BreakpointUnit(n: Int)(implicit p: Parameters) extends CoreModule()(p) {
+src/main/scala/rocket/IBuf.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/IBuf.scala:class Instruction(implicit val p: Parameters) extends ParameterizedBundle with HasCoreParameters {
+src/main/scala/rocket/IBuf.scala:class IBuf(implicit p: Parameters) extends CoreModule {
+src/main/scala/rocket/PMP.scala:class PMPReg(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/PMP.scala:class PMP(implicit p: Parameters) extends PMPReg {
+src/main/scala/rocket/PMP.scala:class PMPHomogeneityChecker(pmps: Seq[PMP])(implicit p: Parameters) {
+src/main/scala/rocket/PMP.scala:class PMPChecker(lgMaxSize: Int)(implicit p: Parameters) extends CoreModule()(p)
+src/main/scala/rocket/PMP.scala:    with HasCoreParameters {
+src/main/scala/rocket/Frontend.scala:class FrontendReq(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/Frontend.scala:class FrontendResp(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/Frontend.scala:class FrontendIO(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/Frontend.scala:class Frontend(val icacheParams: ICacheParams, hartid: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/rocket/Frontend.scala:    with HasRocketCoreParameters
+src/main/scala/rocket/Frontend.scala:    with HasL1ICacheParameters {
+src/main/scala/rocket/CSR.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/CSR.scala:class MIP(implicit p: Parameters) extends CoreBundle()(p)
+src/main/scala/rocket/CSR.scala:    with HasCoreParameters {
+src/main/scala/rocket/CSR.scala:class PTBR(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/CSR.scala:class PerfCounterIO(implicit p: Parameters) extends CoreBundle
+src/main/scala/rocket/CSR.scala:    with HasCoreParameters {
+src/main/scala/rocket/CSR.scala:class TracedInstruction(implicit p: Parameters) extends CoreBundle with Clocked {
+src/main/scala/rocket/CSR.scala:class CSRFileIO(implicit p: Parameters) extends CoreBundle
+src/main/scala/rocket/CSR.scala:    with HasCoreParameters {
+src/main/scala/rocket/CSR.scala:class VConfig(implicit p: Parameters) extends CoreBundle {
+src/main/scala/rocket/CSR.scala:  private def fromUInt(that: UInt, ignore_vill: Boolean)(implicit p: Parameters): VType = {
+src/main/scala/rocket/CSR.scala:  def fromUInt(that: UInt)(implicit p: Parameters): VType = fromUInt(that, false)
+src/main/scala/rocket/CSR.scala:  def computeVL(avl: UInt, vtype: UInt, currentVL: UInt, useCurrentVL: Bool, useZero: Bool)(implicit p: Parameters): UInt =
+src/main/scala/rocket/CSR.scala:class VType(implicit p: Parameters) extends CoreBundle {
+src/main/scala/rocket/CSR.scala:  customCSRs: Seq[CustomCSR] = Nil)(implicit p: Parameters)
+src/main/scala/rocket/CSR.scala:    with HasCoreParameters {
+src/main/scala/rocket/BTB.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/BTB.scala:import freechips.rocketchip.tile.HasCoreParameters
+src/main/scala/rocket/BTB.scala:trait HasBtbParameters extends HasCoreParameters { this: InstanceId =>
+src/main/scala/rocket/BTB.scala:abstract class BtbModule(implicit val p: Parameters) extends Module with HasBtbParameters {
+src/main/scala/rocket/BTB.scala:abstract class BtbBundle(implicit val p: Parameters) extends Bundle with HasBtbParameters
+src/main/scala/rocket/BTB.scala:class BHTResp(implicit p: Parameters) extends BtbBundle()(p) {
+src/main/scala/rocket/BTB.scala:class BHT(params: BHTParams)(implicit val p: Parameters) extends HasCoreParameters {
+src/main/scala/rocket/BTB.scala:class BTBUpdate(implicit p: Parameters) extends BtbBundle()(p) {
+src/main/scala/rocket/BTB.scala:class BHTUpdate(implicit p: Parameters) extends BtbBundle()(p) {
+src/main/scala/rocket/BTB.scala:class RASUpdate(implicit p: Parameters) extends BtbBundle()(p) {
+src/main/scala/rocket/BTB.scala:class BTBResp(implicit p: Parameters) extends BtbBundle()(p) {
+src/main/scala/rocket/BTB.scala:class BTBReq(implicit p: Parameters) extends BtbBundle()(p) {
+src/main/scala/rocket/BTB.scala:class BTB(implicit p: Parameters) extends BtbModule {
+src/main/scala/rocket/TLBPermissions.scala:  private def groupRegions(managers: Seq[TLManagerParameters]): Map[TLBFixedPermissions, Seq[AddressSet]] = {
+src/main/scala/rocket/TLBPermissions.scala:  def apply(managers: Seq[TLManagerParameters], xLen: Int, cacheBlockBytes: Int, pageSize: BigInt): UInt => TLBPermissions = {
+src/main/scala/rocket/TLBPermissions.scala:  def homogeneous(managers: Seq[TLManagerParameters], pageSize: BigInt): Boolean = {
+src/main/scala/rocket/IDecode.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/IDecode.scala:import freechips.rocketchip.tile.HasCoreParameters
+src/main/scala/rocket/IDecode.scala:abstract trait DecodeConstants extends HasCoreParameters
+src/main/scala/rocket/IDecode.scala:class IDecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class FenceIDecode(flushDCache: Boolean)(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class CFlushDecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class SDecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class DebugDecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class I32Decode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class I64Decode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class MDecode(pipelinedMul: Boolean)(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class M64Decode(pipelinedMul: Boolean)(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class ADecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class A64Decode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class FDecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class DDecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class F64Decode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class D64Decode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class SCIEDecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/IDecode.scala:class RoCCDecode(implicit val p: Parameters) extends DecodeConstants
+src/main/scala/rocket/SimpleHellaCacheIF.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/rocket/SimpleHellaCacheIF.scala:    (implicit val p: Parameters) extends Module
+src/main/scala/rocket/SimpleHellaCacheIF.scala:    with HasL1HellaCacheParameters {
+src/main/scala/rocket/SimpleHellaCacheIF.scala:class SimpleHellaCacheIF(implicit p: Parameters) extends Module
+src/main/scala/rocket/TLB.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/rocket/TLB.scala:class SFenceReq(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/TLB.scala:class TLBReq(lgMaxSize: Int)(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/TLB.scala:class TLBResp(implicit p: Parameters) extends CoreBundle()(p) {
+src/main/scala/rocket/TLB.scala:class TLB(instruction: Boolean, lgMaxSize: Int, cfg: TLBConfig)(implicit edge: TLEdgeOut, p: Parameters) extends CoreModule()(p) {
+src/main/scala/rocket/TLB.scala:  def fastCheck(member: TLManagerParameters => Boolean) =
+src/main/scala/diplomaticobjectmodel/logicaltree/LogicalTrees.scala:)(implicit val p: Parameters) extends LogicalTreeNode(() => Some(device)) {
+src/main/scala/diplomaticobjectmodel/model/OMDebug.scala:  def getOMDebugInterfaceType(p: Parameters): OMDebugInterfaceType = {
+src/main/scala/unittest/TestHarness.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/unittest/TestHarness.scala:class TestHarness(implicit val p: Parameters) extends Module {
+src/main/scala/unittest/Configs.scala:  case UnitTests => (q: Parameters) => {
+src/main/scala/unittest/Configs.scala:  case UnitTests => (q: Parameters) => {
+src/main/scala/unittest/Configs.scala:  case UnitTests => (q: Parameters) => {
+src/main/scala/unittest/Configs.scala:  case UnitTests => (q: Parameters) => {
+src/main/scala/unittest/Configs.scala:  case UnitTests => (q: Parameters) => {
+src/main/scala/unittest/Configs.scala:  case UnitTests => (q: Parameters) => {
+src/main/scala/unittest/Configs.scala:  case UnitTests => (q: Parameters) => {
+src/main/scala/unittest/TestGenerator.scala:abstract class LazyUnitTest(implicit p: Parameters) extends LazyModule
+src/main/scala/unittest/UnitTest.scala:case object UnitTests extends Field[Parameters => Seq[UnitTest]]
+src/main/scala/unittest/UnitTest.scala:class UnitTestSuite(implicit p: Parameters) extends Module {
+src/main/scala/tilelink/AtomicAutomata.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/AtomicAutomata.scala:class TLAtomicAutomata(logical: Boolean = true, arithmetic: Boolean = true, concurrency: Int = 1, passthrough: Boolean = true)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/AtomicAutomata.scala:      def camFifoId(m: TLManagerParameters) = m.fifoId.map(id => max(0, domainsNeedingHelp.indexOf(id))).getOrElse(0)
+src/main/scala/tilelink/AtomicAutomata.scala:  def apply(logical: Boolean = true, arithmetic: Boolean = true, concurrency: Int = 1, passthrough: Boolean = true)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/AtomicAutomata.scala:  case class CAMParams(a: TLBundleParameters, domainsNeedingHelp: Int)
+src/main/scala/tilelink/AtomicAutomata.scala:class TLRAMAtomicAutomata(txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/AtomicAutomata.scala:class TLRAMAtomicAutomataTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/Buffer.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Buffer.scala:  e: BufferParams)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Buffer.scala:  def this(ace: BufferParams, bd: BufferParams)(implicit p: Parameters) = this(ace, bd, ace, bd, ace)
+src/main/scala/tilelink/Buffer.scala:  def this(abcde: BufferParams)(implicit p: Parameters) = this(abcde, abcde)
+src/main/scala/tilelink/Buffer.scala:  def this()(implicit p: Parameters) = this(BufferParams.default)
+src/main/scala/tilelink/Buffer.scala:  def apply()                                   (implicit p: Parameters): TLNode = apply(BufferParams.default)
+src/main/scala/tilelink/Buffer.scala:  def apply(abcde: BufferParams)                (implicit p: Parameters): TLNode = apply(abcde, abcde)
+src/main/scala/tilelink/Buffer.scala:  def apply(ace: BufferParams, bd: BufferParams)(implicit p: Parameters): TLNode = apply(ace, bd, ace, bd, ace)
+src/main/scala/tilelink/Buffer.scala:      e: BufferParams)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/Buffer.scala:  def chain(depth: Int, name: Option[String] = None)(implicit p: Parameters): Seq[TLNode] = {
+src/main/scala/tilelink/Buffer.scala:  def chainNode(depth: Int, name: Option[String] = None)(implicit p: Parameters): TLNode = {
+src/main/scala/tilelink/Arbiter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Arbiter.scala:class TestRobin(txns: Int = 128, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/PatternPusher.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/PatternPusher.scala:class TLPatternPusher(name: String, pattern: Seq[Pattern])(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/PatternPusher.scala:  val node = TLClientNode(Seq(TLClientPortParameters(Seq(TLClientParameters(name = name)))))
+src/main/scala/tilelink/PatternPusher.scala:  def apply(name: String, pattern: Seq[Pattern])(implicit p: Parameters): TLOutwardNode =
+src/main/scala/tilelink/Fragmenter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Fragmenter.scala:class TLFragmenter(val minSize: Int, val maxSize: Int, val alwaysMin: Boolean = false, val earlyAck: EarlyAck.T = EarlyAck.None, val holdFirstDeny: Boolean = false)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Fragmenter.scala:  def mapManager(m: TLManagerParameters) = m.copy(
+src/main/scala/tilelink/Fragmenter.scala:    clientFn  = { c => c.copy(clients = Seq(TLClientParameters(
+src/main/scala/tilelink/Fragmenter.scala:  def apply(minSize: Int, maxSize: Int, alwaysMin: Boolean = false, earlyAck: EarlyAck.T = EarlyAck.None, holdFirstDeny: Boolean = false)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/Fragmenter.scala:  def apply(wrapper: TLBusWrapper)(implicit p: Parameters): TLNode = apply(wrapper.beatBytes, wrapper.blockBytes)
+src/main/scala/tilelink/Fragmenter.scala:class TLRAMFragmenter(ramBeatBytes: Int, maxSize: Int, txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/Fragmenter.scala:class TLRAMFragmenterTest(ramBeatBytes: Int, maxSize: Int, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/Delayer.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Delayer.scala:class TLDelayer(q: Double)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Delayer.scala:  def apply(q: Double)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/ToAPB.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/ToAPB.scala:import APBParameters._
+src/main/scala/tilelink/ToAPB.scala:  dFn = { case TLClientPortParameters(clients, minLatency) =>
+src/main/scala/tilelink/ToAPB.scala:    val masters = clients.map { case c => APBMasterParameters(name = c.name, nodePath = c.nodePath, userBits = c.userBits) }
+src/main/scala/tilelink/ToAPB.scala:    APBMasterPortParameters(masters)
+src/main/scala/tilelink/ToAPB.scala:  uFn = { case APBSlavePortParameters(slaves, beatBytes) =>
+src/main/scala/tilelink/ToAPB.scala:      TLManagerParameters(
+src/main/scala/tilelink/ToAPB.scala:    TLManagerPortParameters(managers, beatBytes, 0, 1)
+src/main/scala/tilelink/ToAPB.scala:class TLToAPB(val aFlow: Boolean = true)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/ToAPB.scala:  def apply(aFlow: Boolean = true)(implicit p: Parameters) =
+src/main/scala/tilelink/RegisterRouterTest.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/RegisterRouterTest.scala:class RRTest0(address: BigInt)(implicit p: Parameters) extends TLRegisterRouter(address, "test0", Nil, 0, 32, 0, 4)(
+src/main/scala/tilelink/RegisterRouterTest.scala:class RRTest1(address: BigInt)(implicit p: Parameters) extends TLRegisterRouter(address, "test1", Nil, 0, 32, 6, 4)(
+src/main/scala/tilelink/RegisterRouterTest.scala:class FuzzRRTest0(txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/RegisterRouterTest.scala:class TLRR0Test(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/RegisterRouterTest.scala:class FuzzRRTest1(txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/RegisterRouterTest.scala:class TLRR1Test(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/RegisterRouter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/RegisterRouter.scala:  extends SinkNode(TLImp)(Seq(TLManagerPortParameters(
+src/main/scala/tilelink/RegisterRouter.scala:    Seq(TLManagerParameters(
+src/main/scala/tilelink/RegisterRouter.scala:abstract class TLRegisterRouterBase(devname: String, devcompat: Seq[String], val address: AddressSet, interrupts: Int, concurrency: Int, beatBytes: Int, undefZero: Boolean, executable: Boolean)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/RegisterRouter.scala:case class TLRegBundleArg()(implicit val p: Parameters)
+src/main/scala/tilelink/RegisterRouter.scala:   (moduleBuilder: (=> B, TLRegisterRouterBase) => M)(implicit p: Parameters)
+src/main/scala/tilelink/RationalCrossing.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/RationalCrossing.scala:class TLRationalCrossingSource(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/RationalCrossing.scala:class TLRationalCrossingSink(direction: RationalDirection = Symmetric)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/RationalCrossing.scala:  def apply()(implicit p: Parameters) =
+src/main/scala/tilelink/RationalCrossing.scala:  def apply(direction: RationalDirection = Symmetric)(implicit p: Parameters) =
+src/main/scala/tilelink/RationalCrossing.scala:class TLRationalCrossing(direction: RationalDirection = Symmetric)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/RationalCrossing.scala:class TLRAMRationalCrossingSource(name: String, txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/RationalCrossing.scala:class TLRAMRationalCrossingSink(direction: RationalDirection)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/RationalCrossing.scala:class TLRAMRationalCrossing(txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/RationalCrossing.scala:class TLRAMRationalCrossingTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/CrossingHelper.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/CrossingHelper.scala:  def apply(xing: ClockCrossingType = NoCrossing)(implicit p: Parameters): TLInwardNode = {
+src/main/scala/tilelink/CrossingHelper.scala:  def apply(xing: ClockCrossingType = NoCrossing)(implicit p: Parameters): TLOutwardNode = {
+src/main/scala/tilelink/RAMModel.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/RAMModel.scala:class TLRAMModel(log: String = "", ignoreCorruptData: Boolean = false, ignoreDeniedData: Boolean = true)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/RAMModel.scala:      val params = TLRAMModel.MonitorParameters(addressBits, sizeBits)
+src/main/scala/tilelink/RAMModel.scala:  def apply(log: String = "", ignoreCorruptData: Boolean = false, ignoreDeniedData: Boolean = true)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/RAMModel.scala:  case class MonitorParameters(addressBits: Int, sizeBits: Int)
+src/main/scala/tilelink/RAMModel.scala:  class ByteMonitor(params: MonitorParameters) extends GenericParameterizedBundle(params) {
+src/main/scala/tilelink/RAMModel.scala:  class FlightMonitor(params: MonitorParameters) extends GenericParameterizedBundle(params) {
+src/main/scala/tilelink/Parameters.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Parameters.scala:case class TLManagerParameters(
+src/main/scala/tilelink/Parameters.scala:  // Note: you can only rely on this FIFO behaviour if your TLClientParameters include requestFifo
+src/main/scala/tilelink/Parameters.scala:case class TLManagerPortParameters(
+src/main/scala/tilelink/Parameters.scala:  managers:   Seq[TLManagerParameters],
+src/main/scala/tilelink/Parameters.scala:  // These return Option[TLManagerParameters] for your convenience
+src/main/scala/tilelink/Parameters.scala:  def fastPropertyGroup[K](p: TLManagerParameters => K): Seq[(K, Seq[AddressSet])] = {
+src/main/scala/tilelink/Parameters.scala:  def fastProperty[K, D <: Data](address: UInt, p: TLManagerParameters => K, d: K => D): D =
+src/main/scala/tilelink/Parameters.scala:      member:  TLManagerParameters => TransferSizes,
+src/main/scala/tilelink/Parameters.scala:  def addUser[T <: UserBits](userBits: T): TLManagerPortParameters = {
+src/main/scala/tilelink/Parameters.scala:case class TLClientParameters(
+src/main/scala/tilelink/Parameters.scala:case class TLClientPortParameters(
+src/main/scala/tilelink/Parameters.scala:  clients:    Seq[TLClientParameters],
+src/main/scala/tilelink/Parameters.scala:    require (!x.overlaps(y), s"TLClientParameters.sourceId ${x} overlaps ${y}")
+src/main/scala/tilelink/Parameters.scala:  // These return Option[TLClientParameters] for your convenience
+src/main/scala/tilelink/Parameters.scala:  private def safety_helper(member: TLClientParameters => TransferSizes)(id: UInt, lgSize: UInt) = {
+src/main/scala/tilelink/Parameters.scala:  def addUser[T <: UserBits](userBits: T): TLClientPortParameters = {
+src/main/scala/tilelink/Parameters.scala:case class TLBundleParameters(
+src/main/scala/tilelink/Parameters.scala:  def union(x: TLBundleParameters) =
+src/main/scala/tilelink/Parameters.scala:    TLBundleParameters(
+src/main/scala/tilelink/Parameters.scala:object TLBundleParameters
+src/main/scala/tilelink/Parameters.scala:  val emptyBundleParams = TLBundleParameters(
+src/main/scala/tilelink/Parameters.scala:  def union(x: Seq[TLBundleParameters]) = x.foldLeft(emptyBundleParams)((x,y) => x.union(y))
+src/main/scala/tilelink/Parameters.scala:  def apply(client: TLClientPortParameters, manager: TLManagerPortParameters) =
+src/main/scala/tilelink/Parameters.scala:    new TLBundleParameters(
+src/main/scala/tilelink/Parameters.scala:case class TLEdgeParameters(
+src/main/scala/tilelink/Parameters.scala:  client:  TLClientPortParameters,
+src/main/scala/tilelink/Parameters.scala:  manager: TLManagerPortParameters,
+src/main/scala/tilelink/Parameters.scala:  params:  Parameters,
+src/main/scala/tilelink/Parameters.scala:  val bundle = TLBundleParameters(client, manager)
+src/main/scala/tilelink/Parameters.scala:case class TLAsyncManagerPortParameters(async: AsyncQueueParams, base: TLManagerPortParameters) {def infoString = base.infoString}
+src/main/scala/tilelink/Parameters.scala:case class TLAsyncClientPortParameters(base: TLClientPortParameters) {def infoString = base.infoString}
+src/main/scala/tilelink/Parameters.scala:case class TLAsyncBundleParameters(async: AsyncQueueParams, base: TLBundleParameters)
+src/main/scala/tilelink/Parameters.scala:case class TLAsyncEdgeParameters(client: TLAsyncClientPortParameters, manager: TLAsyncManagerPortParameters, params: Parameters, sourceInfo: SourceInfo) extends FormatEdge
+src/main/scala/tilelink/Parameters.scala:  val bundle = TLAsyncBundleParameters(manager.async, TLBundleParameters(client.base, manager.base))
+src/main/scala/tilelink/Parameters.scala:case class TLRationalManagerPortParameters(direction: RationalDirection, base: TLManagerPortParameters) {def infoString = base.infoString}
+src/main/scala/tilelink/Parameters.scala:case class TLRationalClientPortParameters(base: TLClientPortParameters) {def infoString = base.infoString}
+src/main/scala/tilelink/Parameters.scala:case class TLRationalEdgeParameters(client: TLRationalClientPortParameters, manager: TLRationalManagerPortParameters, params: Parameters, sourceInfo: SourceInfo) extends FormatEdge
+src/main/scala/tilelink/Parameters.scala:  val bundle = TLBundleParameters(client.base, manager.base)
+src/main/scala/tilelink/Parameters.scala:  def apply(managers: Seq[TLManagerParameters]): List[TLManagerParameters] = {
+src/main/scala/tilelink/Parameters.scala:    def key(x: TLManagerParameters) = TLManagerKey(
+src/main/scala/tilelink/Parameters.scala:    val map = scala.collection.mutable.HashMap[TLManagerKey, TLManagerParameters]()
+src/main/scala/tilelink/SRAM.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/SRAM.scala:  )(implicit p: Parameters) extends DiplomaticSRAM(address, beatBytes, devName, dtsCompat)
+src/main/scala/tilelink/SRAM.scala:  val node = TLManagerNode(Seq(TLManagerPortParameters(
+src/main/scala/tilelink/SRAM.scala:    Seq(TLManagerParameters(
+src/main/scala/tilelink/SRAM.scala:  )(implicit p: Parameters): TLInwardNode =
+src/main/scala/tilelink/SRAM.scala:class TLRAMSimple(ramBeatBytes: Int, txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/SRAM.scala:class TLRAMSimpleTest(ramBeatBytes: Int, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/SRAM.scala:class TLRAMECC(ramBeatBytes: Int, eccBytes: Int, txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/SRAM.scala:class TLRAMECCTest(ramBeatBytes: Int, eccBytes: Int, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/Xbar.scala:    e: TriStateValue = TriStateValue.unset)(body: Parameters => T)(implicit p: Parameters) =
+src/main/scala/tilelink/Xbar.scala:class TLXbar(policy: TLArbiter.Policy = TLArbiter.roundRobin)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Xbar.scala:    val wide_bundle = TLBundleParameters.union(io_in.map(_.params) ++ io_out.map(_.params))
+src/main/scala/tilelink/Xbar.scala:  def apply(policy: TLArbiter.Policy = TLArbiter.roundRobin)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/Xbar.scala:  def mapInputIds (ports: Seq[TLClientPortParameters ]) = assignRanges(ports.map(_.endSourceId))
+src/main/scala/tilelink/Xbar.scala:  def mapOutputIds(ports: Seq[TLManagerPortParameters]) = assignRanges(ports.map(_.endSinkId))
+src/main/scala/tilelink/Xbar.scala:class TLRAMXbar(nManagers: Int, txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/Xbar.scala:class TLRAMXbarTest(nManagers: Int, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/Xbar.scala:class TLMulticlientXbar(nManagers: Int, nClients: Int, txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/Xbar.scala:class TLMulticlientXbarTest(nManagers: Int, nClients: Int, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/Broadcast.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Broadcast.scala:class TLBroadcast(lineBytes: Int, numTrackers: Int = 4, bufferless: Boolean = false)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Broadcast.scala:      cp.copy(clients = Seq(TLClientParameters(
+src/main/scala/tilelink/Broadcast.scala:  def apply(lineBytes: Int, numTrackers: Int = 4, bufferless: Boolean = false)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/Broadcast.scala:class TLBroadcastData(params: TLBundleParameters) extends TLBundleBase(params)
+src/main/scala/tilelink/package.scala:  type TLInwardNode = InwardNodeHandle[TLClientPortParameters, TLManagerPortParameters, TLEdgeIn, TLBundle]
+src/main/scala/tilelink/package.scala:  type TLOutwardNode = OutwardNodeHandle[TLClientPortParameters, TLManagerPortParameters, TLEdgeOut, TLBundle]
+src/main/scala/tilelink/package.scala:  type TLNode = NodeHandle[TLClientPortParameters, TLManagerPortParameters, TLEdgeIn, TLBundle, TLClientPortParameters, TLManagerPortParameters, TLEdgeOut, TLBundle]
+src/main/scala/tilelink/ErrorEvaluator.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/ErrorEvaluator.scala:class TLErrorEvaluator(test: RequestPattern, testOn: Boolean, testOff: Boolean, deny: Boolean = false)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/ErrorEvaluator.scala:  def apply(test: RequestPattern, testOn: Boolean = false, testOff: Boolean = false, deny: Boolean = false)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/UserUniformer.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/UserUniformer.scala:class TLUserUniformer[T <: UserBits : ClassTag](default: UInt)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/UserUniformer.scala:        val mux = edgeOut.putUser(iuser, prev.map { x: UInt => { (y: TLClientParameters) => x } })
+src/main/scala/tilelink/AsyncCrossing.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/AsyncCrossing.scala:class TLAsyncCrossingSource(sync: Option[Int])(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/AsyncCrossing.scala:  def this(x: Int)(implicit p: Parameters) = this(Some(x))
+src/main/scala/tilelink/AsyncCrossing.scala:  def this()(implicit p: Parameters) = this(None)
+src/main/scala/tilelink/AsyncCrossing.scala:class TLAsyncCrossingSink(params: AsyncQueueParams = AsyncQueueParams())(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/AsyncCrossing.scala:  def apply()(implicit p: Parameters): TLAsyncSourceNode = apply(None)
+src/main/scala/tilelink/AsyncCrossing.scala:  def apply(sync: Int)(implicit p: Parameters): TLAsyncSourceNode = apply(Some(sync))
+src/main/scala/tilelink/AsyncCrossing.scala:  def apply(sync: Option[Int])(implicit p: Parameters): TLAsyncSourceNode =
+src/main/scala/tilelink/AsyncCrossing.scala:  def apply(params: AsyncQueueParams = AsyncQueueParams())(implicit p: Parameters) =
+src/main/scala/tilelink/AsyncCrossing.scala:class TLAsyncCrossing(params: AsyncQueueParams = AsyncQueueParams())(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/AsyncCrossing.scala:class TLRAMAsyncCrossing(txns: Int, params: AsynchronousCrossing = AsynchronousCrossing())(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/AsyncCrossing.scala:class TLRAMAsyncCrossingTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/ToAXI4.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/ToAXI4.scala:class TLtoAXI4IdMap(tl: TLClientPortParameters, axi4: AXI4MasterPortParameters) {
+src/main/scala/tilelink/ToAXI4.scala:      AXI4MasterParameters(
+src/main/scala/tilelink/ToAXI4.scala:    AXI4MasterPortParameters(
+src/main/scala/tilelink/ToAXI4.scala:  uFn = { p => TLManagerPortParameters(
+src/main/scala/tilelink/ToAXI4.scala:      TLManagerParameters(
+src/main/scala/tilelink/ToAXI4.scala:class TLToAXI4(val combinational: Boolean = true, val adapterName: Option[String] = None, val stripBits: Int = 0)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/ToAXI4.scala:      arw.len   := UIntToOH1(a_size, AXI4Parameters.lenBits + log2Ceil(beatBytes)) >> log2Ceil(beatBytes)
+src/main/scala/tilelink/ToAXI4.scala:      arw.burst := AXI4Parameters.BURST_INCR
+src/main/scala/tilelink/ToAXI4.scala:      arw.prot  := AXI4Parameters.PROT_PRIVILEDGED
+src/main/scala/tilelink/ToAXI4.scala:      val r_denied  = out.r.bits.resp === AXI4Parameters.RESP_DECERR holdUnless r_first
+src/main/scala/tilelink/ToAXI4.scala:      val r_corrupt = out.r.bits.resp =/= AXI4Parameters.RESP_OKAY
+src/main/scala/tilelink/ToAXI4.scala:      val b_denied  = out.b.bits.resp =/= AXI4Parameters.RESP_OKAY
+src/main/scala/tilelink/ToAXI4.scala:  def apply(combinational: Boolean = true, adapterName: Option[String] = None, stripBits: Int = 0)(implicit p: Parameters) =
+src/main/scala/tilelink/ToAXI4.scala:  def sortByType(a: TLClientParameters, b: TLClientParameters): Boolean = {
+src/main/scala/tilelink/CacheCork.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/CacheCork.scala:class TLCacheCork(unsafe: Boolean = false, sinkIds: Int = 8)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/CacheCork.scala:  def apply(unsafe: Boolean = false, sinkIds: Int = 8)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/BusWrapper.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/BusWrapper.scala:abstract class TLBusWrapper(params: HasTLBusParams, val busName: String)(implicit p: Parameters)
+src/main/scala/tilelink/BusWrapper.scala:  def unifyManagers: List[TLManagerParameters] = ManagerUnification(busView.manager.managers)
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[TLClientPortParameters,TLManagerPortParameters,TLEdgeIn,TLBundle,D,U,E,B] =
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[TLClientPortParameters,TLManagerPortParameters,TLEdgeIn,TLBundle,D,U,E,B] =
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[TLClientPortParameters,TLManagerPortParameters,TLEdgeIn,TLBundle,D,U,E,B] =
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[TLClientPortParameters,TLManagerPortParameters,TLEdgeIn,TLBundle,D,U,E,B] =
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[TLClientPortParameters,TLManagerPortParameters,TLEdgeIn,TLBundle,D,U,E,B] =
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[TLClientPortParameters,TLManagerPortParameters,TLEdgeIn,TLBundle,D,U,E,B] =
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[D,U,E,B,TLClientPortParameters,TLManagerPortParameters,TLEdgeOut,TLBundle] =
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[D,U,E,B,TLClientPortParameters,TLManagerPortParameters,TLEdgeOut,TLBundle] =
+src/main/scala/tilelink/BusWrapper.scala:      (gen: => NodeHandle[D,U,E,B,TLClientPortParameters,TLManagerPortParameters,TLEdgeOut,TLBundle] =
+src/main/scala/tilelink/Fuzzer.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Fuzzer.scala:  nOrdered: Option[Int] = None)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Fuzzer.scala:      TLClientParameters(name =s"OrderedFuzzer$i",
+src/main/scala/tilelink/Fuzzer.scala:    Seq(TLClientParameters(
+src/main/scala/tilelink/Fuzzer.scala:  val node = TLClientNode(Seq(TLClientPortParameters(clientParams)))
+src/main/scala/tilelink/Fuzzer.scala:    nOrdered: Option[Int] = None)(implicit p: Parameters): TLOutwardNode =
+src/main/scala/tilelink/Fuzzer.scala:class TLFuzzRAM(txns: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Fuzzer.scala:class TLFuzzRAMTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/BankBinder.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/BankBinder.scala:  def mapParamsD(n: Int, p: Seq[TLClientPortParameters]): Seq[TLClientPortParameters] =
+src/main/scala/tilelink/BankBinder.scala:  def mapParamsU(n: Int, p: Seq[TLManagerPortParameters]): Seq[TLManagerPortParameters] =
+src/main/scala/tilelink/BankBinder.scala:class BankBinder(mask: BigInt)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/BankBinder.scala:  def apply(mask: BigInt)(implicit p: Parameters): TLNode = {
+src/main/scala/tilelink/UserUser.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/UserUser.scala:class TLUserUser[T <: UserBits : ClassTag](meta: T, f: (TLBundleA, TLClientParameters) => UInt)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/UserUser.scala:  def apply[T <: UserBits : ClassTag](meta: T, f: (TLBundleA, TLClientParameters) => UInt)(implicit p: Parameters): TLNode = {
+src/main/scala/tilelink/UserUser.scala:class TLLazyUserTest(txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/UserUser.scala:class TLUserTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/ProbePicker.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/ProbePicker.scala:class ProbePicker(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/ProbePicker.scala:      def combine(next: TLClientParameters, pair: (TLClientParameters, Seq[TLClientParameters])) = {
+src/main/scala/tilelink/ProbePicker.scala:          def redact(x: TLClientParameters) = x.copy(sourceId = IdRange(0,1), nodePath = Nil, visibility = Seq(AddressSet(0, ~0)))
+src/main/scala/tilelink/ProbePicker.scala:      val myNil: Seq[TLClientParameters] = Nil
+src/main/scala/tilelink/ProbePicker.scala:  def apply()(implicit p: Parameters): TLNode = {
+src/main/scala/tilelink/RegionReplication.scala:class RegionReplicator(mask: BigInt = 0, region: Option[AddressSet] = Some(AddressSet.everything))(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/RegionReplication.scala:  def apply(mask: BigInt = 0, region: Option[AddressSet] = Some(AddressSet.everything))(implicit p: Parameters): TLNode = {
+src/main/scala/tilelink/FIFOFixer.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/FIFOFixer.scala:class TLFIFOFixer(policy: TLFIFOFixer.Policy = TLFIFOFixer.all)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/FIFOFixer.scala:  private def fifoMap(seq: Seq[TLManagerParameters]) = {
+src/main/scala/tilelink/FIFOFixer.scala:  type Policy = TLManagerParameters => Boolean
+src/main/scala/tilelink/FIFOFixer.scala:  def apply(policy: Policy = all)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/Atomics.scala:class Atomics(params: TLBundleParameters) extends Module
+src/main/scala/tilelink/Edges.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Edges.scala:  client:  TLClientPortParameters,
+src/main/scala/tilelink/Edges.scala:  manager: TLManagerPortParameters,
+src/main/scala/tilelink/Edges.scala:  params:  Parameters,
+src/main/scala/tilelink/Edges.scala:  extends TLEdgeParameters(client, manager, params, sourceInfo)
+src/main/scala/tilelink/Edges.scala:  client:  TLClientPortParameters,
+src/main/scala/tilelink/Edges.scala:  manager: TLManagerPortParameters,
+src/main/scala/tilelink/Edges.scala:  params:  Parameters,
+src/main/scala/tilelink/Edges.scala:  def putUser[T <: UserBits : ClassTag](x: UInt, seq: Seq[TLClientParameters => UInt]): Vec[UInt] = {
+src/main/scala/tilelink/Edges.scala:  client:  TLClientPortParameters,
+src/main/scala/tilelink/Edges.scala:  manager: TLManagerPortParameters,
+src/main/scala/tilelink/Edges.scala:  params:  Parameters,
+src/main/scala/tilelink/Isolation.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Isolation.scala:class TLIsolation(fOut: (Bool, UInt) => UInt, fIn: (Bool, UInt) => UInt)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Example.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Example.scala:class TLExample(params: ExampleParams)(implicit p: Parameters)
+src/main/scala/tilelink/WidthWidget.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/WidthWidget.scala:class TLWidthWidget(innerBeatBytes: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/WidthWidget.scala:  def apply(innerBeatBytes: Int)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/WidthWidget.scala:  def apply(wrapper: TLBusWrapper)(implicit p: Parameters): TLNode = apply(wrapper.beatBytes)
+src/main/scala/tilelink/WidthWidget.scala:class TLRAMWidthWidget(first: Int, second: Int, txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/WidthWidget.scala:class TLRAMWidthWidgetTest(little: Int, big: Int, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/SourceShrinker.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/SourceShrinker.scala:class TLSourceShrinker(maxInFlight: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/SourceShrinker.scala:  private val client = TLClientParameters(
+src/main/scala/tilelink/SourceShrinker.scala:    clientFn  = { cp => TLClientPortParameters(clients = Seq(client.copy(requestFifo = cp.clients.exists(_.requestFifo)))) },
+src/main/scala/tilelink/SourceShrinker.scala:  def apply(maxInFlight: Int)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/Nodes.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/tilelink/Nodes.scala:object TLImp extends NodeImp[TLClientPortParameters, TLManagerPortParameters, TLEdgeOut, TLEdgeIn, TLBundle]
+src/main/scala/tilelink/Nodes.scala:  def edgeO(pd: TLClientPortParameters, pu: TLManagerPortParameters, p: Parameters, sourceInfo: SourceInfo) = new TLEdgeOut(pd, pu, p, sourceInfo)
+src/main/scala/tilelink/Nodes.scala:  def edgeI(pd: TLClientPortParameters, pu: TLManagerPortParameters, p: Parameters, sourceInfo: SourceInfo) = new TLEdgeIn (pd, pu, p, sourceInfo)
+src/main/scala/tilelink/Nodes.scala:  override def mixO(pd: TLClientPortParameters, node: OutwardNode[TLClientPortParameters, TLManagerPortParameters, TLBundle]): TLClientPortParameters  =
+src/main/scala/tilelink/Nodes.scala:  override def mixI(pu: TLManagerPortParameters, node: InwardNode[TLClientPortParameters, TLManagerPortParameters, TLBundle]): TLManagerPortParameters =
+src/main/scala/tilelink/Nodes.scala:case class TLClientNode(portParams: Seq[TLClientPortParameters])(implicit valName: ValName) extends SourceNode(TLImp)(portParams) with TLFormatNode
+src/main/scala/tilelink/Nodes.scala:case class TLManagerNode(portParams: Seq[TLManagerPortParameters])(implicit valName: ValName) extends SinkNode(TLImp)(portParams) with TLFormatNode
+src/main/scala/tilelink/Nodes.scala:  clientFn:  TLClientPortParameters  => TLClientPortParameters  = { s => s },
+src/main/scala/tilelink/Nodes.scala:  managerFn: TLManagerPortParameters => TLManagerPortParameters = { s => s })(
+src/main/scala/tilelink/Nodes.scala:  clientFn:        Seq[TLClientPortParameters]  => TLClientPortParameters,
+src/main/scala/tilelink/Nodes.scala:  managerFn:       Seq[TLManagerPortParameters] => TLManagerPortParameters)(
+src/main/scala/tilelink/Nodes.scala:  clientFn:  TLClientPortParameters  => TLClientPortParameters  = { s => s },
+src/main/scala/tilelink/Nodes.scala:  managerFn: Seq[TLManagerPortParameters] => Seq[TLManagerPortParameters] = { s => s })(
+src/main/scala/tilelink/Nodes.scala:  def mapParamsD(n: Int, p: Seq[TLClientPortParameters]): Seq[TLClientPortParameters] = { p.map(clientFn) ++ p.map(clientFn) }
+src/main/scala/tilelink/Nodes.scala:  def mapParamsU(n: Int, p: Seq[TLManagerPortParameters]): Seq[TLManagerPortParameters] = { managerFn(p) }
+src/main/scala/tilelink/Nodes.scala:trait TLAsyncFormatNode extends FormatNode[TLAsyncEdgeParameters, TLAsyncEdgeParameters]
+src/main/scala/tilelink/Nodes.scala:object TLAsyncImp extends SimpleNodeImp[TLAsyncClientPortParameters, TLAsyncManagerPortParameters, TLAsyncEdgeParameters, TLAsyncBundle]
+src/main/scala/tilelink/Nodes.scala:  def edge(pd: TLAsyncClientPortParameters, pu: TLAsyncManagerPortParameters, p: Parameters, sourceInfo: SourceInfo) = TLAsyncEdgeParameters(pd, pu, p, sourceInfo)
+src/main/scala/tilelink/Nodes.scala:  def bundle(e: TLAsyncEdgeParameters) = new TLAsyncBundle(e.bundle)
+src/main/scala/tilelink/Nodes.scala:  def render(e: TLAsyncEdgeParameters) = RenderedEdge(colour = "#ff0000" /* red */, label = e.manager.async.depth.toString)
+src/main/scala/tilelink/Nodes.scala:  override def mixO(pd: TLAsyncClientPortParameters, node: OutwardNode[TLAsyncClientPortParameters, TLAsyncManagerPortParameters, TLAsyncBundle]): TLAsyncClientPortParameters  =
+src/main/scala/tilelink/Nodes.scala:  override def mixI(pu: TLAsyncManagerPortParameters, node: InwardNode[TLAsyncClientPortParameters, TLAsyncManagerPortParameters, TLAsyncBundle]): TLAsyncManagerPortParameters =
+src/main/scala/tilelink/Nodes.scala:  clientFn:  TLAsyncClientPortParameters  => TLAsyncClientPortParameters  = { s => s },
+src/main/scala/tilelink/Nodes.scala:  managerFn: TLAsyncManagerPortParameters => TLAsyncManagerPortParameters = { s => s })(
+src/main/scala/tilelink/Nodes.scala:    dFn = { p => TLAsyncClientPortParameters(p) },
+src/main/scala/tilelink/Nodes.scala:    uFn = { p => p.base.copy(minLatency = p.base.minLatency + sync.getOrElse(p.async.sync)) }) with FormatNode[TLEdgeIn, TLAsyncEdgeParameters] // discard cycles in other clock domain
+src/main/scala/tilelink/Nodes.scala:    uFn = { p => TLAsyncManagerPortParameters(async, p) }) with FormatNode[TLAsyncEdgeParameters, TLEdgeOut]
+src/main/scala/tilelink/Nodes.scala:trait TLRationalFormatNode extends FormatNode[TLRationalEdgeParameters, TLRationalEdgeParameters]
+src/main/scala/tilelink/Nodes.scala:object TLRationalImp extends SimpleNodeImp[TLRationalClientPortParameters, TLRationalManagerPortParameters, TLRationalEdgeParameters, TLRationalBundle]
+src/main/scala/tilelink/Nodes.scala:  def edge(pd: TLRationalClientPortParameters, pu: TLRationalManagerPortParameters, p: Parameters, sourceInfo: SourceInfo) = TLRationalEdgeParameters(pd, pu, p, sourceInfo)
+src/main/scala/tilelink/Nodes.scala:  def bundle(e: TLRationalEdgeParameters) = new TLRationalBundle(e.bundle)
+src/main/scala/tilelink/Nodes.scala:  def render(e: TLRationalEdgeParameters) = RenderedEdge(colour = "#00ff00" /* green */)
+src/main/scala/tilelink/Nodes.scala:  override def mixO(pd: TLRationalClientPortParameters, node: OutwardNode[TLRationalClientPortParameters, TLRationalManagerPortParameters, TLRationalBundle]): TLRationalClientPortParameters  =
+src/main/scala/tilelink/Nodes.scala:  override def mixI(pu: TLRationalManagerPortParameters, node: InwardNode[TLRationalClientPortParameters, TLRationalManagerPortParameters, TLRationalBundle]): TLRationalManagerPortParameters =
+src/main/scala/tilelink/Nodes.scala:  clientFn:  TLRationalClientPortParameters  => TLRationalClientPortParameters  = { s => s },
+src/main/scala/tilelink/Nodes.scala:  managerFn: TLRationalManagerPortParameters => TLRationalManagerPortParameters = { s => s })(
+src/main/scala/tilelink/Nodes.scala:    dFn = { p => TLRationalClientPortParameters(p) },
+src/main/scala/tilelink/Nodes.scala:    uFn = { p => p.base.copy(minLatency = 1) }) with FormatNode[TLEdgeIn, TLRationalEdgeParameters] // discard cycles from other clock domain
+src/main/scala/tilelink/Nodes.scala:    uFn = { p => TLRationalManagerPortParameters(direction, p) }) with FormatNode[TLRationalEdgeParameters, TLEdgeOut]
+src/main/scala/tilelink/HintHandler.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/HintHandler.scala:class TLHintHandler(passthrough: Boolean = true)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/HintHandler.scala:      def usePP (m: TLManagerParameters) = !(passthrough && m.supportsHint) && m.supportsPutPartial
+src/main/scala/tilelink/HintHandler.scala:      def useGet(m: TLManagerParameters) = !(passthrough && m.supportsHint) && !m.supportsPutPartial
+src/main/scala/tilelink/HintHandler.scala:  def apply(passthrough: Boolean = true)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/HintHandler.scala:class TLRAMHintHandler(txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/HintHandler.scala:class TLRAMHintHandlerTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/tilelink/Filter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Filter.scala:  )(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Filter.scala:  type ManagerFilter = TLManagerParameters => Option[TLManagerParameters]
+src/main/scala/tilelink/Filter.scala:  type ClientFilter = TLClientParameters => Option[TLClientParameters]
+src/main/scala/tilelink/Filter.scala:  private def transferSizeHelper(m: TLManagerParameters, filtered: Seq[AddressSet], alignment: BigInt): Option[TLManagerParameters] = {
+src/main/scala/tilelink/Filter.scala:    )(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/ToAHB.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/ToAHB.scala:import AHBParameters._
+src/main/scala/tilelink/ToAHB.scala:  dFn = { case TLClientPortParameters(clients, minLatency) =>
+src/main/scala/tilelink/ToAHB.scala:    val masters = clients.map { case c => AHBMasterParameters(name = c.name, nodePath = c.nodePath,userBits = c.userBits) }
+src/main/scala/tilelink/ToAHB.scala:    AHBMasterPortParameters(masters)
+src/main/scala/tilelink/ToAHB.scala:  uFn = { case AHBSlavePortParameters(slaves, beatBytes, lite) =>
+src/main/scala/tilelink/ToAHB.scala:      TLManagerParameters(
+src/main/scala/tilelink/ToAHB.scala:    TLManagerPortParameters(managers, beatBytes, 0, 1)
+src/main/scala/tilelink/ToAHB.scala:  val hsize  = UInt(width = AHBParameters.sizeBits)
+src/main/scala/tilelink/ToAHB.scala:  val hburst = UInt(width = AHBParameters.burstBits)
+src/main/scala/tilelink/ToAHB.scala:class TLToAHB(val aFlow: Boolean = false, val supportHints: Boolean = true, val supportsRETRY: Boolean = true)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/ToAHB.scala:  def apply(aFlow: Boolean = true, supportHints: Boolean = true, supportsRETRY: Boolean = true)(implicit p: Parameters) =
+src/main/scala/tilelink/Map.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Map.scala:class TLMap(fn: AddressSet => BigInt)(implicit p: Parameters) extends LazyModule
+src/main/scala/tilelink/Map.scala:  def apply(fn: AddressSet => BigInt)(implicit p: Parameters): TLNode =
+src/main/scala/tilelink/Monitor.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/tilelink/Bundles.scala:abstract class TLBundleBase(params: TLBundleParameters) extends GenericParameterizedBundle(params)
+src/main/scala/tilelink/Bundles.scala:final class TLBundleA(params: TLBundleParameters)
+src/main/scala/tilelink/Bundles.scala:final class TLBundleB(params: TLBundleParameters)
+src/main/scala/tilelink/Bundles.scala:final class TLBundleC(params: TLBundleParameters)
+src/main/scala/tilelink/Bundles.scala:final class TLBundleD(params: TLBundleParameters)
+src/main/scala/tilelink/Bundles.scala:final class TLBundleE(params: TLBundleParameters)
+src/main/scala/tilelink/Bundles.scala:class TLBundle(val params: TLBundleParameters) extends Record
+src/main/scala/tilelink/Bundles.scala:  def apply(params: TLBundleParameters) = new TLBundle(params)
+src/main/scala/tilelink/Bundles.scala:class TLAsyncBundleBase(params: TLAsyncBundleParameters) extends GenericParameterizedBundle(params)
+src/main/scala/tilelink/Bundles.scala:class TLAsyncBundle(params: TLAsyncBundleParameters) extends TLAsyncBundleBase(params)
+src/main/scala/tilelink/Bundles.scala:class TLRationalBundle(params: TLBundleParameters) extends TLBundleBase(params)
+src/main/scala/tilelink/AddressAdjuster.scala:class AddressAdjuster(mask: BigInt, adjustableRegion: Option[AddressSet] = Some(AddressSet.everything), forceLocal: Seq[AddressSet] = Nil)(implicit p: Parameters) extends LazyModule {
+src/main/scala/tilelink/AddressAdjuster.scala:  def isDeviceContainedBy(region: Seq[AddressSet], m: TLManagerParameters): Boolean = {
+src/main/scala/tilelink/AddressAdjuster.scala:  def requireMaskRepetition(managers: Seq[TLManagerParameters]): Unit = managers.map { m =>
+src/main/scala/tilelink/AddressAdjuster.scala:  def requireErrorSupport(errorDev: TLManagerParameters, managers: Seq[TLManagerParameters]): Unit = managers.map { m =>
+src/main/scala/tilelink/AddressAdjuster.scala:  def requireFifoHomogeneity(managers: Seq[TLManagerParameters]): Unit = managers.map { m =>
+src/main/scala/tilelink/AddressAdjuster.scala:  def requireContainerSupport(l: TLManagerParameters, r: TLManagerParameters): Unit = {
+src/main/scala/tilelink/AddressAdjuster.scala:  def printManagers(kind: String, managers: Seq[TLManagerParameters]): Unit = {
+src/main/scala/tilelink/AddressAdjuster.scala:        def relabelFifo(managers: Seq[TLManagerParameters]): Seq[TLManagerParameters] = {
+src/main/scala/regmapper/RegisterRouter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/regmapper/RegisterRouter.scala:abstract class RegisterRouter[T <: Data](devParams: RegisterRouterParams)(implicit p: Parameters)
+src/main/scala/regmapper/RegisterRouter.scala:abstract class IORegisterRouter[T <: Data](devParams: RegisterRouterParams, portBundle: => T)(implicit p: Parameters)
+src/main/scala/devices/tilelink/DevNull.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/tilelink/DevNull.scala:                            (implicit p: Parameters)
+src/main/scala/devices/tilelink/DevNull.scala:  val node = TLManagerNode(Seq(TLManagerPortParameters(
+src/main/scala/devices/tilelink/DevNull.scala:    Seq(TLManagerParameters(
+src/main/scala/devices/tilelink/Zero.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/tilelink/Zero.scala:class TLZero(address: AddressSet, beatBytes: Int = 4)(implicit p: Parameters)
+src/main/scala/devices/tilelink/BusBypass.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/devices/tilelink/BusBypass.scala:abstract class TLBusBypassBase(beatBytes: Int, deadlock: Boolean = false)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/BusBypass.scala:class TLBusBypass(beatBytes: Int)(implicit p: Parameters) extends TLBusBypassBase(beatBytes)
+src/main/scala/devices/tilelink/BusBypass.scala:class TLBypassNode(dFn: TLManagerPortParameters => TLManagerPortParameters)(implicit valName: ValName) extends TLCustomNode
+src/main/scala/devices/tilelink/BusBypass.scala:  def mapParamsD(n: Int, p: Seq[TLClientPortParameters]): Seq[TLClientPortParameters] = { p ++ p }
+src/main/scala/devices/tilelink/BusBypass.scala:  def mapParamsU(n: Int, p: Seq[TLManagerPortParameters]): Seq[TLManagerPortParameters] = { Seq(dFn(p.last)) }
+src/main/scala/devices/tilelink/BusBypass.scala:class TLBusBypassBar(dFn: TLManagerPortParameters => TLManagerPortParameters)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/BootROM.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/devices/tilelink/BootROM.scala:  resources: Seq[Resource] = new SimpleDevice("rom", Seq("sifive,rom0")).reg("mem"))(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/BootROM.scala:  val node = TLManagerNode(Seq(TLManagerPortParameters(
+src/main/scala/devices/tilelink/BootROM.scala:    Seq(TLManagerParameters(
+src/main/scala/devices/tilelink/PhysicalFilter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/tilelink/PhysicalFilter.scala:class PhysicalFilter(params: PhysicalFilterParams)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/MaskROM.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/devices/tilelink/MaskROM.scala:class TLMaskROM(c: MaskROMParams)(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/tilelink/MaskROM.scala:  val node = TLManagerNode(Seq(TLManagerPortParameters(
+src/main/scala/devices/tilelink/MaskROM.scala:    Seq(TLManagerParameters(
+src/main/scala/devices/tilelink/MaskROM.scala:  def attach(params: MaskROMParams, bus: TLBusWrapper)(implicit p: Parameters): TLMaskROM = {
+src/main/scala/devices/tilelink/Error.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/tilelink/Error.scala:class TLError(params: DevNullParams, beatBytes: Int = 4)(implicit p: Parameters)
+src/main/scala/devices/tilelink/CLINT.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/devices/tilelink/CLINT.scala:class CLINT(params: CLINTParams, beatBytes: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/CLINT.scala:    sourceFn = { _ => IntSourcePortParameters(Seq(IntSourceParameters(ints, Seq(Resource(device, "int"))))) },
+src/main/scala/devices/tilelink/CLINT.scala:    sinkFn   = { _ => IntSinkPortParameters(Seq(IntSinkParameters())) },
+src/main/scala/devices/tilelink/Deadlock.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/tilelink/Deadlock.scala:class TLDeadlock(params: DevNullParams, beatBytes: Int = 4)(implicit p: Parameters)
+src/main/scala/devices/tilelink/BusBlocker.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/tilelink/BusBlocker.scala:class BasicBusBlocker(params: BasicBusBlockerParams)(implicit p: Parameters)
+src/main/scala/devices/tilelink/TestRAM.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/tilelink/TestRAM.scala:class TLTestRAM(address: AddressSet, executable: Boolean = true, beatBytes: Int = 4, trackCorruption: Boolean = true)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/TestRAM.scala:  val node = TLManagerNode(Seq(TLManagerPortParameters(
+src/main/scala/devices/tilelink/TestRAM.scala:    Seq(TLManagerParameters(
+src/main/scala/devices/tilelink/TestRAM.scala:class TLRAMZeroDelay(ramBeatBytes: Int, txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/tilelink/TestRAM.scala:class TLRAMZeroDelayTest(ramBeatBytes: Int, txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/devices/tilelink/MasterMux.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/devices/tilelink/MasterMux.scala:class MasterMuxNode(uFn: Seq[TLClientPortParameters] => TLClientPortParameters)(implicit valName: ValName) extends TLCustomNode
+src/main/scala/devices/tilelink/MasterMux.scala:  def mapParamsD(n: Int, p: Seq[TLClientPortParameters]): Seq[TLClientPortParameters] = { Seq(uFn(p)) }
+src/main/scala/devices/tilelink/MasterMux.scala:  def mapParamsU(n: Int, p: Seq[TLManagerPortParameters]): Seq[TLManagerPortParameters] = { p ++ p }
+src/main/scala/devices/tilelink/MasterMux.scala:class MuteMaster(name: String = "MuteMaster", maxProbe: Int = 0)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/MasterMux.scala:  val node = TLClientNode(Seq(TLClientPortParameters(clients = Seq(TLClientParameters(
+src/main/scala/devices/tilelink/MasterMux.scala:class MasterMux(uFn: Seq[TLClientPortParameters] => TLClientPortParameters)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/MasterMux.scala:class TLMasterMuxTester(txns: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/tilelink/MasterMux.scala:class TLMasterMuxTest(txns: Int = 5000, timeout: Int = 500000)(implicit p: Parameters) extends UnitTest(timeout) {
+src/main/scala/devices/tilelink/CanHaveBuiltInDevices.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/tilelink/Plic.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/devices/tilelink/Plic.scala:class TLPLIC(params: PLICParams, beatBytes: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/tilelink/Plic.scala:    sourceFn = { _ => IntSourcePortParameters(Seq(IntSourceParameters(1, Seq(Resource(device, "int"))))) },
+src/main/scala/devices/tilelink/Plic.scala:    sinkFn   = { _ => IntSinkPortParameters(Seq(IntSinkParameters())) },
+src/main/scala/devices/debug/Custom.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/devices/debug/Custom.scala:  def edge(pd: DebugCustomParams, pu: DebugCustomNull, p: Parameters, sourceInfo: SourceInfo) = pd
+src/main/scala/devices/debug/Custom.scala:)(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/debug/SBA.scala:  def apply(sb2tl: SBToTL, dmactive: Bool, dmAuthenticated: Bool)(implicit p: Parameters):
+src/main/scala/devices/debug/SBA.scala:class SBToTL(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/debug/SBA.scala:  val node = TLClientNode(Seq(TLClientPortParameters(Seq(TLClientParameters("debug")))))
+src/main/scala/devices/debug/APB.scala:class APBDebugRegisters()(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/debug/Periphery.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/devices/debug/Periphery.scala:class ClockedAPBBundle(params: APBBundleParameters) extends APBBundle(params) with Clocked
+src/main/scala/devices/debug/Periphery.scala:class DebugIO(implicit val p: Parameters) extends Bundle {
+src/main/scala/devices/debug/Periphery.scala:  val apb = p(ExportDebug).apb.option(new ClockedAPBBundle(APBBundleParameters(addrBits=12, dataBits=32)).flip)
+src/main/scala/devices/debug/Periphery.scala:class PSDIO(implicit val p: Parameters) extends Bundle with CanHavePSDTestModeIO {
+src/main/scala/devices/debug/Periphery.scala:  val apbDebugNodeOpt = p(ExportDebug).apb.option(APBMasterNode(Seq(APBMasterPortParameters(Seq(APBMasterParameters("debugAPB"))))))
+src/main/scala/devices/debug/Periphery.scala:class SimDTM(implicit p: Parameters) extends BlackBox with HasBlackBoxResource {
+src/main/scala/devices/debug/Periphery.scala:      (implicit p: Parameters): Unit =  {
+src/main/scala/devices/debug/Debug.scala:/** Parameters exposed to the top-level design, set based on
+src/main/scala/devices/debug/Debug.scala:class DebugExtTriggerIO () (implicit val p: Parameters) extends ParameterizedBundle()(p) {
+src/main/scala/devices/debug/Debug.scala:class DebugAuthenticationIO () (implicit val p: Parameters) extends ParameterizedBundle()(p) {
+src/main/scala/devices/debug/Debug.scala:class DebugInternalBundle (val nComponents: Int)(implicit val p: Parameters) extends ParameterizedBundle()(p) {
+src/main/scala/devices/debug/Debug.scala:class DebugCtrlBundle (nComponents: Int)(implicit val p: Parameters) extends ParameterizedBundle()(p) {
+src/main/scala/devices/debug/Debug.scala:class TLDebugModuleOuter(device: Device)(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/debug/Debug.scala:    sourceFn       = { _ => IntSourcePortParameters(Seq(IntSourceParameters(1, Seq(Resource(device, "int"))))) },
+src/main/scala/devices/debug/Debug.scala:    sinkFn         = { _ => IntSinkPortParameters(Seq(IntSinkParameters())) },
+src/main/scala/devices/debug/Debug.scala:class TLDebugModuleOuterAsync(device: Device)(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/debug/Debug.scala:class TLDebugModuleInner(device: Device, getNComponents: () => Int, beatBytes: Int)(implicit p: Parameters) extends LazyModule
+src/main/scala/devices/debug/Debug.scala:class TLDebugModuleInnerAsync(device: Device, getNComponents: () => Int, beatBytes: Int)(implicit p: Parameters) extends LazyModule{
+src/main/scala/devices/debug/Debug.scala:class TLDebugModule(beatBytes: Int)(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/debug/DebugTransport.scala:  (implicit val p: Parameters) extends Module  {
+src/main/scala/devices/debug/DMI.scala:class DMIIO(implicit val p: Parameters) extends ParameterizedBundle()(p) {
+src/main/scala/devices/debug/DMI.scala:class ClockedDMIIO(implicit val p: Parameters) extends ParameterizedBundle()(p){
+src/main/scala/devices/debug/DMI.scala:class DMIToTL(implicit p: Parameters) extends LazyModule {
+src/main/scala/devices/debug/DMI.scala:  val node = TLClientNode(Seq(TLClientPortParameters(Seq(TLClientParameters("debug")))))
+src/main/scala/groundtest/TestHarness.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/groundtest/TestHarness.scala:class TestHarness(implicit p: Parameters) extends Module {
+src/main/scala/groundtest/Tile.scala:  def build(i: Int, p: Parameters): GroundTestTile
+src/main/scala/groundtest/Tile.scala:abstract class GroundTestTile private (params: GroundTestTileParams, x: ClockCrossingType, q: Parameters)
+src/main/scala/groundtest/Tile.scala:  def this(params: GroundTestTileParams)(implicit p: Parameters) = this(params, SynchronousCrossing(), p)
+src/main/scala/groundtest/TraceGen.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/groundtest/TraceGen.scala:  def build(i: Int, p: Parameters): GroundTestTile = new TraceGenTile(i, this)(p)
+src/main/scala/groundtest/TraceGen.scala:  implicit val p: Parameters
+src/main/scala/groundtest/TraceGen.scala:class TraceGenerator(val params: TraceGenParams)(implicit val p: Parameters) extends Module
+src/main/scala/groundtest/TraceGen.scala:class TraceGenTile(hack: Int, val id: Int, val params: TraceGenParams, q: Parameters) extends GroundTestTile(params)(q) {
+src/main/scala/groundtest/TraceGen.scala:  def this(id: Int, params: TraceGenParams)(implicit p: Parameters) = this(0, id, params, p)
+src/main/scala/groundtest/GroundTestSubsystem.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/groundtest/GroundTestSubsystem.scala:class GroundTestSubsystem(implicit p: Parameters) extends BaseSubsystem
+src/main/scala/groundtest/DummyPTW.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/groundtest/DummyPTW.scala:class DummyPTW(n: Int)(implicit p: Parameters) extends CoreModule()(p) {
+src/main/scala/jtag/JtagStateMachine.scala:import freechips.rocketchip.config.{Parameters}
+src/main/scala/jtag/JtagStateMachine.scala:class JtagStateMachine(implicit val p: Parameters) extends Module() {
+src/main/scala/jtag/JtagTap.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/jtag/JtagTap.scala:class JtagTapController(irLength: Int, initialInstruction: BigInt)(implicit val p: Parameters) extends Module {
+src/main/scala/jtag/JtagTap.scala:  def apply(irLength: Int, instructions: Map[BigInt, Chain], icode: Option[BigInt] = None)(implicit p: Parameters): JtagBlockIO = {
+src/main/scala/jtag/JtagShifter.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/jtag/JtagShifter.scala:class JtagBypassChain(implicit val p: Parameters) extends Chain {
+src/main/scala/jtag/JtagShifter.scala:  def apply()(implicit p: Parameters) = new JtagBypassChain
+src/main/scala/jtag/JtagShifter.scala:class CaptureChain[+T <: Data](gen: T)(implicit val p: Parameters) extends Chain {
+src/main/scala/jtag/JtagShifter.scala:  def apply[T <: Data](gen: T)(implicit p: Parameters) = new CaptureChain(gen)
+src/main/scala/jtag/JtagShifter.scala:class CaptureUpdateChain[+T <: Data, +V <: Data](genCapture: T, genUpdate: V)(implicit val p: Parameters) extends Chain {
+src/main/scala/jtag/JtagShifter.scala:  def apply[T <: Data](gen: T)(implicit p: Parameters) = new CaptureUpdateChain(gen, gen)
+src/main/scala/jtag/JtagShifter.scala:  def apply[T <: Data, V <: Data](genCapture: T, genUpdate: V)(implicit p: Parameters) =
+src/main/scala/util/PSDTestMode.scala:  implicit val p: Parameters
+src/main/scala/util/ClockGate.scala:import freechips.rocketchip.config.{Field, Parameters}
+src/main/scala/util/ClockGate.scala:      name: Option[String] = None)(implicit p: Parameters): Clock = {
+src/main/scala/util/ClockGate.scala:      name: String)(implicit p: Parameters): Clock =
+src/main/scala/util/Misc.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/util/Misc.scala:class ParameterizedBundle(implicit p: Parameters) extends Bundle
+src/main/scala/util/GeneratorUtils.scala:    new Config(fullConfigClassNames.foldRight(Parameters.empty) { case (currentName, config) =>
+src/main/scala/util/GeneratorUtils.scala:  def getParameters(names: Seq[String]): Parameters = getParameters(getConfig(names))
+src/main/scala/util/GeneratorUtils.scala:  def getParameters(config: Config): Parameters = config.toInstance
+src/main/scala/util/GeneratorUtils.scala:  def elaborate(fullTopModuleClassName: String, params: Parameters): Circuit = {
+src/main/scala/util/GeneratorUtils.scala:          .getConstructor(classOf[Parameters])
+src/main/scala/util/GeneratorUtils.scala:  lazy val params: Parameters = config.toInstance
+src/main/scala/util/Arbiters.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/util/Arbiters.scala:    (implicit p: Parameters) extends Module {
+src/main/scala/util/Property.scala:trait BasePropertyParameters {
+src/main/scala/util/Property.scala:case class CoverPropertyParameters(
+src/main/scala/util/Property.scala:    message: String = "") extends BasePropertyParameters {
+src/main/scala/util/Property.scala:  def generateProperty(prop_param: BasePropertyParameters)(implicit sourceInfo: SourceInfo)
+src/main/scala/util/Property.scala:  def generateProperty(prop_param: BasePropertyParameters)(implicit sourceInfo: SourceInfo) {
+src/main/scala/util/Property.scala:  def generateProperties(): Seq[BasePropertyParameters]
+src/main/scala/util/Property.scala:  def generateProperties(): Seq[CoverPropertyParameters] = {
+src/main/scala/util/Property.scala:      new CoverPropertyParameters(
+src/main/scala/util/Property.scala:// The implementation using a setable global is bad, but removes dependence on Parameters
+src/main/scala/util/Property.scala:    propLib.generateProperty(CoverPropertyParameters(cond))
+src/main/scala/util/Property.scala:    propLib.generateProperty(CoverPropertyParameters(cond, label))
+src/main/scala/util/Property.scala:    propLib.generateProperty(CoverPropertyParameters(cond, label, message))
+src/main/scala/util/Property.scala:    prop.generateProperties().foreach( (pp: BasePropertyParameters) => {
+src/main/scala/util/Property.scala:        propLib.generateProperty(CoverPropertyParameters(pp.cond, pp.label, pp.message))
+src/main/scala/interrupts/NullIntSource.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/interrupts/NullIntSource.scala:class NullIntSource(num: Int = 1, ports: Int = 1, sources: Int = 1)(implicit p: Parameters) extends LazyModule
+src/main/scala/interrupts/NullIntSource.scala:  def apply(num: Int = 1, ports: Int = 1, sources: Int = 1)(implicit p: Parameters): IntNode = {
+src/main/scala/interrupts/CrossingHelper.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/interrupts/CrossingHelper.scala:  def apply(xing: ClockCrossingType = NoCrossing, alreadyRegistered: Boolean = false)(implicit p: Parameters): IntInwardNode = {
+src/main/scala/interrupts/CrossingHelper.scala:  def apply(xing: ClockCrossingType = NoCrossing, alreadyRegistered: Boolean = false)(implicit p: Parameters): IntOutwardNode = {
+src/main/scala/interrupts/Parameters.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/interrupts/Parameters.scala:case class IntSourceParameters(
+src/main/scala/interrupts/Parameters.scala:case class IntSinkParameters(
+src/main/scala/interrupts/Parameters.scala:case class IntSourcePortParameters(sources: Seq[IntSourceParameters])
+src/main/scala/interrupts/Parameters.scala:    Seq.fill(ports)(IntSourcePortParameters(
+src/main/scala/interrupts/Parameters.scala:      Seq.tabulate(sources)(idx => IntSourceParameters(range = IntRange(idx*num, idx*num+num), resources = resources))))
+src/main/scala/interrupts/Parameters.scala:case class IntSinkPortParameters(sinks: Seq[IntSinkParameters])
+src/main/scala/interrupts/Parameters.scala:    Seq.fill(ports)(IntSinkPortParameters(Seq.fill(sinks)(IntSinkParameters())))
+src/main/scala/interrupts/Parameters.scala:case class IntEdge(source: IntSourcePortParameters, sink: IntSinkPortParameters, params: Parameters, sourceInfo: SourceInfo)
+src/main/scala/interrupts/Xbar.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/interrupts/Xbar.scala:class IntXbar()(implicit p: Parameters) extends LazyModule
+src/main/scala/interrupts/Xbar.scala:    sinkFn         = { _ => IntSinkPortParameters(Seq(IntSinkParameters())) },
+src/main/scala/interrupts/Xbar.scala:      IntSourcePortParameters((seq zip seq.map(_.num).scanLeft(0)(_+_).init).map {
+src/main/scala/interrupts/Xbar.scala:  def apply(implicit p: Parameters): IntNode = {
+src/main/scala/interrupts/package.scala:  type IntInwardNode = InwardNodeHandle[IntSourcePortParameters, IntSinkPortParameters, IntEdge, Vec[Bool]]
+src/main/scala/interrupts/package.scala:  type IntOutwardNode = OutwardNodeHandle[IntSourcePortParameters, IntSinkPortParameters, IntEdge, Vec[Bool]]
+src/main/scala/interrupts/package.scala:  type IntNode = SimpleNodeHandle[IntSourcePortParameters, IntSinkPortParameters, IntEdge, Vec[Bool]]
+src/main/scala/interrupts/Nodes.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/interrupts/Nodes.scala:object IntImp extends SimpleNodeImp[IntSourcePortParameters, IntSinkPortParameters, IntEdge, Vec[Bool]]
+src/main/scala/interrupts/Nodes.scala:  def edge(pd: IntSourcePortParameters, pu: IntSinkPortParameters, p: Parameters, sourceInfo: SourceInfo) = IntEdge(pd, pu, p, sourceInfo)
+src/main/scala/interrupts/Nodes.scala:  override def mixO(pd: IntSourcePortParameters, node: OutwardNode[IntSourcePortParameters, IntSinkPortParameters, Vec[Bool]]): IntSourcePortParameters =
+src/main/scala/interrupts/Nodes.scala:  override def mixI(pu: IntSinkPortParameters, node: InwardNode[IntSourcePortParameters, IntSinkPortParameters, Vec[Bool]]): IntSinkPortParameters =
+src/main/scala/interrupts/Nodes.scala:case class IntSourceNode(portParams: Seq[IntSourcePortParameters])(implicit valName: ValName) extends SourceNode(IntImp)(portParams) with IntFormatNode
+src/main/scala/interrupts/Nodes.scala:case class IntSinkNode(portParams: Seq[IntSinkPortParameters])(implicit valName: ValName) extends SinkNode(IntImp)(portParams) with IntFormatNode
+src/main/scala/interrupts/Nodes.scala:  sourceFn: IntSourcePortParameters => IntSourcePortParameters = { s => s },
+src/main/scala/interrupts/Nodes.scala:  sinkFn:   IntSinkPortParameters   => IntSinkPortParameters   = { s => s })(
+src/main/scala/interrupts/Nodes.scala:  sourceFn:       Seq[IntSourcePortParameters] => IntSourcePortParameters,
+src/main/scala/interrupts/Nodes.scala:  sinkFn:         Seq[IntSinkPortParameters]   => IntSinkPortParameters,
+src/main/scala/interrupts/Nodes.scala:object IntSyncImp extends SimpleNodeImp[IntSourcePortParameters, IntSinkPortParameters, IntEdge, SyncInterrupts]
+src/main/scala/interrupts/Nodes.scala:  def edge(pd: IntSourcePortParameters, pu: IntSinkPortParameters, p: Parameters, sourceInfo: SourceInfo) = IntEdge(pd, pu, p, sourceInfo)
+src/main/scala/interrupts/Nodes.scala:  override def mixO(pd: IntSourcePortParameters, node: OutwardNode[IntSourcePortParameters, IntSinkPortParameters, SyncInterrupts]): IntSourcePortParameters =
+src/main/scala/interrupts/Nodes.scala:  override def mixI(pu: IntSinkPortParameters, node: InwardNode[IntSourcePortParameters, IntSinkPortParameters, SyncInterrupts]): IntSinkPortParameters =
+src/main/scala/interrupts/Crossing.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/interrupts/Crossing.scala:class IntXing(sync: Int = 3)(implicit p: Parameters) extends LazyModule
+src/main/scala/interrupts/Crossing.scala:  def apply(alreadyRegistered: Boolean = false)(implicit p: Parameters) =
+src/main/scala/interrupts/Crossing.scala:class IntSyncCrossingSource(alreadyRegistered: Boolean = false)(implicit p: Parameters) extends LazyModule
+src/main/scala/interrupts/Crossing.scala:class IntSyncCrossingSink(sync: Int = 3)(implicit p: Parameters) extends LazyModule
+src/main/scala/interrupts/Crossing.scala:  def apply(sync: Int = 3)(implicit p: Parameters) =
+src/main/scala/system/TestHarness.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/system/TestHarness.scala:class TestHarness()(implicit p: Parameters) extends Module {
+src/main/scala/system/ExampleRocketSystem.scala:import freechips.rocketchip.config.Parameters
+src/main/scala/system/ExampleRocketSystem.scala:class ExampleRocketSystem(implicit p: Parameters) extends RocketSubsystem

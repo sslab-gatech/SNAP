@@ -1,0 +1,23 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sha3/src/main/scala/ctrl.scala:95:3: object debug in package Chisel is deprecated (since chisel3): debug doesn't do anything in Chisel3 as no pruning happens in the frontend[0m
+[0m[[0m[33mwarn[0m] [0m[0m  debug(buffer_wen)[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sha3/src/main/scala/ctrl.scala:97:3: object debug in package Chisel is deprecated (since chisel3): debug doesn't do anything in Chisel3 as no pruning happens in the frontend[0m
+[0m[[0m[33mwarn[0m] [0m[0m  debug(buffer_waddr)[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sha3/src/main/scala/ctrl.scala:99:3: object debug in package Chisel is deprecated (since chisel3): debug doesn't do anything in Chisel3 as no pruning happens in the frontend[0m
+[0m[[0m[33mwarn[0m] [0m[0m  debug(buffer_wdata)[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sha3/src/main/scala/ctrl.scala:101:3: object debug in package Chisel is deprecated (since chisel3): debug doesn't do anything in Chisel3 as no pruning happens in the frontend[0m
+[0m[[0m[33mwarn[0m] [0m[0m  debug(buffer_rdata)[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sha3/src/main/scala/ctrl.scala:161:3: object debug in package Chisel is deprecated (since chisel3): debug doesn't do anything in Chisel3 as no pruning happens in the frontend[0m
+[0m[[0m[33mwarn[0m] [0m[0m  debug(words_filled)[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sha3/src/main/scala/ctrl.scala:164:3: object debug in package Chisel is deprecated (since chisel3): debug doesn't do anything in Chisel3 as no pruning happens in the frontend[0m
+[0m[[0m[33mwarn[0m] [0m[0m  debug(byte_offset)[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sha3/src/main/scala/iota.scala:27:3: object debug in package Chisel is deprecated (since chisel3): debug doesn't do anything in Chisel3 as no pruning happens in the frontend[0m
+[0m[[0m[33mwarn[0m] [0m[0m  debug(const)[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 217 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0m8 warnings found[0m

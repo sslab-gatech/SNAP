@@ -1,0 +1,5 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-cache/design/craft/inclusivecache/src/Directory.scala:113:20: method apply in object LFSR16 is deprecated (since 3.2): Use chisel3.util.random.LFSR(16) for a 16-bit LFSR[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val victimLFSR = LFSR16(params.dirReg(ren))(InclusiveCacheParameters.lfsrBits-1, 0)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 650 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

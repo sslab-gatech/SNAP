@@ -1,0 +1,393 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/DescribedSRAM.scala:7:34: imported `Annotated' is permanently hidden by definition of object Annotated in package util[0m
+[0m[[0m[33mwarn[0m] [0m[0mimport freechips.rocketchip.util.Annotated[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                 ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/diplomacy/AddressRange.scala:51:44: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following input: (_, _)[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ranges.tail.foldLeft(Seq(ranges.head)) { case (head :: tail, x) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/amba/ahb/Monitor.scala:17:72: type Reset in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def legalize(bundle: AHBSlaveBundle, edge: AHBEdgeParameters, reset: Reset): Unit[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/amba/ahb/Monitor.scala:30:73: type Reset in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def legalize(bundle: AHBMasterBundle, edge: AHBEdgeParameters, reset: Reset): Unit[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/amba/apb/Monitor.scala:17:67: type Reset in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def legalize(bundle: APBBundle, edge: APBEdgeParameters, reset: Reset): Unit[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/amba/axi4/Monitor.scala:17:69: type Reset in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def legalize(bundle: AXI4Bundle, edge: AXI4EdgeParameters, reset: Reset): Unit[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Custom.scala:22:14: value Input in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val addr = Input(UInt(log2Up(p.addrs.foldLeft(0){_ max _}).W))[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Custom.scala:23:14: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val data = Output(UInt(p.width.W))[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Custom.scala:24:15: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val ready = Output(Bool())[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Custom.scala:25:15: value Input in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val valid = Input(Bool())[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Debug.scala:763:27: value withReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    if (supportHartArray) withReset (~io.dmactive || ~dmAuthenticated) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Debug.scala:875:26: value withReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    if (nHaltGroups > 0) withReset(~io.dmactive) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Debug.scala:1674:5: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClock (gated_clock) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Debug.scala:1677:7: value withReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m      withReset (~dmactive_synced) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Periphery.scala:176:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/vsrc/SimDTM.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Periphery.scala:177:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/csrc/SimDTM.cc")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Periphery.scala:180:73: value IntParam in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0mclass SimJTAG(tickDelay: Int = 50) extends BlackBox(Map("TICK_DELAY" -> IntParam(tickDelay)))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Periphery.scala:209:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/vsrc/SimJTAG.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Periphery.scala:210:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/csrc/SimJTAG.cc")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Periphery.scala:211:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/csrc/remote_bitbang.h")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/devices/debug/Periphery.scala:212:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/csrc/remote_bitbang.cc")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/diplomacy/BundleBridge.scala:73:38: value DataMirror in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    getElements(in).foreach { elt => DataMirror.directionOf(elt) match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/diplomacy/BundleBridge.scala:74:12: value ActualDirection in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m      case ActualDirection.Output => ()[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/diplomacy/BundleBridge.scala:75:12: value ActualDirection in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m      case ActualDirection.Unspecified => ()[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/diplomacy/Resources.scala:153:64: Option[String] and String are unrelated: they will most likely never compare equal[0m
+[0m[[0m[33mwarn[0m] [0m[0m      val mainreg = reg.find(x => DiplomacyUtils.regName(x._1) == "control").getOrElse(reg.head)._2[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagShifter.scala:33:17: value Input in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val chainIn = Input(new ShifterIO)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagShifter.scala:34:18: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val chainOut = Output(new ShifterIO)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                 ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagShifter.scala:38:14: value Input in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val bits = Input(gen)  // data to capture, should be always valid[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagShifter.scala:39:17: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val capture = Output(Bool())  // will be high in capture state (single cycle), captured on following rising edge[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagShifter.scala:98:11: value DataMirror in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val n = DataMirror.widthOf(gen) match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagShifter.scala:146:22: value DataMirror in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val captureWidth = DataMirror.widthOf(genCapture) match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagShifter.scala:150:21: value DataMirror in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val updateWidth = DataMirror.widthOf(genUpdate) match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:19:34: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val TRSTn = if (hasTRSTn) Some(Output(Bool())) else None[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                 ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:20:15: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val TCK   = Output(Clock())[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:21:15: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val TMS   = Output(Bool())[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:22:15: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val TDI   = Output(Bool())[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:23:15: value Input in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val TDO   = Input(new Tristate())[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:31:15: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val state = Output(JtagState.State.chiselType())  // state, transitions on TCK rising edge[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:32:21: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val instruction = Output(UInt(irLength.W))  // current active instruction[0m
+[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:33:15: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val reset = Output(Bool())  // synchronous reset asserted in Test-Logic-Reset state, should NOT hold the FSM in reset[0m
+[0m[[0m[33mwarn[0m] [0m[0m              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:39:20: value Input in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val jtag_reset = Input(Bool())[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:49:36: value Input in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val idcode = if (hasIdcode) Some(Input(new JTAGIdcodeBundle())) else None[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:57:22: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val dataChainOut = Output(new ShifterIO)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:58:21: value Input in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val dataChainIn = Input(new ShifterIO)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/JtagTap.scala:89:3: value withReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  withReset(io.control.jtag_reset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/Utils.scala:21:5: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClock((!clock.asUInt).asClock) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/Utils.scala:37:17: value Output in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val count = Output(UInt(width.W))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/Utils.scala:58:5: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClock(data.asClock) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/jtag/Utils.scala:65:5: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClock(data.asClock) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/CSR.scala:402:17: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val reg_wfi = withClock(io.ungated_clock) { Reg(init=Bool(false)) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/CSR.scala:410:57: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val reg_cycle = if (enableCommitLog) reg_instret else withClock(io.ungated_clock) { WideCounter(64, !io.csr_stall) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/DCache.scala:23:89: method toNamed in class BaseModule is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      def toFirrtl: firrtl.annotations.Annotation = firrtl.passes.InlineAnnotation(self.toNamed) } )[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/Frontend.scala:84:12: value withReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val fq = withReset(reset || io.cpu.req.valid) { Module(new ShiftQueue(new FrontendResp, 5, flow = true)) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/Frontend.scala:96:3: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  withClock (gated_clock) { // entering gated-clock domain[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/ICache.scala:187:14: method apply in object LFSR16 is deprecated (since 3.2): Use chisel3.util.random.LFSR(16) for a 16-bit LFSR[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val v0 = LFSR16(refill_fire)(log2Up(nWays)-1,0)[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/PMP.scala:137:38: method /: in trait TraversableOnce is deprecated (since 2.12.10): Use foldLeft instead of /:[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ((true.B, 0.U.asTypeOf(new PMP)) /: pmps) { case ((h, prev), pmp) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/PMP.scala:161:19: method /: in trait TraversableOnce is deprecated (since 2.12.10): Use foldLeft instead of /:[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val res = (pmp0 /: (io.pmp zip (pmp0 +: io.pmp)).reverse) { case (prev, (pmp, prevPMP)) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/PTW.scala:99:3: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  withClock (gated_clock) { // entering gated-clock domain[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/rocket/RocketCore.scala:913:20: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val rocketImpl = withClock (gated_clock) { new RocketImpl }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/subsystem/InterruptBus.scala:16:36: class IntXing in package interrupts is deprecated (since rocket-chip 1.2): IntXing does not ensure interrupt source is glitch free. Use IntSyncSource and IntSyncSink[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val asyncXing = LazyModule(new IntXing(sync))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/tile/FPU.scala:938:17: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val fpuImpl = withClock (gated_clock) { new FPUImpl }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/tile/LazyRoCC.scala:363:9: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m        setResource(s"/vsrc/$blackBoxFile.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/tilelink/Arbiter.scala:100:14: method apply in object LFSR16 is deprecated (since 3.2): Use chisel3.util.random.LFSR(16) for a 16-bit LFSR[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val lfsr = LFSR16(Bool(true))[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/tilelink/Monitor.scala:21:55: type Reset in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def legalize(bundle: TLBundle, edge: TLEdge, reset: Reset): Unit[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/tilelink/Monitor.scala:529:55: type Reset in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def legalize(bundle: TLBundle, edge: TLEdge, reset: Reset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:25:40: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  write_mask_granularity: Int) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:19:35: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class SRAMAnnotation(target: Named,[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:26:20: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: Named) = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:19:12: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class SRAMAnnotation(target: Named,[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:30:102: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class InterruptsPortAnnotation(target: Named, name: String, interruptIndexes: Seq[Int]) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:30:45: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class InterruptsPortAnnotation(target: Named, name: String, interruptIndexes: Seq[Int]) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:31:20: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: Named) = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:35:72: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class GlobalConstantsAnnotation(target: Named, xLen: Int) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:35:46: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class GlobalConstantsAnnotation(target: Named, xLen: Int) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:36:20: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: Named) = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:35:12: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class GlobalConstantsAnnotation(target: Named, xLen: Int) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:40:51: method toNamed in trait InstanceId is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def toFirrtl = GlobalConstantsAnnotation(target.toNamed, xLen)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:44:102: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class ParamsAnnotation(target: Named, paramsClassName: String, params: Map[String,Any]) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:44:37: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class ParamsAnnotation(target: Named, paramsClassName: String, params: Map[String,Any]) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:45:20: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: Named) = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:44:12: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class ParamsAnnotation(target: Named, paramsClassName: String, params: Map[String,Any]) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:50:42: method toNamed in trait InstanceId is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def toFirrtl = ParamsAnnotation(target.toNamed, params.getClass.getName, paramMap)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:54:102: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class AddressMapAnnotation(target: Named, mapping: Seq[AddressMapEntry], label: String) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:54:41: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class AddressMapAnnotation(target: Named, mapping: Seq[AddressMapEntry], label: String) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:55:20: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: Named) = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:54:12: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class AddressMapAnnotation(target: Named, mapping: Seq[AddressMapEntry], label: String) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:68:93: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class TLToAXI4IdMapAnnotation(target: Named, mapping: Seq[TLToAXI4IdMapEntry]) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:68:44: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class TLToAXI4IdMapAnnotation(target: Named, mapping: Seq[TLToAXI4IdMapEntry]) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:69:20: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: Named) = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:68:12: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class TLToAXI4IdMapAnnotation(target: Named, mapping: Seq[TLToAXI4IdMapEntry]) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:73:63: class ModuleName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class RetimeModuleAnnotation(target: ModuleName) extends SingleTargetAnnotation[ModuleName] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:73:43: class ModuleName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class RetimeModuleAnnotation(target: ModuleName) extends SingleTargetAnnotation[ModuleName] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:74:20: class ModuleName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: ModuleName) = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:73:12: class ModuleName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class RetimeModuleAnnotation(target: ModuleName) extends SingleTargetAnnotation[ModuleName] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:84:21: method toNamed in trait InstanceId is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    target = target.toNamed,[0m
+[0m[[0m[33mwarn[0m] [0m[0m                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:96:37: class ComponentName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  address: Seq[AddressSet]) extends SingleTargetAnnotation[ComponentName] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:91:11: class ComponentName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  target: ComponentName,[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:97:20: class ComponentName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: ComponentName): TopLevelPortAnnotation = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:90:12: class ComponentName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class TopLevelPortAnnotation([0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:101:75: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class ResetVectorAnnotation(target: Named, resetVec: BigInt) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:101:42: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class ResetVectorAnnotation(target: Named, resetVec: BigInt) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:102:20: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: Named): ResetVectorAnnotation = this.copy(n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:101:12: trait Named in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class ResetVectorAnnotation(target: Named, resetVec: BigInt) extends SingleTargetAnnotation[Named] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:117:17: method toNamed in trait InstanceId is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      component.toNamed,[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:128:17: method toNamed in trait InstanceId is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      component.toNamed,[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:135:95: method toNamed in trait InstanceId is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    annotate(new ChiselAnnotation {def toFirrtl: Annotation = ResetVectorAnnotation(component.toNamed, resetVec)})[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:148:83: method toNamed in trait InstanceId is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    annotate(new ChiselAnnotation { def toFirrtl = AddressMapAnnotation(component.toNamed, mapping, "mapping") })[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:153:86: method toNamed in trait InstanceId is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    annotate(new ChiselAnnotation { def toFirrtl = TLToAXI4IdMapAnnotation(component.toNamed, mapping) })[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:164:80: method toNamed in trait NamedComponent is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    annotate(new ChiselAnnotation { def toFirrtl = TopLevelPortAnnotation(data.toNamed, protocol, tags, names, width, address) })[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:175:40: value dontTouch in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m     case elt: Element => chisel3.core.dontTouch(elt)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:196:123: method toNamed in class BaseModule is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  chisel3.experimental.annotate(new ChiselAnnotation { def toFirrtl: RetimeModuleAnnotation = RetimeModuleAnnotation(self.toNamed) })[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                                                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:201:40: class ModuleName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  regMappingSer: RegistersSer) extends SingleTargetAnnotation[ModuleName] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:200:11: class ModuleName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  target: ModuleName,[0m
+[0m[[0m[33mwarn[0m] [0m[0m          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:202:20: class ModuleName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def duplicate(n: ModuleName): RegFieldDescMappingAnnotation = this.copy(target = n)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:199:12: class ModuleName in package annotations is deprecated (since 1.2): Use Target instead, will be removed in 1.3[0m
+[0m[[0m[33mwarn[0m] [0m[0mcase class RegFieldDescMappingAnnotation([0m
+[0m[[0m[33mwarn[0m] [0m[0m           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Annotations.scala:290:92: method toNamed in class BaseModule is deprecated (since 3.2): toNamed API is deprecated -- use toTarget instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    annotate(new ChiselAnnotation { def toFirrtl = RegFieldDescMappingAnnotation(rawModule.toNamed, registersSer) })[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/ClockDivider.scala:24:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/vsrc/ClockDivider2.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/ClockDivider.scala:32:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/vsrc/ClockDivider3.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/ClockDivider.scala:58:50: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  def apply(clock_in: Clock, pow2: Int): Clock = withClock(clock_in) { apply(pow2) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                 ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/ECC.scala:186:14: method apply in object LFSR16 is deprecated (since 3.2): Use chisel3.util.random.LFSR(16) for a 16-bit LFSR[0m
+[0m[[0m[33mwarn[0m] [0m[0m    UIntToOH(LFSR16()(log2Up(width)+f-1,0))(width-1,0)[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/HeterogeneousBag.scala:9:68: type Record in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0mfinal case class HeterogeneousBag[T <: Data](elts: Seq[T]) extends Record with collection.IndexedSeq[T] {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Misc.scala:157:28: method apply in object LFSR16 is deprecated (since 3.2): Use chisel3.util.random.LFSR(16) for a 16-bit LFSR[0m
+[0m[[0m[33mwarn[0m] [0m[0m  private def randomizer = LFSR16()[0m
+[0m[[0m[33mwarn[0m] [0m[0m                           ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/Replacement.scala:17:14: method apply in object LFSR16 is deprecated (since 3.2): Use chisel3.util.random.LFSR(16) for a 16-bit LFSR[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val lfsr = LFSR16(replace)[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/ResetCatchAndSync.scala:27:3: value withReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  withReset(post_psd_reset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/ResetCatchAndSync.scala:38:5: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClockAndReset(clk, rst) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/package.scala:32:17: method /: in trait TraversableOnce is deprecated (since 2.12.10): Use foldLeft instead of /:[0m
+[0m[[0m[33mwarn[0m] [0m[0m        (x.head /: x.zipWithIndex.tail) { case (prev, (cur, i)) => Mux(truncIdx === i.U, cur, prev) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/package.scala:43:10: method /: in trait TraversableOnce is deprecated (since 2.12.10): Use foldLeft instead of /:[0m
+[0m[[0m[33mwarn[0m] [0m[0m      (x /: (0 until log2Ceil(x.size)))((r, i) => (r.rotate(1 << i) zip r).map { case (s, a) => Mux(amt(i), s, a) })[0m
+[0m[[0m[33mwarn[0m] [0m[0m         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/package.scala:51:10: method /: in trait TraversableOnce is deprecated (since 2.12.10): Use foldLeft instead of /:[0m
+[0m[[0m[33mwarn[0m] [0m[0m      (x /: (0 until log2Ceil(x.size)))((r, i) => (r.rotateRight(1 << i) zip r).map { case (s, a) => Mux(amt(i), s, a) })[0m
+[0m[[0m[33mwarn[0m] [0m[0m         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/package.scala:137:10: method /: in trait TraversableOnce is deprecated (since 2.12.10): Use foldLeft instead of /:[0m
+[0m[[0m[33mwarn[0m] [0m[0m      (x /: (0 until log2Ceil(x.getWidth)))((r, i) => Mux(amt(i), r.rotateRight(1 << i), r))[0m
+[0m[[0m[33mwarn[0m] [0m[0m         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/rocket-chip/src/main/scala/util/package.scala:144:10: method /: in trait TraversableOnce is deprecated (since 2.12.10): Use foldLeft instead of /:[0m
+[0m[[0m[33mwarn[0m] [0m[0m      (x /: (0 until log2Ceil(x.getWidth)))((r, i) => Mux(amt(i), r.rotateLeft(1 << i), r))[0m
+[0m[[0m[33mwarn[0m] [0m[0m         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 2363 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0m131 warnings found[0m

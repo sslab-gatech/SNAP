@@ -1,0 +1,89 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/BlockDevice.scala:420:23: value IntParam in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    Map("TAG_BITS" -> IntParam(log2Up(config.get.nTrackers)))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/BlockDevice.scala:432:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/testchipip/vsrc/SimBlockDevice.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/BlockDevice.scala:433:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/testchipip/csrc/SimBlockDevice.cc")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/BlockDevice.scala:434:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/testchipip/csrc/blkdev.cc")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/BlockDevice.scala:435:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/testchipip/csrc/blkdev.h")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:18:5: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    setResource("/testchipip/vsrc/ClockUtil.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:29:5: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    setResource("/testchipip/vsrc/ClockUtil.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:39:5: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    setResource("/testchipip/vsrc/ClockUtil.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:48:5: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    setResource("/testchipip/vsrc/ClockUtil.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:66:5: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    setResource("/testchipip/vsrc/ClockUtil.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:88:5: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    setResource("/testchipip/vsrc/ClockUtil.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:105:39: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val syncs  = andClocks.map { c => withClockAndReset(c, io.resetAsync) { Module(new AsyncResetSynchronizerShiftReg(1, 3, 0)) } }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                      ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:114:132: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    syncs.zipWithIndex.foreach { case (s, i) => s.io.d := (io.sel === i.U) && !(syncs.zipWithIndex.filter(_._2 != i).map(_._1.io.q.toBool).reduce(_||_)) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                                                                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:177:9: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m        withClock(gater.io.clockGated)(block)[0m
+[0m[[0m[33mwarn[0m] [0m[0m        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtil.scala:186:9: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m        withClockAndReset(gater.io.clockGated, reset)(block)[0m
+[0m[[0m[33mwarn[0m] [0m[0m        ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:28:17: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val state = withClockAndReset(clocks(0), syncReset) { RegInit(sReset) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:30:5: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClock(mux.io.clockOut) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:34:5: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClockAndReset(clocks(0), syncReset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:73:19: value withClock in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val divider = withClock(myClock) { Module(new ClockDivider(log2Ceil(divs.max))) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:77:17: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val state = withClockAndReset(myClock, syncReset) { RegInit(sReset) }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:79:5: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClockAndReset(myClock, syncReset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:107:22: value IntParam in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    "minperiodps" -> IntParam(minperiodps),[0m
+[0m[[0m[33mwarn[0m] [0m[0m                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:108:22: value IntParam in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    "maxperiodps" -> IntParam(maxperiodps.getOrElse(BigInt(0)))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/ClockUtilTests.scala:118:72: value IntParam in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0mclass ClockGenerator(periodps: Int) extends BlackBox(Map("periodps" -> IntParam(periodps))) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/NoDebug.scala:17:14: type Reset in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val reset: Reset[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/SerialAdapter.scala:182:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/testchipip/vsrc/SimSerial.v")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/SerialAdapter.scala:183:3: method setResource in trait HasBlackBoxResource is deprecated (since 3.2): Use addResource instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  setResource("/testchipip/csrc/SimSerial.cc")[0m
+[0m[[0m[33mwarn[0m] [0m[0m  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/SerialAdapter.scala:202:14: type Reset in package core is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val reset: Reset[0m
+[0m[[0m[33mwarn[0m] [0m[0m             ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/testchipip/src/main/scala/UARTAdapter.scala:132:61: value IntParam in package core is deprecated (since 3.2): Use the version in chisel3.experimental._[0m
+[0m[[0m[33mwarn[0m] [0m[0mclass SimUART(uartno: Int) extends BlackBox(Map("UARTNO" -> IntParam(uartno))) with HasBlackBoxResource {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 385 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0m30 warnings found[0m

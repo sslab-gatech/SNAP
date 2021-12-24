@@ -1,0 +1,14 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/gemmini/src/main/scala/gemmini/Controller.scala:51:54: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    (if (garbage_bit.getWidth > 0) garbage_bit.toBool() else true.B)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/gemmini/src/main/scala/gemmini/ROB.scala:158:107: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m      Cat(is_st_and_must_wait_for_prior_ex_config) | Cat(is_ex_config_and_must_wait_for_prior_st)).toBools().reverse[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                                                          ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/gemmini/src/main/scala/gemmini/Util.scala:41:24: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val exp = u.toBools().zipWithIndex.map { case (b, i) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/gemmini/src/main/scala/gemmini/Util.scala:52:24: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val exp = u.toBools().zipWithIndex.map { case (b, i) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 1150 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0m5 warnings found[0m

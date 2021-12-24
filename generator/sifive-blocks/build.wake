@@ -1,0 +1,13 @@
+def scalacOpts =
+  "-deprecation",
+  "-feature",
+  "-unchecked",
+  "-language:reflectiveCalls",
+  "-Xsource:2.11",
+  Nil
+
+global def sifiveBlocksScalaModule =
+  makeScalaModuleFromJSON here "sifiveBlocks"
+  | setScalaModuleDeps (rocketchipScalaModule, Nil)
+  | setScalaModuleScalacOptions scalacOpts
+  | addMacrosParadiseCompilerPlugin

@@ -1,0 +1,47 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/chiplink/Partial.scala:85:24: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    val bits  = i_mask.toBools[0m
+[0m[[0m[33mwarn[0m] [0m[0m                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/chiplink/RX.scala:52:13: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  (formatOH.toBools zip hqX) foreach { case (sel, hq) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m            ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/chiplink/SourceA.scala:92:19: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  (cams zip a_sel.toBools) foreach { case (cam, sel) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/chiplink/SourceA.scala:101:19: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  (cams zip d_sel.toBools) foreach { case (cam, sel) =>[0m
+[0m[[0m[33mwarn[0m] [0m[0m                  ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/chiplink/TX.scala:97:20: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  (ioF zip allowed.toBools) foreach { case (beat, sel) => beat.ready := sel }[0m
+[0m[[0m[33mwarn[0m] [0m[0m                   ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/gpio/GPIOPins.scala:25:5: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClockAndReset(clock, reset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/i2c/I2CPins.scala:19:5: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClockAndReset(clock, reset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/mockaon/MockAONPeriphery.scala:44:70: method do_toBool in class Bits is deprecated (since 3.2): Use asBool instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val rtc_sync = SynchronizerShiftReg(outer.aon.module.io.rtc.asUInt.toBool, 3, Some("rtc"))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/pwm/PWMPins.scala:16:5: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClockAndReset(clock, reset){[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/spi/SPIPhysical.scala:120:54: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    Mux(fmt.endian === SPIEndian.MSB, data, Cat(data.toBools))[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                                     ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/spi/SPIPhysical.scala:134:24: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m    rxd_delayed := rxd.toBools[0m
+[0m[[0m[33mwarn[0m] [0m[0m                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/spi/SPIPhysical.scala:166:24: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  (io.port.dq zip (txd.toBools zip txen)).foreach {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                       ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/spi/SPIPins.scala:23:5: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClockAndReset(clock, reset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/uart/UARTPins.scala:18:5: value withClockAndReset in package experimental is deprecated (since 3.2): Use the version in chisel3._[0m
+[0m[[0m[33mwarn[0m] [0m[0m    withClockAndReset(clock, reset) {[0m
+[0m[[0m[33mwarn[0m] [0m[0m    ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/sifive-blocks/src/main/scala/devices/uart/UARTRx.scala:43:31: method do_toBools in class Bits is deprecated (since 3.2): Use asBools instead[0m
+[0m[[0m[33mwarn[0m] [0m[0m  val voter = Majority(sample.toBools.toSet)[0m
+[0m[[0m[33mwarn[0m] [0m[0m                              ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 714 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0m16 warnings found[0m

@@ -1,0 +1,6 @@
+[0m[[0m[33mwarn[0m] [0m[0m/home/centos/firesim/target-design/chipyard/generators/chipyard/src/main/scala/IOBinders.scala:137:42: match may not be exhaustive.[0m
+[0m[[0m[33mwarn[0m] [0m[0mIt would fail on the following inputs: Bidirectional(_), Empty, Unspecified[0m
+[0m[[0m[33mwarn[0m] [0m[0m      experimental.DataMirror.directionOf(axi.ar.ready) match {[0m
+[0m[[0m[33mwarn[0m] [0m[0m                                         ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mthere were 8 feature warnings; re-run with -feature for details[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m

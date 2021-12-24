@@ -1,0 +1,8 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/utilities/src/main/resources/bootrom,/home/centos/firesim/target-design/chipyard/generators/utilities/target/scala-2.12/classes/bootrom)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/utilities/src/main/resources/csrc,/home/centos/firesim/target-design/chipyard/generators/utilities/target/scala-2.12/classes/csrc)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/utilities/src/main/resources/bootrom/Makefile,/home/centos/firesim/target-design/chipyard/generators/utilities/target/scala-2.12/classes/bootrom/Makefile)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/utilities/src/main/resources/bootrom/bootrom.S,/home/centos/firesim/target-design/chipyard/generators/utilities/target/scala-2.12/classes/bootrom/bootrom.S)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/utilities/src/main/resources/bootrom/bootrom.img,/home/centos/firesim/target-design/chipyard/generators/utilities/target/scala-2.12/classes/bootrom/bootrom.img)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/utilities/src/main/resources/bootrom/linker.ld,/home/centos/firesim/target-design/chipyard/generators/utilities/target/scala-2.12/classes/bootrom/linker.ld)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/utilities/src/main/resources/csrc/emulator.cc,/home/centos/firesim/target-design/chipyard/generators/utilities/target/scala-2.12/classes/csrc/emulator.cc)[0m

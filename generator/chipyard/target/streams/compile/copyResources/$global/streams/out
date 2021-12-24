@@ -1,0 +1,3 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/chipyard/src/main/resources/vsrc,/home/centos/firesim/target-design/chipyard/generators/chipyard/target/scala-2.12/classes/vsrc)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/home/centos/firesim/target-design/chipyard/generators/chipyard/src/main/resources/vsrc/GCDMMIOBlackBox.v,/home/centos/firesim/target-design/chipyard/generators/chipyard/target/scala-2.12/classes/vsrc/GCDMMIOBlackBox.v)[0m
