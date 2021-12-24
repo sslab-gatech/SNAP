@@ -5,12 +5,14 @@ To run SNAP, you would need to replace the existing HW design directory (generat
 While all the necessary instructions to run FPGA instances are provided in the FireSim’s documentation (https://docs.fires.im/en/latest/index.html), we add some detailed steps that might not be clearly indicated in the documentation.
 
 1. Initial Setup/Installation for FireSim
+
 Please refer to https://docs.fires.im/en/latest/Initial-Setup/index.html
 
 2. Setting up the FireSim Repo
+
 When you set up a manager instance during the initial setup process (Step 1), check out a specific tag, “1.9.0”.
 
-git clone https://github.com/firesim/firesim.git
+```git clone https://github.com/firesim/firesim.git```
 cd firesim
 git checkout 1.9.0 # extra command to check out a specific tag
 ./build-setup.sh fast
@@ -18,6 +20,7 @@ git checkout 1.9.0 # extra command to check out a specific tag
 3. Replace the existing “generator” directory with the SNAP design.
 
 4. Building Hardware Design for SNAP
+
 In ~/firesim/deploy/config_build.ini,
 Change the bucket name: s3bucketname=firesim-snap
 Add to [builds] (comment out other things)
