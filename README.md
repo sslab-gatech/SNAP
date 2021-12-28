@@ -1,6 +1,6 @@
 # Hardware Support to Improve Fuzzing Performance and Precision
 
-SNAP was developed using FireSim, an open-source hardware simulation platform that runs on cloud FPGAs (Amazon EC2 F1).
+SNAP was developed using [FireSim](https://fires.im), an open-source hardware simulation platform that runs on cloud FPGAs (Amazon EC2 F1).
 To run SNAP, you would need to replace the existing HW design directory (generator) with the SNAP’s one and build a new HW design that will be mapped to FPGA instances.
 While all the necessary instructions to run FPGA instances are provided in the FireSim’s documentation (https://docs.fires.im/en/latest/index.html), we add some detailed steps that might not be clearly indicated in the documentation.
 
