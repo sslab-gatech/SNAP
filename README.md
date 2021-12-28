@@ -30,15 +30,15 @@ cp -rf ./SNAP/generator ~/firesim/
 
 ## Building a New Hardware Design for SNAP
 
-1. In `~/firesim/deploy/config_build.ini`, \
-- Add a bucket name: ```s3bucketname=firesim-snap``` \
-- Add to ```[builds]``` (comment out other things) \
-```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap``` \
-#### Add to ```[agfistoshare]``` (comment out other things)
+1. In `~/firesim/deploy/config_build.ini`,
+- Add a bucket name: ```s3bucketname=firesim-snap```
+- Add to ```[builds]``` (comment out other things)
+```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
+-  Add to ```[agfistoshare]``` (comment out other things)
 ```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
 
 2. In `~/firesim/deploy/config_build_recipes.ini`,
-Add
+- Add
 ```
 [firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
 DESIGN=FireSim
@@ -58,7 +58,9 @@ Refer to the [documentation](https://docs.fires.im/en/latest/Building-a-FireSim-
 ## Running FireSim Simulations with SNAP
 
 1. In `~/firesim/deploy/config_runtime.ini`, change the default HW config.
-`defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap`
+```
+defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
+```
 
 2. In `~/firesim/deploy/config_hwdb.ini`, add a new HW DB.
 ```
