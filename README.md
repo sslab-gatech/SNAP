@@ -43,16 +43,14 @@ deploytriplet=None
 
 Run ```firesim buildafi``` (This will take a long time, ~10 hours).
 
-Refer to https://docs.fires.im/en/latest/Building-a-FireSim-AFI.html for more details.
+Refer to the [documentation](https://docs.fires.im/en/latest/Building-a-FireSim-AFI.html) for more details.
 
 5. Running FireSim Simulations with SNAP
 
-In `~/firesim/deploy/config_runtime.ini`, \
-Change the default HW config. \
+In `~/firesim/deploy/config_runtime.ini`, change the default HW config. \
 `defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap`
 
-In `~/firesim/deploy/config_hwdb.ini`, \
-Add \
+In `~/firesim/deploy/config_hwdb.ini`, add a new HW DB.
 ```
 [firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
 agfi=agfi-062b20613c52a2313 # replace with your agfi after HW build completes
@@ -62,7 +60,7 @@ customruntimeconfig=None
 
 Launch FPGA instance(s) following the [documentation](https://docs.fires.im/en/latest/Running-Simulations-Tutorial/index.html).
 
-After an FPGA instance is launched, insert modules into the kernel. \
+After an FPGA instance is launched, insert modules into the kernel.
 ```
 # insmod cmap.ko
 # insmod lbq.ko
