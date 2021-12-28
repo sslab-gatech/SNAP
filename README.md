@@ -31,11 +31,18 @@ cp -rf ./SNAP/generator ~/firesim/
 ## Building a New Hardware Design for SNAP
 
 1. In `~/firesim/deploy/config_build.ini`,
-- Add a bucket name: ```s3bucketname=firesim-snap```
+- Add a bucket name:
+```
+s3bucketname=firesim-snap
+```
 - Add to ```[builds]``` (comment out other things)
-```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
+```
+firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
+```
 -  Add to ```[agfistoshare]``` (comment out other things)
-```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
+```
+firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
+```
 
 2. In `~/firesim/deploy/config_build_recipes.ini`,
 - Add
