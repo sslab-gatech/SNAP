@@ -6,12 +6,12 @@ While all the necessary instructions to run FPGA instances are provided in the [
 
 ## Initial Setup/Installation for FireSim
 
-Please refer to https://docs.fires.im/en/latest/Initial-Setup/index.html.
+Please refer to the [FireSim documentation]( https://docs.fires.im/en/latest/Initial-Setup/index.html).
 
 ## Setting up the FireSim Repo
 
 When you set up a manager instance during
-[the initial setup process](https://github.com/sslab-gatech/SNAP#initial-setupinstallation-for-firesim),
+the [initial setup process](https://github.com/sslab-gatech/SNAP#initial-setupinstallation-for-firesim),
 check out a specific tag, `1.9.0`.
 
 ```
@@ -21,27 +21,34 @@ git checkout 1.9.0 # command to check out a specific tag
 ./build-setup.sh fast
 ```
 
-## Replace the existing “generator” directory with the SNAP design.
+## Replacing the existing "generator" directory.
+```
+git clone https://github.com/sslab-gatech/SNAP.git .
+rm -rf ~/firesim/generator
+cp -rf ./SNAP/generator ~/firesim/
+```
 
-## Building Hardware Design for SNAP
+## Building a New Hardware Design for SNAP
 
 In `~/firesim/deploy/config_build.ini`, \
-Add a bucket name: ```s3bucketname=firesim-snap``` \
-Add to ```[builds]``` (comment out other things) \
+1. Add a bucket name: ```s3bucketname=firesim-snap``` \
+2. Add to ```[builds]``` (comment out other things) \
 ```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap``` \
-Add to ```[agfistoshare]``` (comment out other things)
+3. Add to ```[agfistoshare]``` (comment out other things)
 ```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
 
-In ```~/firesim/deploy/config_build_recipes.ini```, \
-Add \
-[firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap] \
-DESIGN=FireSim \
-TARGET_CONFIG=DDR3FRFCFSLLC4MB_FireSimLargeBoomConfig \
-PLATFORM_CONFIG=F75MHz_BaseF1Config \
-instancetype=f1.2xlarge \
+In `~/firesim/deploy/config_build_recipes.ini`,
+1. Add
+```
+[firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
+DESIGN=FireSim
+TARGET_CONFIG=DDR3FRFCFSLLC4MB_FireSimLargeBoomConfig
+PLATFORM_CONFIG=F75MHz_BaseF1Config
+instancetype=f1.2xlarge
 deploytriplet=None
+```
 
-Run ```firesim buildafi``` (This will take a long time, ~10 hours).
+Run `firesim buildafi` (This will take a long time, ~10 hours).
 
 Refer to the [documentation](https://docs.fires.im/en/latest/Building-a-FireSim-AFI.html) for more details.
 
