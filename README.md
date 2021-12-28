@@ -10,10 +10,12 @@ Please refer to https://docs.fires.im/en/latest/Initial-Setup/index.html.
 
 ## Setting up the FireSim Repo
 
-When you set up a manager instance during the initial setup process (Step 1), check out a specific tag, ```1.9.0```.
+When you set up a manager instance during
+[the initial setup process](https://github.com/sslab-gatech/SNAP#initial-setupinstallation-for-firesim),
+check out a specific tag, ```1.9.0```.
 
-```git clone https://github.com/firesim/firesim.git``` \
-```cd firesim``` \
+```git clone https://github.com/firesim/firesim.git \
+cd firesim``` \
 ```git checkout 1.9.0 # command to check out a specific tag``` \
 ```./build-setup.sh fast```
 
