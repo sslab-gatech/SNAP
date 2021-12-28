@@ -30,15 +30,15 @@ cp -rf ./SNAP/generator ~/firesim/
 
 ## Building a New Hardware Design for SNAP
 
-In `~/firesim/deploy/config_build.ini`, \
-1. Add a bucket name: ```s3bucketname=firesim-snap``` \
-2. Add to ```[builds]``` (comment out other things) \
+1. In `~/firesim/deploy/config_build.ini`, \
+#### Add a bucket name: ```s3bucketname=firesim-snap``` \
+#### Add to ```[builds]``` (comment out other things) \
 ```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap``` \
-3. Add to ```[agfistoshare]``` (comment out other things)
+#### Add to ```[agfistoshare]``` (comment out other things)
 ```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
 
-In `~/firesim/deploy/config_build_recipes.ini`,
-1. Add
+2. In `~/firesim/deploy/config_build_recipes.ini`,
+Add
 ```
 [firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
 DESIGN=FireSim
@@ -48,16 +48,19 @@ instancetype=f1.2xlarge
 deploytriplet=None
 ```
 
-Run `firesim buildafi` (This will take a long time, ~10 hours).
+3. Build a new HW design (This will take a long time, ~10 hours).
+```
+firesim buildafi
+```
 
 Refer to the [documentation](https://docs.fires.im/en/latest/Building-a-FireSim-AFI.html) for more details.
 
-5. Running FireSim Simulations with SNAP
+## Running FireSim Simulations with SNAP
 
-In `~/firesim/deploy/config_runtime.ini`, change the default HW config. \
+1. In `~/firesim/deploy/config_runtime.ini`, change the default HW config. \
 `defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap`
 
-In `~/firesim/deploy/config_hwdb.ini`, add a new HW DB.
+2. In `~/firesim/deploy/config_hwdb.ini`, add a new HW DB.
 ```
 [firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
 agfi=agfi-062b20613c52a2313 # replace with your agfi after HW build completes
@@ -65,15 +68,15 @@ deploytripletoverride=None
 customruntimeconfig=None
 ```
 
-Launch FPGA instance(s) following the [documentation](https://docs.fires.im/en/latest/Running-Simulations-Tutorial/index.html).
+3. Launch FPGA instance(s) following the [documentation](https://docs.fires.im/en/latest/Running-Simulations-Tutorial/index.html).
 
-After an FPGA instance is launched, insert modules into the kernel.
+4. After an FPGA instance is launched, insert modules into the kernel.
 ```
 # insmod cmap.ko
 # insmod lbq.ko
 ```
 
-Run binaries to trace!
+5. Run binaries to trace!
 
 
 ## Publications
