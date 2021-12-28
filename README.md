@@ -2,13 +2,13 @@
 
 SNAP was developed using [FireSim](https://fires.im), an open-source hardware simulation platform that runs on cloud FPGAs (Amazon EC2 F1).
 To run SNAP, you would need to replace the existing HW design directory (generator) with the SNAP’s one and build a new HW design that will be mapped to FPGA instances.
-While all the necessary instructions to run FPGA instances are provided in the FireSim’s documentation (https://docs.fires.im/en/latest/index.html), we add some detailed steps that might not be clearly indicated in the documentation.
+While all the necessary instructions to run FPGA instances are provided in the [FireSim’s documentation](https://docs.fires.im/en/latest/index.html), we add some detailed steps that might not be clearly indicated in the documentation.
 
-1. Initial Setup/Installation for FireSim
+## Initial Setup/Installation for FireSim
 
 Please refer to https://docs.fires.im/en/latest/Initial-Setup/index.html.
 
-2. Setting up the FireSim Repo
+## Setting up the FireSim Repo
 
 When you set up a manager instance during the initial setup process (Step 1), check out a specific tag, ```1.9.0```.
 
