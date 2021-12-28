@@ -1,14 +1,24 @@
 # Hardware Support to Improve Fuzzing Performance and Precision
 
-SNAP was developed using [FireSim](https://fires.im),
-an open-source hardware simulation platform that runs on cloud FPGAs (Amazon EC2 F1). \
+SNAP is a customized hardware platform that implements hardware primitives
+to enhance the performance and precision of coverage-guided fuzzing.
+
+We implemented SNAP on top of the [RISC-V BOOM core](https://boom-core.org),
+which has one of the most sophisticated designs among the open-source processors.
+
+SNAP was prototyped in the [FireSim](https://fires.im)
+platform that runs on cloud FPGAs (Amazon EC2 F1).
+
 To run SNAP, you would need to replace the existing HW design directory (generator)
-with the SNAP's one and build a new HW design that will be mapped to FPGA instances. \
-While all the necessary instructions to run FPGA instances are provided in the [FireSim’s documentation](https://docs.fires.im/en/latest/index.html), we add some detailed steps that might not be clearly indicated in the documentation.
+with the SNAP's one and build a new HW design that will be mapped to FPGA instances.
+
+While all the necessary instructions to run FPGA instances
+are provided in the [FireSim’s documentation](https://docs.fires.im/en/latest/index.html),
+we add some detailed steps that might not be clearly indicated in the documentation.
 
 ## Initial Setup/Installation for FireSim
 
-Please refer to the [FireSim documentation]( https://docs.fires.im/en/latest/Initial-Setup/index.html).
+Please refer to the [FireSim documentation](https://docs.fires.im/en/latest/Initial-Setup/index.html).
 
 ## Setting up the FireSim Repo
 
@@ -33,11 +43,11 @@ cp -rf ./SNAP/generator ~/firesim/
 ## Building a New HW Design for SNAP
 
 1. In `~/firesim/deploy/config_build.ini`,
-- Under `[afibuild]`, add a new bucket name:
+- Under `[afibuild]`, add a bucket name:
 ```
 s3bucketname=firesim-snap
 ```
-- Under `[builds]`, add a new build recipe name (comment out other things).
+- Under `[builds]`, add a build recipe name (comment out other things).
 ```
 firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
 ```
@@ -47,7 +57,7 @@ firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
 ```
 
 2. In `~/firesim/deploy/config_build_recipes.ini`,
-- Add a new build recipe.
+- Add a build recipe.
 ```
 [firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
 DESIGN=FireSim
