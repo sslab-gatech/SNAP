@@ -31,21 +31,21 @@ cp -rf ./SNAP/generator ~/firesim/
 ## Building a New Hardware Design for SNAP
 
 1. In `~/firesim/deploy/config_build.ini`,
-- Add a bucket name:
+- Under `[afibuild]`, add a new bucket name:
 ```
 s3bucketname=firesim-snap
 ```
-- Add to ```[builds]``` (comment out other things)
+- Under `[builds]`, add a new build recipe name (comment out other things).
 ```
 firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
 ```
--  Add to ```[agfistoshare]``` (comment out other things)
+- Undr `[agfistoshare]`, add a agfi name (comment out other things).
 ```
 firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
 ```
 
 2. In `~/firesim/deploy/config_build_recipes.ini`,
-- Add
+- Add a new build recipe.
 ```
 [firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
 DESIGN=FireSim
@@ -60,16 +60,19 @@ deploytriplet=None
 firesim buildafi
 ```
 
+After completed, you will get a new agfi number for your new HW design. \
 Refer to the [documentation](https://docs.fires.im/en/latest/Building-a-FireSim-AFI.html) for more details.
 
 ## Running FireSim Simulations with SNAP
 
-1. In `~/firesim/deploy/config_runtime.ini`, change the default HW config.
+1. In `~/firesim/deploy/config_runtime.ini`,
+- Change the default HW config.
 ```
 defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap
 ```
 
-2. In `~/firesim/deploy/config_hwdb.ini`, add a new HW DB.
+2. In `~/firesim/deploy/config_hwdb.ini`,
+- Add a new HW database.
 ```
 [firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
 agfi=agfi-062b20613c52a2313 # replace with your agfi after HW build completes
