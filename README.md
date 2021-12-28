@@ -21,12 +21,12 @@ git checkout 1.9.0 # command to check out a specific tag
 ./build-setup.sh fast
 ```
 
-3. Replace the existing “generator” directory with the SNAP design.
+## Replace the existing “generator” directory with the SNAP design.
 
-4. Building Hardware Design for SNAP
+## Building Hardware Design for SNAP
 
-In ```~/firesim/deploy/config_build.ini```, \
-Change the bucket name: ```s3bucketname=firesim-snap``` \
+In `~/firesim/deploy/config_build.ini`, \
+Add a bucket name: ```s3bucketname=firesim-snap``` \
 Add to ```[builds]``` (comment out other things) \
 ```firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap``` \
 Add to ```[agfistoshare]``` (comment out other things)
@@ -47,21 +47,26 @@ Refer to https://docs.fires.im/en/latest/Building-a-FireSim-AFI.html for more de
 
 5. Running FireSim Simulations with SNAP
 
-In ```~/firesim/deploy/config_runtime.ini```, \
-Change to ```defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap```
+In `~/firesim/deploy/config_runtime.ini`, \
+Change the default HW config. \
+`defaulthwconfig=firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap`
 
-In ```~/firesim/deploy/config_hwdb.ini```, \
+In `~/firesim/deploy/config_hwdb.ini`, \
 Add \
-[firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap] \
-agfi=agfi-062b20613c52a2313 # replace with your agfi after HW build completes \
-deploytripletoverride=None \
+```
+[firesim-boom-singlecore-no-nic-l2-llc4mb-ddr3-snap]
+agfi=agfi-062b20613c52a2313 # replace with your agfi after HW build completes
+deploytripletoverride=None
 customruntimeconfig=None
+```
 
-Launch FPGA instance(s) following https://docs.fires.im/en/latest/Running-Simulations-Tutorial/index.html.
+Launch FPGA instance(s) following the [documentation](https://docs.fires.im/en/latest/Running-Simulations-Tutorial/index.html).
 
 After an FPGA instance is launched, insert modules into the kernel. \
-```# insmod cmap.ko``` \
-```# insmod lbq.ko```
+```
+# insmod cmap.ko
+# insmod lbq.ko
+```
 
 Run binaries to trace!
 
