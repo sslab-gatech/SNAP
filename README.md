@@ -12,12 +12,14 @@ Please refer to https://docs.fires.im/en/latest/Initial-Setup/index.html.
 
 When you set up a manager instance during
 [the initial setup process](https://github.com/sslab-gatech/SNAP#initial-setupinstallation-for-firesim),
-check out a specific tag, ```1.9.0```.
+check out a specific tag, `1.9.0`.
 
-```git clone https://github.com/firesim/firesim.git \
-cd firesim``` \
-```git checkout 1.9.0 # command to check out a specific tag``` \
-```./build-setup.sh fast```
+```
+git clone https://github.com/firesim/firesim.git
+cd firesim
+git checkout 1.9.0 # command to check out a specific tag
+./build-setup.sh fast
+```
 
 3. Replace the existing “generator” directory with the SNAP design.
 
