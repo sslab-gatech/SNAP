@@ -1,7 +1,9 @@
 # Hardware Support to Improve Fuzzing Performance and Precision
 
-SNAP was developed using [FireSim](https://fires.im), an open-source hardware simulation platform that runs on cloud FPGAs (Amazon EC2 F1).
-To run SNAP, you would need to replace the existing HW design directory (generator) with the SNAP’s one and build a new HW design that will be mapped to FPGA instances.
+SNAP was developed using [FireSim](https://fires.im),
+an open-source hardware simulation platform that runs on cloud FPGAs (Amazon EC2 F1). \
+To run SNAP, you would need to replace the existing HW design directory (generator)
+with the SNAP's one and build a new HW design that will be mapped to FPGA instances. \
 While all the necessary instructions to run FPGA instances are provided in the [FireSim’s documentation](https://docs.fires.im/en/latest/index.html), we add some detailed steps that might not be clearly indicated in the documentation.
 
 ## Initial Setup/Installation for FireSim
@@ -21,14 +23,14 @@ git checkout 1.9.0 # command to check out a specific tag
 ./build-setup.sh fast
 ```
 
-## Replacing the existing "generator" directory.
+## Replacing the Existing "generator" Directory.
 ```
 git clone https://github.com/sslab-gatech/SNAP.git .
 rm -rf ~/firesim/generator
 cp -rf ./SNAP/generator ~/firesim/
 ```
 
-## Building a New Hardware Design for SNAP
+## Building a New HW Design for SNAP
 
 1. In `~/firesim/deploy/config_build.ini`,
 - Under `[afibuild]`, add a new bucket name:
